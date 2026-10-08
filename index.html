@@ -88,7 +88,10 @@
                 <div class="mb-12">
                     <h1 class="text-6xl font-extrabold text-lavender-600 dark:text-lavender-300 tracking-wider mb-2" dir="ltr" style="text-align: right;">eGov</h1>
                     <h2 class="text-2xl md:text-3xl font-bold text-gray-800 dark:text-white mb-2">منصة الحوكمة الرقمية الشاملة</h2>
-                    <p class="text-sm md:text-base text-gray-600 dark:text-gray-400 font-medium">لصالح شركة بحر العرب لأنظمة المعلومات</p>
+                    <p class="text-sm md:text-base text-gray-600 dark:text-gray-400 font-medium inline-flex items-center gap-2">
+                        <span class="px-2 py-0.5 bg-lavender-100 dark:bg-lavender-900/50 text-lavender-700 dark:text-lavender-300 rounded text-xs font-bold">ديمو</span>
+                        نسخة تجريبية مقدمة لشركة بحر العرب (7201)
+                    </p>
                 </div>
 
                 <!-- Features List -->
@@ -128,7 +131,7 @@
             <!-- Footer Information -->
             <div class="relative z-10 mt-16 pt-6 border-t border-gray-200 dark:border-charcoal-800 fade-in" style="animation-delay: 0.2s;">
                 <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
-                    &copy; 2026 شركة بحر العرب لأنظمة المعلومات. جميع الحقوق محفوظة.<br>
+                    نسخة استرشادية غير رسمية (Demo) - شركة بحر العرب لأنظمة المعلومات (7201).<br>
                     تم الإعداد والتطوير بواسطة: <span class="font-bold text-lavender-600 dark:text-lavender-300">أيمن علي المغربي</span>.
                 </p>
             </div>
@@ -298,14 +301,22 @@
         loginForm.addEventListener('submit', function(e) {
             e.preventDefault();
             // Show custom notification instead of alert
-            showToast('تم تسجيل الدخول بنجاح');
-            // Reset form for aesthetics
-            loginForm.reset();
+            showToast('تم تسجيل الدخول بنجاح، جاري التوجيه...');
+            
+            // Redirect to dashboard after 1.5 seconds
+            setTimeout(() => {
+                window.location.href = 'admin/index.html'; // تأكد من مسار لوحة التحكم
+            }, 1500);
         });
 
         // Handle Demo Logins
         function handleDemoLogin(role) {
-            showToast(`تم تسجيل الدخول بصلاحية: ${role}`);
+            showToast(`تم تسجيل الدخول بصلاحية: ${role}، جاري التوجيه...`);
+            
+            // Redirect to dashboard after 1.5 seconds
+            setTimeout(() => {
+                window.location.href = 'admin/index.html'; // تأكد من مسار لوحة التحكم
+            }, 1500);
         }
 
         // Run Initialization
