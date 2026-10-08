@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eGov - شهادات الأسهم | بحر العرب</title>
+    <!-- خطوط جوجل (Tajawal) -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- مكتبة الأيقونات FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- مكتبة Tailwind CSS للتصميم -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Tajawal', 'sans-serif'] },
+                    colors: {
+                        lavender: {
+                            100: '#F3E8FF',
+                            300: '#D8B4FE',
+                            500: '#A855F7',
+                            700: '#7E22CE',
+                            900: '#581C87',
+                        },
+                        charcoal: {
+                            light: '#2D2E32',
+                            DEFAULT: '#1F2022',
+                            dark: '#151618',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #A855F7; border-radius: 10px; }
+        body { font-family: 'Tajawal', sans-serif; transition: background-color 0.3s, color 0.3s; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+        }
+        .dark .glass-panel {
+            background: rgba(45, 46, 50, 0.85);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-charcoal dark:text-gray-100 overflow-hidden">
+
+    <div class="flex h-screen">
+        
+        <!-- القائمة الجانبية الخاصة ببوابة المساهمين -->
+        <aside class="w-64 glass-panel shadow-lg flex flex-col justify-between hidden md:flex transition-all duration-300 z-20 shrink-0">
+            <div>
+                <!-- الشعار -->
+                <div class="p-6 border-b border-gray-200 dark:border-gray-700 text-center">
+                    <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-700 text-white shadow-lg mb-3">
+                        <i class="fa-solid fa-handshake text-2xl"></i>
+                    </div>
+                    <h1 class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-500 to-teal-700 dark:from-emerald-300 dark:to-teal-400">
+                        بوابة المساهمين
+                    </h1>
+                    <p class="text-[10px] font-bold text-gray-500 dark:text-gray-400 mt-1">بحر العرب لأنظمة المعلومات (7201)</p>
+                </div>
+
+                <!-- الروابط -->
+                <nav class="p-4 space-y-2 h-[calc(100vh-220px)] overflow-y-auto">
+                    <a href="index.html" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-chart-pie w-5 text-gray-400"></i> <span>نظرة عامة</span>
+                    </a>
+                    
+                    <!-- الصفحة الحالية -->
+                    <a href="certificates.html" class="flex items-center gap-3 px-4 py-3 rounded-xl bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-300 font-bold transition-colors">
+                        <i class="fa-solid fa-certificate w-5"></i> <span>شهادات الأسهم</span>
+                    </a>
+
+                    <a href="dividends.html" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-coins w-5 text-gray-400"></i> <span>توزيعات الأرباح</span>
+                    </a>
+
+                    <a href="voting.html" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-check-to-slot w-5 text-gray-400"></i> <span>التصويت الإلكتروني</span>
+                        <span class="mr-auto w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
+                    </a>
+
+                    <a href="requests.html" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-file-signature w-5 text-gray-400"></i> <span>الطلبات والاستفسارات</span>
+                    </a>
+
+                    <a href="profile.html" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-user-gear w-5 text-gray-400"></i> <span>الملف الشخصي</span>
+                    </a>
+                    
+                    <div class="pt-4 mt-4 border-t border-gray-200 dark:border-gray-700">
+                        <a href="../login.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-500 text-sm">
+                            <i class="fa-solid fa-arrow-right-from-bracket w-5"></i> <span>تسجيل الخروج</span>
+                        </a>
+                    </div>
+                </nav>
+            </div>
+
+            <!-- معلومات المطور -->
+            <div class="p-4 border-t border-gray-200 dark:border-gray-700 text-center">
+                <p class="text-xs text-gray-500">تطوير م. أيمن علي المغربي</p>
+                <p class="text-[10px] text-gray-400">eGov System © 2026</p>
+            </div>
+        </aside>
+
+        <!-- المحتوى الرئيسي -->
+        <main class="flex-1 flex flex-col h-screen overflow-hidden bg-gray-50 dark:bg-charcoal-dark">
+            
+            <!-- الشريط العلوي -->
+            <header class="h-16 glass-panel border-b border-gray-200 dark:border-gray-700 flex items-center justify-between px-6 z-10 shrink-0">
+                <div class="flex items-center gap-4">
+                    <button class="md:hidden text-gray-500 hover:text-emerald-500"><i class="fa-solid fa-bars text-xl"></i></button>
+                    <h2 class="text-lg font-bold hidden sm:block">شهادات إثبات ملكية الأسهم</h2>
+                </div>
+                
+                <div class="flex items-center gap-4">
+                    <button id="themeToggle" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-charcoal flex items-center justify-center text-gray-500 hover:text-emerald-500 transition-colors">
+                        <i class="fa-solid fa-moon dark:hidden"></i>
+                        <i class="fa-solid fa-sun hidden dark:block text-yellow-400"></i>
+                    </button>
+                    
+                    <button class="relative w-10 h-10 rounded-full bg-gray-100 dark:bg-charcoal flex items-center justify-center text-gray-500 hover:text-emerald-500 transition-colors">
+                        <i class="fa-regular fa-bell"></i>
+                    </button>
+
+                    <!-- بروفايل المساهم -->
+                    <a href="profile.html" class="flex items-center gap-3 p-1 pr-3 rounded-full bg-emerald-50 dark:bg-charcoal border border-emerald-200 dark:border-gray-700 hover:border-emerald-400 transition-all cursor-pointer">
+                        <div class="text-left hidden sm:block">
+                            <p class="text-sm font-bold text-gray-800 dark:text-gray-100 leading-none">مساهم كريم</p>
+                            <p class="text-[10px] text-emerald-600 dark:text-emerald-400 mt-1 font-bold">محفظة إيداع مثرية</p>
+                        </div>
+                        <img src="https://ui-avatars.com/api/?name=مساهم+شركة&background=10B981&color=fff" alt="Shareholder" class="w-8 h-8 rounded-full border border-emerald-200">
+                    </a>
+                </div>
+            </header>
+
+            <!-- منطقة المحتوى القابلة للتمرير -->
+            <div class="flex-1 overflow-y-auto p-6">
+                
+                <!-- رأس الصفحة -->
+                <div class="glass-panel p-6 rounded-2xl mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-r-4 border-r-emerald-500">
+                    <div>
+                        <h2 class="text-2xl font-bold mb-1">إصدار شهادات ملكية الأسهم الرسمية</h2>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">شهادات فورية الموثوقية ومطابقة لبيانات مركز إيداع الأوراق المالية</p>
+                    </div>
+                    <button class="px-4 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-sm font-bold shadow-md transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-file-pdf"></i> طباعة شهادة جديدة
+                    </button>
+                </div>
+
+                <!-- معاينة الشهادة الحالية -->
+                <div class="max-w-4xl mx-auto glass-panel p-8 rounded-2xl mb-8 border border-emerald-200 dark:border-emerald-900/40 relative">
+                    
+                    <div class="absolute top-6 left-6 text-xs text-gray-400 font-mono">Ref: ARABSEA-CERT-2026-9812</div>
+                    
+                    <!-- شريط علوي في الشهادة -->
+                    <div class="text-center mb-8 pb-6 border-b border-gray-200 dark:border-gray-700">
+                        <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-emerald-100 text-emerald-600 mb-3">
+                            <i class="fa-solid fa-building-shield text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white">شركة بحر العرب لأنظمة المعلومات</h3>
+                        <p class="text-xs text-gray-500 mt-1">شركة مساهمة سعودية مدرجة - رأس المال: 100,000,000 ريال سعودي</p>
+                        <p class="text-sm font-bold text-emerald-600 dark:text-emerald-400 mt-3">شهادة ملكية أسهم (إثبات إيداع)</p>
+                    </div>
+
+                    <!-- تفاصيل المالك والأسهم -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 text-sm">
+                        <div class="space-y-3 bg-gray-50 dark:bg-charcoal/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700">
+                            <div>
+                                <span class="text-gray-500 text-xs block">اسم المساهم:</span>
+                                <span class="font-bold text-gray-800 dark:text-gray-100">مساهم كريم (محفظة إيداع)</span>
+                            </div>
+                            <div>
+                                <span class="text-gray-500 text-xs block">رقم الهوية / السجل:</span>
+                                <span class="font-bold text-gray-800 dark:text-gray-100">1010******</span>
+                            </div>
+                            <div>
+                                <span class="text-gray-500 text-xs block">رقم المساهم لدى تداول:</span>
+                                <span class="font-bold text-gray-800 dark:text-gray-100">7201-893201</span>
+                            </div>
+                        </div>
+
+                        <div class="space-y-3 bg-gray-50 dark:bg-charcoal/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700">
+                            <div>
+                                <span class="text-gray-500 text-xs block">عدد الأسهم المملوكة:</span>
+                                <span class="font-bold text-emerald-600 dark:text-emerald-400 text-lg">12,500 سهم</span>
+                            </div>
+                            <div>
+                                <span class="text-gray-500 text-xs block">القيمة الاسمية للسهم:</span>
+                                <span class="font-bold text-gray-800 dark:text-gray-100">1.00 ريال سعودي</span>
+                            </div>
+                            <div>
+                                <span class="text-gray-500 text-xs block">تاريخ التوثيق الإيجابي:</span>
+                                <span class="font-bold text-gray-800 dark:text-gray-100">08 أكتوبر 2026</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ختم وتوثيق -->
+                    <div class="flex flex-col sm:flex-row justify-between items-center gap-4 pt-6 border-t border-gray-200 dark:border-gray-700">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 rounded-full flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-qrcode"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-gray-700 dark:text-gray-300">رمز التحقق الرقمي (QR Code)</p>
+                                <p class="text-[10px] text-gray-400">وثيقة رسمية صادرة إلكترونياً ولا تحتاج إلى توقيع يديوي</p>
+                            </div>
+                        </div>
+                        <div class="text-center border-r-2 border-emerald-500 pr-4">
+                            <p class="text-xs font-bold text-gray-500">أمانة سر مجلس الإدارة</p>
+                            <p class="text-sm font-bold text-emerald-600 dark:text-emerald-400 mt-1">بحر العرب لأنظمة المعلومات</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- تذييل الصفحة -->
+                <footer class="mt-8 pt-4 border-t border-gray-200 dark:border-gray-700 text-center text-sm text-gray-500 flex flex-col md:flex-row justify-between items-center gap-2">
+                    <p>بوابة المساهمين - نسخة تجريبية (Demo) صممت خصيصاً لشركة بحر العرب.</p>
+                    <p>برمجة وتطوير <span class="font-bold text-lavender-600 dark:text-lavender-400">م. أيمن علي المغربي</span> &copy; 2026</p>
+                </footer>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- سكريبت الوضع الداكن -->
+    <script>
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            htmlElement.classList.add('dark');
+        }
+
+        themeToggleBtn.addEventListener('click', function() {
+            htmlElement.classList.toggle('dark');
+            if (htmlElement.classList.contains('dark')) {
+                localStorage.setItem('color-theme', 'dark');
+            } else {
+                localStorage.setItem('color-theme', 'light');
+            }
+        });
+    </script>
+</body>
+</html>
