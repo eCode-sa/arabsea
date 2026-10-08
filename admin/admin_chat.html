@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eGov - المحادثات | بحر العرب</title>
+    <!-- خطوط جوجل (Tajawal) -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- مكتبة الأيقونات FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- مكتبة Tailwind CSS للتصميم -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Tajawal', 'sans-serif'] },
+                    colors: {
+                        lavender: {
+                            100: '#F3E8FF',
+                            300: '#D8B4FE',
+                            500: '#A855F7',
+                            700: '#7E22CE',
+                            900: '#581C87',
+                        },
+                        charcoal: {
+                            light: '#2D2E32',
+                            DEFAULT: '#1F2022',
+                            dark: '#151618',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #A855F7; border-radius: 10px; }
+        body { font-family: 'Tajawal', sans-serif; transition: background-color 0.3s, color 0.3s; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+        }
+        .dark .glass-panel {
+            background: rgba(45, 46, 50, 0.85);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+        }
+        .chat-scroll::-webkit-scrollbar { width: 4px; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-charcoal dark:text-gray-100 overflow-hidden">
+
+    <div class="flex h-screen">
+        
+        <!-- القائمة الجانبية (Sidebar) -->
+        <aside class="w-64 glass-panel shadow-lg flex flex-col justify-between hidden md:flex transition-all duration-300 z-20 shrink-0">
+            <div>
+                <!-- الشعار -->
+                <div class="p-6 border-b border-gray-200 dark:border-gray-700 text-center">
+                    <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-lavender-500 to-lavender-700 text-white shadow-lg mb-3">
+                        <i class="fa-solid fa-building-shield text-2xl"></i>
+                    </div>
+                    <h1 class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-lavender-500 to-lavender-700 dark:from-lavender-300 dark:to-lavender-500">
+                        eGov
+                    </h1>
+                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">نسخة تجريبية (Demo)</p>
+                    <p class="text-[10px] font-bold text-lavender-700 dark:text-lavender-300">شركة بحر العرب لأنظمة المعلومات</p>
+                </div>
+
+                <!-- الروابط -->
+                <nav class="p-4 space-y-1 h-[calc(100vh-220px)] overflow-y-auto">
+                    <a href="index.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors">
+                        <i class="fa-solid fa-chart-pie w-5 text-gray-400"></i> <span>نظرة عامة</span>
+                    </a>
+                    
+                    <div class="text-xs font-bold text-gray-400 mt-4 mb-2 px-4">حوكمة الشركات</div>
+                    <a href="board.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-users-tie w-5 text-gray-400"></i> <span>مجلس الإدارة</span></a>
+                    <a href="committees.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-people-group w-5 text-gray-400"></i> <span>اللجان المنبثقة</span></a>
+                    <a href="ga.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-building-user w-5 text-gray-400"></i> <span>الجمعية العامة</span></a>
+                    <a href="shareholders.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-handshake w-5 text-gray-400"></i> <span>المساهمين</span></a>
+
+                    <div class="text-xs font-bold text-gray-400 mt-4 mb-2 px-4">الإدارة والتشغيل</div>
+                    <a href="finance.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-file-invoice-dollar w-5 text-gray-400"></i> <span>المالية</span></a>
+                    <a href="hr.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-user-tie w-5 text-gray-400"></i> <span>الموارد البشرية</span></a>
+                    <a href="it.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-network-wired w-5 text-gray-400"></i> <span>تقنية المعلومات</span></a>
+                    <a href="procurement.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-cart-shopping w-5 text-gray-400"></i> <span>المشتريات</span></a>
+
+                    <div class="text-xs font-bold text-gray-400 mt-4 mb-2 px-4">الرقابة والامتثال</div>
+                    <a href="audit.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-magnifying-glass-chart w-5 text-gray-400"></i> <span>المراجعة الداخلية</span></a>
+                    <a href="compliance.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-clipboard-check w-5 text-gray-400"></i> <span>الامتثال والمخاطر</span></a>
+                    <a href="policies.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-file-shield w-5 text-gray-400"></i> <span>السياسات واللوائح</span></a>
+                    <a href="doa.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-sitemap w-5 text-gray-400"></i> <span>جدول الصلاحيات (DOA)</span></a>
+
+                    <div class="text-xs font-bold text-gray-400 mt-4 mb-2 px-4">مساحة العمل</div>
+                    <a href="tasks.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-list-check w-5 text-gray-400"></i> <span>المهام</span></a>
+                    <a href="admin_circulars.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-bullhorn w-5 text-gray-400"></i> <span>التعاميم</span></a>
+                    
+                    <!-- تم تفعيل هذا الرابط ليدل على الصفحة الحالية -->
+                    <a href="admin_chat.html" class="flex items-center gap-3 px-4 py-2.5 rounded-lg bg-lavender-100 dark:bg-lavender-900/50 text-lavender-700 dark:text-lavender-300 font-bold transition-colors"><i class="fa-solid fa-comments w-5"></i> <span>المحادثات</span></a>
+
+                    <div class="text-xs font-bold text-gray-400 mt-4 mb-2 px-4">النظام</div>
+                    <a href="users.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-users w-5 text-gray-400"></i> <span>المستخدمين</span></a>
+                    <a href="admin_settings.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-gear w-5 text-gray-400"></i> <span>الإعدادات</span></a>
+                </nav>
+            </div>
+
+            <!-- معلومات المطور -->
+            <div class="p-4 border-t border-gray-200 dark:border-gray-700 text-center">
+                <p class="text-xs text-gray-500">تطوير م. أيمن علي المغربي</p>
+                <p class="text-[10px] text-gray-400">eGov System © 2026</p>
+            </div>
+        </aside>
+
+        <!-- المحتوى الرئيسي -->
+        <main class="flex-1 flex flex-col h-screen overflow-hidden bg-gray-50 dark:bg-charcoal-dark">
+            
+            <!-- الشريط العلوي -->
+            <header class="h-16 glass-panel border-b border-gray-200 dark:border-gray-700 flex items-center justify-between px-6 z-10 shrink-0">
+                <div class="flex items-center gap-4">
+                    <button class="md:hidden text-gray-500 hover:text-lavender-500"><i class="fa-solid fa-bars text-xl"></i></button>
+                    <h2 class="text-lg font-bold hidden sm:block">المحادثات ومساحة العمل</h2>
+                </div>
+                
+                <div class="flex items-center gap-4">
+                    <button id="themeToggle" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-charcoal flex items-center justify-center text-gray-500 hover:text-lavender-500 transition-colors">
+                        <i class="fa-solid fa-moon dark:hidden"></i>
+                        <i class="fa-solid fa-sun hidden dark:block text-yellow-400"></i>
+                    </button>
+                    
+                    <button class="relative w-10 h-10 rounded-full bg-gray-100 dark:bg-charcoal flex items-center justify-center text-gray-500 hover:text-lavender-500 transition-colors">
+                        <i class="fa-regular fa-bell"></i>
+                    </button>
+
+                    <a href="profile.html" class="flex items-center gap-3 p-1 pr-3 rounded-full bg-gray-100 dark:bg-charcoal border border-gray-200 dark:border-gray-700 hover:border-lavender-300 transition-all cursor-pointer">
+                        <div class="text-left hidden sm:block">
+                            <p class="text-sm font-bold text-gray-800 dark:text-gray-100 leading-none">الإدارة العليا</p>
+                            <p class="text-[10px] text-gray-500 mt-1">بحر العرب</p>
+                        </div>
+                        <img src="https://ui-avatars.com/api/?name=Admin&background=A855F7&color=fff" alt="User" class="w-8 h-8 rounded-full">
+                    </a>
+                    
+                    <!-- زر تسجيل الخروج -->
+                    <a href="../login.html" title="تسجيل الخروج" class="w-10 h-10 rounded-full bg-red-50 dark:bg-red-900/20 flex items-center justify-center text-red-500 hover:bg-red-500 hover:text-white transition-colors border border-red-100 dark:border-red-900/30">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    </a>
+                </div>
+            </header>
+
+            <!-- منطقة المحتوى القابلة للتمرير (تطبيق الدردشة) -->
+            <div class="flex-1 p-6 overflow-hidden flex flex-col">
+                
+                <div class="flex-1 glass-panel rounded-2xl border border-gray-200 dark:border-gray-700 flex overflow-hidden shadow-sm">
+                    
+                    <!-- القائمة الجانبية للمحادثات -->
+                    <div class="w-full md:w-80 border-l border-gray-200 dark:border-gray-700 flex flex-col bg-white/50 dark:bg-charcoal-light/50 shrink-0">
+                        <!-- بحث الدردشة -->
+                        <div class="p-4 border-b border-gray-200 dark:border-gray-700">
+                            <div class="relative">
+                                <input type="text" placeholder="بحث في المحادثات..." class="w-full pr-10 pl-4 py-2 bg-gray-100 dark:bg-charcoal rounded-xl text-sm outline-none focus:ring-2 focus:ring-lavender-500 transition-all border-none">
+                                <i class="fa-solid fa-search absolute top-3 right-3 text-gray-400"></i>
+                            </div>
+                        </div>
+
+                        <!-- قائمة المحادثات -->
+                        <div class="flex-1 overflow-y-auto chat-scroll">
+                            
+                            <!-- محادثة 1 (نشطة) -->
+                            <div class="p-4 border-b border-gray-100 dark:border-gray-700 bg-lavender-50 dark:bg-lavender-900/20 cursor-pointer hover:bg-lavender-100 dark:hover:bg-lavender-900/30 transition-colors border-r-4 border-r-lavender-500">
+                                <div class="flex items-center gap-3">
+                                    <div class="relative">
+                                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-white font-bold text-sm shadow-sm">
+                                            <i class="fa-solid fa-users"></i>
+                                        </div>
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <div class="flex justify-between items-center mb-1">
+                                            <h4 class="font-bold text-sm text-gray-800 dark:text-gray-100 truncate">مجلس الإدارة (الدورة السادسة)</h4>
+                                            <span class="text-[10px] text-lavender-600 dark:text-lavender-400 font-bold whitespace-nowrap">الآن</span>
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <p class="text-xs text-gray-600 dark:text-gray-400 truncate">أ. عادل: تم رفع مسودة المحضر للاعتماد...</p>
+                                            <span class="w-4 h-4 bg-lavender-500 rounded-full flex items-center justify-center text-[10px] text-white font-bold">1</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- محادثة 2 -->
+                            <div class="p-4 border-b border-gray-100 dark:border-gray-700 cursor-pointer hover:bg-gray-50 dark:hover:bg-charcoal transition-colors">
+                                <div class="flex items-center gap-3">
+                                    <div class="relative">
+                                        <img src="https://ui-avatars.com/api/?name=هيثم+السحيباني&background=3B82F6&color=fff" class="w-10 h-10 rounded-full">
+                                        <div class="absolute bottom-0 left-0 w-2.5 h-2.5 bg-green-500 rounded-full border-2 border-white dark:border-charcoal-light"></div>
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <div class="flex justify-between items-center mb-1">
+                                            <h4 class="font-bold text-sm text-gray-800 dark:text-gray-100 truncate">أ. هيثم السحيباني</h4>
+                                            <span class="text-[10px] text-gray-400 whitespace-nowrap">10:30 ص</span>
+                                        </div>
+                                        <p class="text-xs text-gray-500 truncate">ممتاز، سيتم مراجعة تقرير المبيعات غداً.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- محادثة 3 -->
+                            <div class="p-4 border-b border-gray-100 dark:border-gray-700 cursor-pointer hover:bg-gray-50 dark:hover:bg-charcoal transition-colors">
+                                <div class="flex items-center gap-3">
+                                    <div class="relative">
+                                        <img src="https://ui-avatars.com/api/?name=عادل+موسى&background=6B7280&color=fff" class="w-10 h-10 rounded-full">
+                                        <div class="absolute bottom-0 left-0 w-2.5 h-2.5 bg-gray-400 rounded-full border-2 border-white dark:border-charcoal-light"></div>
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <div class="flex justify-between items-center mb-1">
+                                            <h4 class="font-bold text-sm text-gray-800 dark:text-gray-100 truncate">أ. عادل موسى</h4>
+                                            <span class="text-[10px] text-gray-400 whitespace-nowrap">أمس</span>
+                                        </div>
+                                        <p class="text-xs text-gray-500 truncate">بخصوص جدول أعمال الجمعية العامة...</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- محادثة 4 -->
+                            <div class="p-4 border-b border-gray-100 dark:border-gray-700 cursor-pointer hover:bg-gray-50 dark:hover:bg-charcoal transition-colors">
+                                <div class="flex items-center gap-3">
+                                    <div class="relative">
+                                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white font-bold text-sm shadow-sm">
+                                            <i class="fa-solid fa-magnifying-glass-chart"></i>
+                                        </div>
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <div class="flex justify-between items-center mb-1">
+                                            <h4 class="font-bold text-sm text-gray-800 dark:text-gray-100 truncate">لجنة المراجعة الداخلية</h4>
+                                            <span class="text-[10px] text-gray-400 whitespace-nowrap">الأحد</span>
+                                        </div>
+                                        <p class="text-xs text-gray-500 truncate">محمد الحزيم: الملاحظات تمت تسويتها.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- نافذة المحادثة النشطة -->
+                    <div class="flex-1 flex flex-col bg-white dark:bg-charcoal hidden md:flex">
+                        
+                        <!-- رأس المحادثة -->
+                        <div class="h-16 px-6 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between shrink-0">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-white shadow-sm">
+                                    <i class="fa-solid fa-users"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-gray-800 dark:text-gray-100">مجموعة مجلس الإدارة (الدورة السادسة)</h3>
+                                    <p class="text-xs text-emerald-500 font-bold">7 أعضاء، 2 متصل الآن</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4 text-gray-400">
+                                <button class="hover:text-lavender-500 transition-colors" title="مكالمة صوتية"><i class="fa-solid fa-phone"></i></button>
+                                <button class="hover:text-lavender-500 transition-colors" title="مكالمة مرئية"><i class="fa-solid fa-video"></i></button>
+                                <button class="hover:text-lavender-500 transition-colors" title="معلومات المجموعة"><i class="fa-solid fa-circle-info"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- منطقة الرسائل -->
+                        <div class="flex-1 p-6 overflow-y-auto chat-scroll bg-gray-50/30 dark:bg-charcoal-dark/20 space-y-6 flex flex-col">
+                            
+                            <!-- رسالة النظام / التاريخ -->
+                            <div class="flex justify-center">
+                                <span class="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs rounded-full font-bold">اليوم</span>
+                            </div>
+
+                            <!-- رسالة واردة -->
+                            <div class="flex items-end gap-2">
+                                <img src="https://ui-avatars.com/api/?name=عادل+موسى&background=6B7280&color=fff" class="w-8 h-8 rounded-full mb-1 shrink-0">
+                                <div class="max-w-[75%]">
+                                    <p class="text-[10px] text-gray-500 mr-2 mb-1">أ. عادل موسى - 10:15 ص</p>
+                                    <div class="bg-white dark:bg-charcoal-light text-gray-800 dark:text-gray-100 p-3 rounded-2xl rounded-br-none shadow-sm border border-gray-100 dark:border-gray-700 text-sm">
+                                        السادة أعضاء المجلس الكرام، تم الانتهاء من صياغة مسودة محضر الاجتماع الأول للدورة السادسة بناءً على المداولات.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- رسالة واردة بمرفق -->
+                            <div class="flex items-end gap-2">
+                                <div class="w-8 shrink-0"></div> <!-- مساحة وهمية للمحاذاة -->
+                                <div class="max-w-[75%]">
+                                    <div class="bg-white dark:bg-charcoal-light p-3 rounded-2xl rounded-tr-none shadow-sm border border-gray-100 dark:border-gray-700 text-sm flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-red-50 text-red-500 rounded flex items-center justify-center shrink-0">
+                                            <i class="fa-solid fa-file-pdf text-lg"></i>
+                                        </div>
+                                        <div class="flex-1 min-w-0">
+                                            <p class="font-bold text-gray-800 dark:text-gray-100 truncate">محضر_اجتماع_مجلس_الادارة_رقم_1.pdf</p>
+                                            <p class="text-xs text-gray-500">1.2 MB</p>
+                                        </div>
+                                        <button class="text-gray-400 hover:text-lavender-500"><i class="fa-solid fa-download"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- رسالة واردة -->
+                            <div class="flex items-end gap-2">
+                                <img src="https://ui-avatars.com/api/?name=عبد+الله+الحواس&background=A855F7&color=fff" class="w-8 h-8 rounded-full mb-1 shrink-0">
+                                <div class="max-w-[75%]">
+                                    <p class="text-[10px] text-gray-500 mr-2 mb-1">أ. عبد الله الحواس (رئيس المجلس) - 10:45 ص</p>
+                                    <div class="bg-white dark:bg-charcoal-light text-gray-800 dark:text-gray-100 p-3 rounded-2xl rounded-br-none shadow-sm border border-gray-100 dark:border-gray-700 text-sm">
+                                        شكراً لك أستاذ عادل. السادة الأعضاء، يرجى مراجعة المسودة وتزويد أمانة السر بأي ملاحظات خلال 3 أيام حسب الآلية المعتمدة.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- رسالة صادرة -->
+                            <div class="flex items-end gap-2 justify-end mt-auto pt-4">
+                                <div class="max-w-[75%]">
+                                    <div class="flex items-center justify-end gap-1 mb-1">
+                                        <span class="text-[10px] text-gray-500 ml-2">10:50 ص</span>
+                                        <i class="fa-solid fa-check-double text-blue-500 text-[10px]"></i>
+                                    </div>
+                                    <div class="bg-gradient-to-l from-lavender-500 to-lavender-600 text-white p-3 rounded-2xl rounded-bl-none shadow-md text-sm">
+                                        علم، جاري المراجعة وسيتم الرد في حال وجود أي ملاحظات.
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- منطقة الإدخال -->
+                        <div class="p-4 bg-white dark:bg-charcoal border-t border-gray-200 dark:border-gray-700 shrink-0">
+                            <div class="flex items-end gap-2">
+                                <button class="w-10 h-10 rounded-full flex items-center justify-center text-gray-400 hover:text-lavender-500 hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors shrink-0">
+                                    <i class="fa-solid fa-paperclip"></i>
+                                </button>
+                                <div class="flex-1 bg-gray-100 dark:bg-charcoal-light rounded-2xl overflow-hidden flex items-end min-h-[44px]">
+                                    <textarea placeholder="اكتب رسالة..." rows="1" class="w-full bg-transparent border-none focus:ring-0 resize-none py-3 px-4 text-sm text-gray-800 dark:text-gray-100 max-h-32 chat-scroll"></textarea>
+                                    <button class="w-10 h-10 flex items-center justify-center text-gray-400 hover:text-lavender-500 transition-colors shrink-0 mb-1">
+                                        <i class="fa-regular fa-face-smile"></i>
+                                    </button>
+                                </div>
+                                <button class="w-12 h-12 rounded-full bg-lavender-500 hover:bg-lavender-600 text-white flex items-center justify-center shadow-md transition-colors shrink-0">
+                                    <i class="fa-solid fa-paper-plane pb-1 pr-1 rotate-180"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- سكريبت الوضع الداكن -->
+    <script>
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            htmlElement.classList.add('dark');
+        }
+
+        themeToggleBtn.addEventListener('click', function() {
+            htmlElement.classList.toggle('dark');
+            if (htmlElement.classList.contains('dark')) {
+                localStorage.setItem('color-theme', 'dark');
+            } else {
+                localStorage.setItem('color-theme', 'light');
+            }
+        });
+    </script>
+</body>
+</html>
