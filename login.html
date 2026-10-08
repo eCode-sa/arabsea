@@ -197,52 +197,80 @@
                         </button>
                     </form>
 
-                    <!-- Demo Access Section (مخصصة لبحر العرب) -->
+                    <!-- Demo Access Section (محدثة بالروابط الـ 10 الدقيقة) -->
                     <div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-800">
                         <p class="text-center text-xs font-bold text-gray-500 dark:text-gray-400 mb-4 uppercase tracking-wider">حسابات الوصول السريع (Demo Access - بحر العرب)</p>
                         
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                        <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
                             
-                            <!-- 1. رئيس المجلس -->
-                            <button onclick="handleDemoLogin('رئيس مجلس الإدارة (أ. عبد الله الحواس)', 'board/index.html')" class="flex flex-col items-center justify-center p-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-charcoal-light hover:bg-lavender-50 hover:border-lavender-300 dark:hover:bg-charcoal dark:hover:border-lavender-500 transition-all group">
-                                <i class="fa-solid fa-users-tie text-lavender-600 dark:text-lavender-300 mb-1.5 text-lg"></i>
-                                <span class="text-xs font-bold text-gray-800 dark:text-gray-100 group-hover:text-lavender-700 dark:group-hover:text-lavender-300">رئيس المجلس</span>
+                            <!-- 1. الإدارة العليا / المشرف -->
+                            <button onclick="handleDemoLogin('الإدارة العليا / المشرف', 'admin/index.html')" class="flex flex-col items-center justify-center p-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-charcoal-light hover:bg-lavender-50 hover:border-lavender-300 dark:hover:bg-charcoal dark:hover:border-lavender-500 transition-all group">
+                                <i class="fa-solid fa-user-shield text-lavender-600 dark:text-lavender-300 mb-1 text-base"></i>
+                                <span class="text-xs font-bold text-gray-800 dark:text-gray-100 group-hover:text-lavender-700 dark:group-hover:text-lavender-300">الإدارة العليا / المشرف</span>
+                                <span class="text-[10px] text-gray-400">المشرف العام</span>
+                            </button>
+
+                            <!-- 2. مجلس الإدارة -->
+                            <button onclick="handleDemoLogin('بوابة مجلس الإدارة', 'board/index.html')" class="flex flex-col items-center justify-center p-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-charcoal-light hover:bg-lavender-50 hover:border-lavender-300 dark:hover:bg-charcoal dark:hover:border-lavender-500 transition-all group">
+                                <i class="fa-solid fa-users-tie text-purple-600 mb-1 text-base"></i>
+                                <span class="text-xs font-bold text-gray-800 dark:text-gray-100 group-hover:text-lavender-700 dark:group-hover:text-lavender-300">مجلس الإدارة</span>
                                 <span class="text-[10px] text-gray-400">أ. عبد الله الحواس</span>
                             </button>
 
-                            <!-- 2. الرئيس التنفيذي -->
-                            <button onclick="handleDemoLogin('الرئيس التنفيذي (أ. هيثم السحيباني)', 'admin/index.html')" class="flex flex-col items-center justify-center p-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-charcoal-light hover:bg-lavender-50 hover:border-lavender-300 dark:hover:bg-charcoal dark:hover:border-lavender-500 transition-all group">
-                                <i class="fa-solid fa-user-gear text-blue-500 mb-1.5 text-lg"></i>
+                            <!-- 3. الرئيس التنفيذي -->
+                            <button onclick="handleDemoLogin('بوابة الرئيس التنفيذي', 'ceo/index.html')" class="flex flex-col items-center justify-center p-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-charcoal-light hover:bg-lavender-50 hover:border-lavender-300 dark:hover:bg-charcoal dark:hover:border-lavender-500 transition-all group">
+                                <i class="fa-solid fa-user-gear text-blue-500 mb-1 text-base"></i>
                                 <span class="text-xs font-bold text-gray-800 dark:text-gray-100 group-hover:text-lavender-700 dark:group-hover:text-lavender-300">الرئيس التنفيذي</span>
                                 <span class="text-[10px] text-gray-400">أ. هيثم السحيباني</span>
                             </button>
 
-                            <!-- 3. أمين السر -->
-                            <button onclick="handleDemoLogin('أمين سر المجلس (أ. عادل موسى)', 'board/meetings.html')" class="flex flex-col items-center justify-center p-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-charcoal-light hover:bg-lavender-50 hover:border-lavender-300 dark:hover:bg-charcoal dark:hover:border-lavender-500 transition-all group">
-                                <i class="fa-solid fa-pen-nib text-purple-500 mb-1.5 text-lg"></i>
-                                <span class="text-xs font-bold text-gray-800 dark:text-gray-100 group-hover:text-lavender-700 dark:group-hover:text-lavender-300">أمين السر</span>
-                                <span class="text-[10px] text-gray-400">أ. عادل موسى</span>
-                            </button>
-
-                            <!-- 4. مساهم -->
-                            <button onclick="handleDemoLogin('مساهم شركة بحر العرب', 'admin/shareholders.html')" class="flex flex-col items-center justify-center p-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-charcoal-light hover:bg-lavender-50 hover:border-lavender-300 dark:hover:bg-charcoal dark:hover:border-lavender-500 transition-all group">
-                                <i class="fa-solid fa-handshake text-emerald-500 mb-1.5 text-lg"></i>
+                            <!-- 4. المساهمين -->
+                            <button onclick="handleDemoLogin('بوابة المساهمين', 'shareholder/index.html')" class="flex flex-col items-center justify-center p-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-charcoal-light hover:bg-lavender-50 hover:border-lavender-300 dark:hover:bg-charcoal dark:hover:border-lavender-500 transition-all group">
+                                <i class="fa-solid fa-handshake text-emerald-500 mb-1 text-base"></i>
                                 <span class="text-xs font-bold text-gray-800 dark:text-gray-100 group-hover:text-lavender-700 dark:group-hover:text-lavender-300">بوابة المساهمين</span>
                                 <span class="text-[10px] text-gray-400">سجل إيداع (تداول)</span>
                             </button>
 
-                            <!-- 5. مدير الموارد البشرية -->
-                            <button onclick="handleDemoLogin('إدارة الموارد البشرية', 'admin/hr.html')" class="flex flex-col items-center justify-center p-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-charcoal-light hover:bg-lavender-50 hover:border-lavender-300 dark:hover:bg-charcoal dark:hover:border-lavender-500 transition-all group">
-                                <i class="fa-solid fa-user-tie text-orange-500 mb-1.5 text-lg"></i>
+                            <!-- 5. الإدارة المالية -->
+                            <button onclick="handleDemoLogin('بوابة الإدارة المالية', 'finance/index.html')" class="flex flex-col items-center justify-center p-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-charcoal-light hover:bg-lavender-50 hover:border-lavender-300 dark:hover:bg-charcoal dark:hover:border-lavender-500 transition-all group">
+                                <i class="fa-solid fa-file-invoice-dollar text-teal-500 mb-1 text-base"></i>
+                                <span class="text-xs font-bold text-gray-800 dark:text-gray-100 group-hover:text-lavender-700 dark:group-hover:text-lavender-300">الإدارة المالية</span>
+                                <span class="text-[10px] text-gray-400">القوائم والموازنة</span>
+                            </button>
+
+                            <!-- 6. الموارد البشرية -->
+                            <button onclick="handleDemoLogin('بوابة الموارد البشرية', 'hr/index.html')" class="flex flex-col items-center justify-center p-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-charcoal-light hover:bg-lavender-50 hover:border-lavender-300 dark:hover:bg-charcoal dark:hover:border-lavender-500 transition-all group">
+                                <i class="fa-solid fa-user-tie text-orange-500 mb-1 text-base"></i>
                                 <span class="text-xs font-bold text-gray-800 dark:text-gray-100 group-hover:text-lavender-700 dark:group-hover:text-lavender-300">الموارد البشرية</span>
                                 <span class="text-[10px] text-gray-400">شؤون الموظفين</span>
                             </button>
 
-                            <!-- 6. المدير المالي -->
-                            <button onclick="handleDemoLogin('المدير المالي (CFO)', 'admin/finance.html')" class="flex flex-col items-center justify-center p-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-charcoal-light hover:bg-lavender-50 hover:border-lavender-300 dark:hover:bg-charcoal dark:hover:border-lavender-500 transition-all group">
-                                <i class="fa-solid fa-file-invoice-dollar text-teal-500 mb-1.5 text-lg"></i>
-                                <span class="text-xs font-bold text-gray-800 dark:text-gray-100 group-hover:text-lavender-700 dark:group-hover:text-lavender-300">الإدارة المالية</span>
-                                <span class="text-[10px] text-gray-400">القوائم والموازنة</span>
+                            <!-- 7. المراجعة الداخلية -->
+                            <button onclick="handleDemoLogin('بوابة المراجعة الداخلية', 'audit/index.html')" class="flex flex-col items-center justify-center p-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-charcoal-light hover:bg-lavender-50 hover:border-lavender-300 dark:hover:bg-charcoal dark:hover:border-lavender-500 transition-all group">
+                                <i class="fa-solid fa-magnifying-glass-chart text-indigo-500 mb-1 text-base"></i>
+                                <span class="text-xs font-bold text-gray-800 dark:text-gray-100 group-hover:text-lavender-700 dark:group-hover:text-lavender-300">المراجعة الداخلية</span>
+                                <span class="text-[10px] text-gray-400">تقارير الضبط</span>
+                            </button>
+
+                            <!-- 8. قطاع العمليات التقنية (CTO) -->
+                            <button onclick="handleDemoLogin('قطاع العمليات التقنية (CTO)', 'cto/index.html')" class="flex flex-col items-center justify-center p-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-charcoal-light hover:bg-lavender-50 hover:border-lavender-300 dark:hover:bg-charcoal dark:hover:border-lavender-500 transition-all group">
+                                <i class="fa-solid fa-network-wired text-cyan-500 mb-1 text-base"></i>
+                                <span class="text-xs font-bold text-gray-800 dark:text-gray-100 group-hover:text-lavender-700 dark:group-hover:text-lavender-300">العمليات التقنية</span>
+                                <span class="text-[10px] text-gray-400">تطوير النظم والتشغيل</span>
+                            </button>
+
+                            <!-- 9. قطاع المبيعات -->
+                            <button onclick="handleDemoLogin('بوابة قطاع المبيعات', 'sales/index.html')" class="flex flex-col items-center justify-center p-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-charcoal-light hover:bg-lavender-50 hover:border-lavender-300 dark:hover:bg-charcoal dark:hover:border-lavender-500 transition-all group">
+                                <i class="fa-solid fa-chart-line text-rose-500 mb-1 text-base"></i>
+                                <span class="text-xs font-bold text-gray-800 dark:text-gray-100 group-hover:text-lavender-700 dark:group-hover:text-lavender-300">قطاع المبيعات</span>
+                                <span class="text-[10px] text-gray-400">إدارة الحسابات</span>
+                            </button>
+
+                            <!-- 10. بوابة الموظف -->
+                            <button onclick="handleDemoLogin('بوابة الموظف', 'employee/index.html')" class="flex flex-col items-center justify-center p-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-charcoal-light hover:bg-lavender-50 hover:border-lavender-300 dark:hover:bg-charcoal dark:hover:border-lavender-500 transition-all group sm:col-span-2 lg:col-span-1">
+                                <i class="fa-solid fa-id-card-clip text-amber-500 mb-1 text-base"></i>
+                                <span class="text-xs font-bold text-gray-800 dark:text-gray-100 group-hover:text-lavender-700 dark:group-hover:text-lavender-300">بوابة الموظف</span>
+                                <span class="text-[10px] text-gray-400">الخدمات الذاتية</span>
                             </button>
 
                         </div>
