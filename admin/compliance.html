@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eGov - الامتثال والمخاطر | بحر العرب</title>
+    <!-- خطوط جوجل (Tajawal) -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- مكتبة الأيقونات FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- مكتبة Tailwind CSS للتصميم -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Tajawal', 'sans-serif'] },
+                    colors: {
+                        lavender: {
+                            100: '#F3E8FF',
+                            300: '#D8B4FE',
+                            500: '#A855F7',
+                            700: '#7E22CE',
+                            900: '#581C87',
+                        },
+                        charcoal: {
+                            light: '#2D2E32',
+                            DEFAULT: '#1F2022',
+                            dark: '#151618',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #A855F7; border-radius: 10px; }
+        body { font-family: 'Tajawal', sans-serif; transition: background-color 0.3s, color 0.3s; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+        }
+        .dark .glass-panel {
+            background: rgba(45, 46, 50, 0.85);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-charcoal dark:text-gray-100 overflow-hidden">
+
+    <div class="flex h-screen">
+        
+        <!-- القائمة الجانبية (Sidebar) -->
+        <aside class="w-64 glass-panel shadow-lg flex flex-col justify-between hidden md:flex transition-all duration-300 z-20">
+            <div>
+                <!-- الشعار -->
+                <div class="p-6 border-b border-gray-200 dark:border-gray-700 text-center">
+                    <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-lavender-500 to-lavender-700 text-white shadow-lg mb-3">
+                        <i class="fa-solid fa-building-shield text-2xl"></i>
+                    </div>
+                    <h1 class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-lavender-500 to-lavender-700 dark:from-lavender-300 dark:to-lavender-500">
+                        eGov
+                    </h1>
+                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">نسخة تجريبية (Demo)</p>
+                    <p class="text-[10px] font-bold text-lavender-700 dark:text-lavender-300">شركة بحر العرب لأنظمة المعلومات</p>
+                </div>
+
+                <!-- الروابط -->
+                <nav class="p-4 space-y-1 h-[calc(100vh-220px)] overflow-y-auto">
+                    <a href="index.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors">
+                        <i class="fa-solid fa-chart-pie w-5 text-gray-400"></i> <span>نظرة عامة</span>
+                    </a>
+                    
+                    <div class="text-xs font-bold text-gray-400 mt-4 mb-2 px-4">حوكمة الشركات</div>
+                    <a href="board.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-users-tie w-5 text-gray-400"></i> <span>مجلس الإدارة</span></a>
+                    <a href="committees.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-people-group w-5 text-gray-400"></i> <span>اللجان المنبثقة</span></a>
+                    <a href="ga.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-building-user w-5 text-gray-400"></i> <span>الجمعية العامة</span></a>
+                    <a href="shareholders.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-handshake w-5 text-gray-400"></i> <span>المساهمين</span></a>
+
+                    <div class="text-xs font-bold text-gray-400 mt-4 mb-2 px-4">الإدارة والتشغيل</div>
+                    <a href="finance.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-file-invoice-dollar w-5 text-gray-400"></i> <span>المالية</span></a>
+                    <a href="hr.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-user-tie w-5 text-gray-400"></i> <span>الموارد البشرية</span></a>
+                    <a href="it.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-network-wired w-5 text-gray-400"></i> <span>تقنية المعلومات</span></a>
+                    <a href="procurement.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-cart-shopping w-5 text-gray-400"></i> <span>المشتريات</span></a>
+
+                    <div class="text-xs font-bold text-gray-400 mt-4 mb-2 px-4">الرقابة والامتثال</div>
+                    <a href="audit.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-magnifying-glass-chart w-5 text-gray-400"></i> <span>المراجعة الداخلية</span></a>
+                    
+                    <!-- تم تفعيل هذا الرابط ليدل على الصفحة الحالية -->
+                    <a href="compliance.html" class="flex items-center gap-3 px-4 py-2.5 rounded-lg bg-lavender-100 dark:bg-lavender-900/50 text-lavender-700 dark:text-lavender-300 font-bold transition-colors"><i class="fa-solid fa-clipboard-check w-5"></i> <span>الامتثال والمخاطر</span></a>
+                    
+                    <a href="policies.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-file-shield w-5 text-gray-400"></i> <span>السياسات واللوائح</span></a>
+                    <a href="doa.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-sitemap w-5 text-gray-400"></i> <span>جدول الصلاحيات (DOA)</span></a>
+
+                    <div class="text-xs font-bold text-gray-400 mt-4 mb-2 px-4">مساحة العمل</div>
+                    <a href="tasks.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-list-check w-5 text-gray-400"></i> <span>المهام</span></a>
+                    <a href="admin_circulars.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-bullhorn w-5 text-gray-400"></i> <span>التعاميم</span></a>
+                    <a href="admin_chat.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-comments w-5 text-gray-400"></i> <span>المحادثات</span></a>
+
+                    <div class="text-xs font-bold text-gray-400 mt-4 mb-2 px-4">النظام</div>
+                    <a href="users.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-users w-5 text-gray-400"></i> <span>المستخدمين</span></a>
+                    <a href="admin_settings.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-gear w-5 text-gray-400"></i> <span>الإعدادات</span></a>
+                </nav>
+            </div>
+
+            <!-- معلومات المطور -->
+            <div class="p-4 border-t border-gray-200 dark:border-gray-700 text-center">
+                <p class="text-xs text-gray-500">تطوير م. أيمن علي المغربي</p>
+                <p class="text-[10px] text-gray-400">eGov System © 2026</p>
+            </div>
+        </aside>
+
+        <!-- المحتوى الرئيسي -->
+        <main class="flex-1 flex flex-col h-screen overflow-hidden bg-gray-50 dark:bg-charcoal-dark">
+            
+            <!-- الشريط العلوي -->
+            <header class="h-16 glass-panel border-b border-gray-200 dark:border-gray-700 flex items-center justify-between px-6 z-10">
+                <div class="flex items-center gap-4">
+                    <button class="md:hidden text-gray-500 hover:text-lavender-500"><i class="fa-solid fa-bars text-xl"></i></button>
+                    <h2 class="text-lg font-bold hidden sm:block">الامتثال والمخاطر</h2>
+                </div>
+                
+                <div class="flex items-center gap-4">
+                    <button id="themeToggle" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-charcoal flex items-center justify-center text-gray-500 hover:text-lavender-500 transition-colors">
+                        <i class="fa-solid fa-moon dark:hidden"></i>
+                        <i class="fa-solid fa-sun hidden dark:block text-yellow-400"></i>
+                    </button>
+                    
+                    <button class="relative w-10 h-10 rounded-full bg-gray-100 dark:bg-charcoal flex items-center justify-center text-gray-500 hover:text-lavender-500 transition-colors">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full"></span>
+                    </button>
+
+                    <a href="profile.html" class="flex items-center gap-3 p-1 pr-3 rounded-full bg-gray-100 dark:bg-charcoal border border-gray-200 dark:border-gray-700 hover:border-lavender-300 transition-all cursor-pointer">
+                        <div class="text-left hidden sm:block">
+                            <p class="text-sm font-bold text-gray-800 dark:text-gray-100 leading-none">الإدارة العليا</p>
+                            <p class="text-[10px] text-gray-500 mt-1">بحر العرب</p>
+                        </div>
+                        <img src="https://ui-avatars.com/api/?name=Admin&background=A855F7&color=fff" alt="User" class="w-8 h-8 rounded-full">
+                    </a>
+                    
+                    <!-- زر تسجيل الخروج -->
+                    <a href="../login.html" title="تسجيل الخروج" class="w-10 h-10 rounded-full bg-red-50 dark:bg-red-900/20 flex items-center justify-center text-red-500 hover:bg-red-500 hover:text-white transition-colors border border-red-100 dark:border-red-900/30">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    </a>
+                </div>
+            </header>
+
+            <!-- منطقة المحتوى القابلة للتمرير -->
+            <div class="flex-1 overflow-y-auto p-6">
+                
+                <!-- رأس الصفحة -->
+                <div class="glass-panel p-6 rounded-2xl mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-r-4 border-r-rose-500">
+                    <div>
+                        <h2 class="text-2xl font-bold mb-1">إدارة الامتثال وسجل المخاطر</h2>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">متابعة الالتزامات التشريعية (تداول/هيئة السوق المالية) ومراقبة المخاطر المؤسسية</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button class="px-4 py-2 bg-gradient-to-r from-rose-500 to-rose-700 text-white rounded-lg text-sm font-bold shadow-md hover:shadow-lg transition-all">
+                            <i class="fa-solid fa-triangle-exclamation ml-2"></i> تسجيل خطر جديد
+                        </button>
+                    </div>
+                </div>
+
+                <!-- البطاقات الإحصائية -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    
+                    <!-- مؤشر الامتثال -->
+                    <div class="glass-panel p-5 rounded-2xl">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <p class="text-gray-500 dark:text-gray-400 text-sm">مؤشر الامتثال التنظيمي</p>
+                                <h3 class="text-2xl font-bold mt-1 text-emerald-600 dark:text-emerald-400">96%</h3>
+                            </div>
+                            <div class="w-10 h-10 rounded-full bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center text-emerald-600 dark:text-emerald-300">
+                                <i class="fa-solid fa-clipboard-check"></i>
+                            </div>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5 mt-3">
+                            <div class="bg-emerald-500 h-1.5 rounded-full" style="width: 96%"></div>
+                        </div>
+                    </div>
+
+                    <!-- مخاطر نشطة -->
+                    <div class="glass-panel p-5 rounded-2xl">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <p class="text-gray-500 dark:text-gray-400 text-sm">مخاطر تشغيلية نشطة</p>
+                                <h3 class="text-2xl font-bold mt-1 text-rose-600 dark:text-rose-400">4</h3>
+                            </div>
+                            <div class="w-10 h-10 rounded-full bg-rose-100 dark:bg-rose-900/40 flex items-center justify-center text-rose-600 dark:text-rose-300">
+                                <i class="fa-solid fa-radiation"></i>
+                            </div>
+                        </div>
+                        <p class="text-xs text-rose-500 mt-2 font-bold">1 منها عالي الخطورة</p>
+                    </div>
+
+                    <!-- إفصاحات السوق المالية -->
+                    <div class="glass-panel p-5 rounded-2xl">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <p class="text-gray-500 dark:text-gray-400 text-sm">إفصاحات (تداول)</p>
+                                <h3 class="text-2xl font-bold mt-1 text-blue-600 dark:text-blue-400">مكتمل</h3>
+                            </div>
+                            <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/40 flex items-center justify-center text-blue-600 dark:text-blue-300">
+                                <i class="fa-solid fa-bullhorn"></i>
+                            </div>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-2">تم رفع التقرير المالي للربع الثالث</p>
+                    </div>
+
+                    <!-- تحديث السياسات -->
+                    <div class="glass-panel p-5 rounded-2xl">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <p class="text-gray-500 dark:text-gray-400 text-sm">تحديث السياسات واللوائح</p>
+                                <h3 class="text-2xl font-bold mt-1 text-purple-600 dark:text-purple-400">100%</h3>
+                            </div>
+                            <div class="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/40 flex items-center justify-center text-purple-600 dark:text-purple-300">
+                                <i class="fa-solid fa-book-open-reader"></i>
+                            </div>
+                        </div>
+                        <p class="text-xs text-emerald-500 mt-2"><i class="fa-solid fa-check"></i> جميع الأدلة معتمدة (يناير 2024)</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+                    
+                    <!-- سجل المخاطر (Risk Register) -->
+                    <div class="lg:col-span-2 glass-panel rounded-2xl overflow-hidden">
+                        <div class="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center bg-gray-50/50 dark:bg-charcoal/50">
+                            <h3 class="font-bold">سجل المخاطر المؤسسية (Risk Register)</h3>
+                            <button class="text-sm text-rose-600 dark:text-rose-400 hover:underline">السجل الشامل</button>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-right text-sm">
+                                <thead class="bg-gray-50 dark:bg-charcoal-light border-b border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400">
+                                    <tr>
+                                        <th class="p-3 font-normal">وصف الخطر</th>
+                                        <th class="p-3 font-normal">التصنيف</th>
+                                        <th class="p-3 font-normal text-center">الاحتمالية</th>
+                                        <th class="p-3 font-normal text-center">التأثير</th>
+                                        <th class="p-3 font-normal text-center">مستوى الخطر</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+                                    <tr class="hover:bg-gray-50 dark:hover:bg-charcoal-light/50">
+                                        <td class="p-3 font-bold text-gray-800 dark:text-gray-100">تعطل الخوادم السحابية المؤقت</td>
+                                        <td class="p-3">تقني / تشغيلي</td>
+                                        <td class="p-3 text-center">متوسط</td>
+                                        <td class="p-3 text-center">عالي</td>
+                                        <td class="p-3 text-center"><span class="px-2 py-1 bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400 text-xs rounded-md font-bold">عالي (High)</span></td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50 dark:hover:bg-charcoal-light/50">
+                                        <td class="p-3 font-bold text-gray-800 dark:text-gray-100">تأخر تحصيل مستحقات كبار العملاء</td>
+                                        <td class="p-3">مالي</td>
+                                        <td class="p-3 text-center">عالي</td>
+                                        <td class="p-3 text-center">متوسط</td>
+                                        <td class="p-3 text-center"><span class="px-2 py-1 bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400 text-xs rounded-md font-bold">متوسط (Med)</span></td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50 dark:hover:bg-charcoal-light/50">
+                                        <td class="p-3 font-bold text-gray-800 dark:text-gray-100">تسرب الكفاءات التقنية المتخصصة</td>
+                                        <td class="p-3">موارد بشرية</td>
+                                        <td class="p-3 text-center">منخفض</td>
+                                        <td class="p-3 text-center">عالي</td>
+                                        <td class="p-3 text-center"><span class="px-2 py-1 bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400 text-xs rounded-md font-bold">متوسط (Med)</span></td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50 dark:hover:bg-charcoal-light/50">
+                                        <td class="p-3 font-bold text-gray-800 dark:text-gray-100">تغيير اللوائح الضريبية (ZATCA)</td>
+                                        <td class="p-3">امتثال تشريعي</td>
+                                        <td class="p-3 text-center">منخفض</td>
+                                        <td class="p-3 text-center">متوسط</td>
+                                        <td class="p-3 text-center"><span class="px-2 py-1 bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 text-xs rounded-md font-bold">منخفض (Low)</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- متابعة الالتزامات والإفصاحات -->
+                    <div class="glass-panel rounded-2xl overflow-hidden flex flex-col">
+                        <div class="p-4 border-b border-gray-200 dark:border-gray-700 bg-gray-50/50 dark:bg-charcoal/50 flex justify-between items-center">
+                            <h3 class="font-bold">التقويم التنظيمي (المهام القادمة)</h3>
+                        </div>
+                        <div class="p-4 flex-1 space-y-4">
+                            
+                            <!-- مهمة 1 -->
+                            <div class="p-3 bg-white dark:bg-charcoal-light border border-gray-100 dark:border-gray-700 rounded-xl relative">
+                                <div class="absolute right-0 top-0 h-full w-1 bg-emerald-500 rounded-r-xl"></div>
+                                <h4 class="font-bold text-sm text-gray-800 dark:text-gray-100 mb-1 pl-2">رفع التقرير المالي الربع سنوي</h4>
+                                <p class="text-xs text-gray-500 mb-2 pl-2">منصة (تداول) - هيئة السوق المالية</p>
+                                <div class="flex justify-between items-center pl-2">
+                                    <span class="text-xs font-bold text-emerald-500"><i class="fa-solid fa-check-circle"></i> تم التنفيذ</span>
+                                    <span class="text-[10px] text-gray-400">مستحق: 10 أكتوبر</span>
+                                </div>
+                            </div>
+
+                            <!-- مهمة 2 -->
+                            <div class="p-3 bg-orange-50 dark:bg-orange-900/20 border border-orange-100 dark:border-orange-900/30 rounded-xl relative">
+                                <div class="absolute right-0 top-0 h-full w-1 bg-orange-500 rounded-r-xl"></div>
+                                <h4 class="font-bold text-sm text-gray-800 dark:text-gray-100 mb-1 pl-2">تجديد السجل التجاري الرئيسي</h4>
+                                <p class="text-xs text-gray-500 mb-2 pl-2">وزارة التجارة</p>
+                                <div class="flex justify-between items-center pl-2">
+                                    <span class="text-xs font-bold text-orange-600 dark:text-orange-400"><i class="fa-regular fa-clock"></i> قيد الإجراء</span>
+                                    <span class="text-[10px] text-gray-500">مستحق: 25 نوفمبر</span>
+                                </div>
+                            </div>
+
+                            <!-- مهمة 3 -->
+                            <div class="p-3 bg-white dark:bg-charcoal-light border border-gray-100 dark:border-gray-700 rounded-xl relative">
+                                <div class="absolute right-0 top-0 h-full w-1 bg-gray-300 dark:bg-gray-600 rounded-r-xl"></div>
+                                <h4 class="font-bold text-sm text-gray-800 dark:text-gray-100 mb-1 pl-2">تقرير مجلس الإدارة السنوي</h4>
+                                <p class="text-xs text-gray-500 mb-2 pl-2">هيئة السوق المالية</p>
+                                <div class="flex justify-between items-center pl-2">
+                                    <span class="text-xs font-bold text-gray-500">لم يبدأ بعد</span>
+                                    <span class="text-[10px] text-gray-400">مستحق: مارس 2027</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- تذييل الصفحة -->
+                <footer class="mt-8 pt-4 border-t border-gray-200 dark:border-gray-700 text-center text-sm text-gray-500 flex flex-col md:flex-row justify-between items-center gap-2">
+                    <p>هذا النظام عبارة عن نسخة تجريبية (Demo) صممت خصيصاً لشركة بحر العرب.</p>
+                    <p>برمجة وتطوير <span class="font-bold text-lavender-600 dark:text-lavender-400">م. أيمن علي المغربي</span> &copy; 2026</p>
+                </footer>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- سكريبت الوضع الداكن -->
+    <script>
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            htmlElement.classList.add('dark');
+        }
+
+        themeToggleBtn.addEventListener('click', function() {
+            htmlElement.classList.toggle('dark');
+            if (htmlElement.classList.contains('dark')) {
+                localStorage.setItem('color-theme', 'dark');
+            } else {
+                localStorage.setItem('color-theme', 'light');
+            }
+        });
+    </script>
+</body>
+</html>
