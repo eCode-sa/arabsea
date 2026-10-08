@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eGov - الاجتماعات والقرارات | بحر العرب</title>
+    <!-- خطوط جوجل (Tajawal) -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- مكتبة الأيقونات FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- مكتبة Tailwind CSS للتصميم -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Tajawal', 'sans-serif'] },
+                    colors: {
+                        lavender: {
+                            100: '#F3E8FF',
+                            300: '#D8B4FE',
+                            500: '#A855F7',
+                            700: '#7E22CE',
+                            900: '#581C87',
+                        },
+                        charcoal: {
+                            light: '#2D2E32',
+                            DEFAULT: '#1F2022',
+                            dark: '#151618',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #A855F7; border-radius: 10px; }
+        body { font-family: 'Tajawal', sans-serif; transition: background-color 0.3s, color 0.3s; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+        }
+        .dark .glass-panel {
+            background: rgba(45, 46, 50, 0.85);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-charcoal dark:text-gray-100 overflow-hidden">
+
+    <div class="flex h-screen">
+        
+        <!-- القائمة الجانبية الخاصة ببوابة المجلس -->
+        <aside class="w-64 glass-panel shadow-lg flex flex-col justify-between hidden md:flex transition-all duration-300 z-20 shrink-0">
+            <div>
+                <!-- الشعار -->
+                <div class="p-6 border-b border-gray-200 dark:border-gray-700 text-center">
+                    <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-lavender-500 to-lavender-700 text-white shadow-lg mb-3">
+                        <i class="fa-solid fa-briefcase text-2xl"></i>
+                    </div>
+                    <h1 class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-lavender-500 to-lavender-700 dark:from-lavender-300 dark:to-lavender-500">
+                        بوابة المجلس
+                    </h1>
+                    <p class="text-[10px] font-bold text-gray-500 dark:text-gray-400 mt-1">بحر العرب لأنظمة المعلومات (7201)</p>
+                </div>
+
+                <!-- الروابط -->
+                <nav class="p-4 space-y-2 h-[calc(100vh-220px)] overflow-y-auto">
+                    <a href="index.html" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-chart-pie w-5 text-gray-400"></i> <span>نظرة عامة</span>
+                    </a>
+                    
+                    <!-- الصفحة الحالية -->
+                    <a href="meetings.html" class="flex items-center gap-3 px-4 py-3 rounded-xl bg-lavender-100 dark:bg-lavender-900/50 text-lavender-700 dark:text-lavender-300 font-bold transition-colors">
+                        <i class="fa-solid fa-handshake w-5"></i> <span>الاجتماعات والقرارات</span>
+                        <span class="mr-auto w-5 h-5 bg-red-100 text-red-600 rounded-full flex items-center justify-center text-[10px]">1</span>
+                    </a>
+
+                    <a href="communication.html" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-envelope-open-text w-5 text-gray-400"></i> <span>التعاميم والتواصل</span>
+                    </a>
+
+                    <a href="finance.html" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-file-invoice-dollar w-5 text-gray-400"></i> <span>التقارير المالية</span>
+                    </a>
+
+                    <a href="governance.html" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-scale-balanced w-5 text-gray-400"></i> <span>الحوكمة والامتثال</span>
+                    </a>
+
+                    <a href="profile.html" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-user-tie w-5 text-gray-400"></i> <span>الملف الشخصي</span>
+                    </a>
+                    
+                    <div class="pt-4 mt-4 border-t border-gray-200 dark:border-gray-700">
+                        <a href="../admin/index.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-500 text-sm">
+                            <i class="fa-solid fa-arrow-right-arrow-left w-5"></i> <span>لوحة الإدارة التنفيذية</span>
+                        </a>
+                    </div>
+                </nav>
+            </div>
+
+            <!-- معلومات المطور -->
+            <div class="p-4 border-t border-gray-200 dark:border-gray-700 text-center">
+                <p class="text-xs text-gray-500">تطوير م. أيمن علي المغربي</p>
+                <p class="text-[10px] text-gray-400">eGov System © 2026</p>
+            </div>
+        </aside>
+
+        <!-- المحتوى الرئيسي -->
+        <main class="flex-1 flex flex-col h-screen overflow-hidden bg-gray-50 dark:bg-charcoal-dark">
+            
+            <!-- الشريط العلوي -->
+            <header class="h-16 glass-panel border-b border-gray-200 dark:border-gray-700 flex items-center justify-between px-6 z-10 shrink-0">
+                <div class="flex items-center gap-4">
+                    <button class="md:hidden text-gray-500 hover:text-lavender-500"><i class="fa-solid fa-bars text-xl"></i></button>
+                    <h2 class="text-lg font-bold hidden sm:block">الاجتماعات والقرارات</h2>
+                </div>
+                
+                <div class="flex items-center gap-4">
+                    <button id="themeToggle" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-charcoal flex items-center justify-center text-gray-500 hover:text-lavender-500 transition-colors">
+                        <i class="fa-solid fa-moon dark:hidden"></i>
+                        <i class="fa-solid fa-sun hidden dark:block text-yellow-400"></i>
+                    </button>
+                    
+                    <button class="relative w-10 h-10 rounded-full bg-gray-100 dark:bg-charcoal flex items-center justify-center text-gray-500 hover:text-lavender-500 transition-colors">
+                        <i class="fa-regular fa-bell"></i>
+                    </button>
+
+                    <!-- بروفايل رئيس المجلس -->
+                    <a href="profile.html" class="flex items-center gap-3 p-1 pr-3 rounded-full bg-lavender-50 dark:bg-charcoal border border-lavender-200 dark:border-gray-700 hover:border-lavender-400 transition-all cursor-pointer">
+                        <div class="text-left hidden sm:block">
+                            <p class="text-sm font-bold text-gray-800 dark:text-gray-100 leading-none">أ. عبد الله الحواس</p>
+                            <p class="text-[10px] text-lavender-600 dark:text-lavender-400 mt-1 font-bold">رئيس مجلس الإدارة</p>
+                        </div>
+                        <img src="https://ui-avatars.com/api/?name=عبدالله+الحواس&background=A855F7&color=fff" alt="User" class="w-8 h-8 rounded-full border border-lavender-200">
+                    </a>
+                    
+                    <!-- زر تسجيل الخروج -->
+                    <a href="../login.html" title="تسجيل الخروج" class="w-10 h-10 rounded-full bg-red-50 dark:bg-red-900/20 flex items-center justify-center text-red-500 hover:bg-red-500 hover:text-white transition-colors border border-red-100 dark:border-red-900/30">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    </a>
+                </div>
+            </header>
+
+            <!-- منطقة المحتوى القابلة للتمرير -->
+            <div class="flex-1 overflow-y-auto p-6">
+                
+                <!-- رأس الصفحة -->
+                <div class="glass-panel p-6 rounded-2xl mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <div>
+                        <h2 class="text-2xl font-bold mb-1">اجتماعات مجلس الإدارة واللجان</h2>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">استعراض جداول الأعمال، وتوقيع محاضر الاجتماعات والقرارات بالتمرير</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button class="px-4 py-2 bg-white dark:bg-charcoal border border-gray-200 dark:border-gray-700 rounded-lg text-sm font-bold hover:border-lavender-500 transition-colors shadow-sm">
+                            <i class="fa-solid fa-calendar-days ml-2 text-lavender-500"></i> التقويم السنوي
+                        </button>
+                    </div>
+                </div>
+
+                <!-- قرارات بانتظار الاعتماد (التوقيع) -->
+                <div class="mb-8">
+                    <h3 class="font-bold text-lg mb-4 text-gray-800 dark:text-gray-100 border-b-2 border-red-500 pb-2 inline-block">قرارات ومحاضر بانتظار توقيعك</h3>
+                    
+                    <div class="bg-red-50 dark:bg-red-900/10 border border-red-200 dark:border-red-900/30 rounded-2xl p-5 relative overflow-hidden transition-all hover:shadow-md">
+                        <div class="absolute right-0 top-0 h-full w-2 bg-red-500"></div>
+                        
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                            <div>
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="px-2 py-1 bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400 text-[10px] rounded font-bold">عاجل (قرار تمرير)</span>
+                                    <h4 class="font-bold text-gray-800 dark:text-gray-100 text-lg">اعتماد محضر الاجتماع رقم (1) للدورة السادسة</h4>
+                                </div>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mb-3 max-w-3xl leading-relaxed">يرجى مراجعة وتوقيع محضر الاجتماع الأول لمجلس الإدارة المنعقد بتاريخ 17/09/2026م. يتضمن المحضر انتخاب رئيس المجلس ونائبه وتشكيل اللجان. (حسب الآلية المعتمدة، تنتهي فترة المراجعة البالغة 3 أيام قريباً).</p>
+                                
+                                <div class="flex flex-wrap items-center gap-3">
+                                    <button class="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-charcoal border border-gray-300 dark:border-gray-600 rounded text-sm font-bold hover:text-lavender-600 transition-colors">
+                                        <i class="fa-solid fa-file-pdf text-red-500"></i> استعراض المسودة
+                                    </button>
+                                    <button class="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-charcoal border border-gray-300 dark:border-gray-600 rounded text-sm font-bold hover:text-lavender-600 transition-colors">
+                                        <i class="fa-solid fa-comment-dots text-blue-500"></i> إضافة ملاحظة
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="shrink-0 flex flex-col gap-2 w-full md:w-auto">
+                                <button class="w-full md:w-48 py-2.5 bg-red-500 text-white rounded-lg text-sm font-bold shadow-md hover:bg-red-600 transition-colors flex justify-center items-center gap-2">
+                                    <i class="fa-solid fa-pen-nib"></i> توقيع إلكتروني واعتماد
+                                </button>
+                                <p class="text-[10px] text-center text-red-500 font-bold">باقي 12 ساعة على انتهاء المهلة</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- الاجتماعات القادمة -->
+                <div class="mb-8">
+                    <h3 class="font-bold text-lg mb-4 text-gray-800 dark:text-gray-100 border-b-2 border-lavender-500 pb-2 inline-block">الاجتماعات القادمة (المجدولة)</h3>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        
+                        <!-- اجتماع 1 -->
+                        <div class="glass-panel p-5 rounded-2xl hover:border-lavender-300 transition-colors relative overflow-hidden">
+                            <div class="absolute right-0 top-0 h-full w-1.5 bg-lavender-500"></div>
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="flex gap-4">
+                                    <div class="text-center bg-gray-50 dark:bg-charcoal border border-gray-100 dark:border-gray-600 rounded-lg px-3 py-2 min-w-[70px]">
+                                        <p class="text-xs text-gray-500">أكتوبر</p>
+                                        <p class="font-bold text-2xl text-lavender-600 dark:text-lavender-400">12</p>
+                                    </div>
+                                    <div>
+                                        <span class="px-2 py-0.5 bg-lavender-100 text-lavender-700 dark:bg-lavender-900/30 dark:text-lavender-400 text-[10px] rounded font-bold mb-1 inline-block">مجلس الإدارة</span>
+                                        <h4 class="font-bold text-gray-800 dark:text-gray-100 text-lg">الاجتماع الثاني لمجلس الإدارة</h4>
+                                        <p class="text-xs text-gray-500 mt-1">الاجتماع الدوري لمناقشة الأداء الربعي.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gray-50/50 dark:bg-charcoal/50 rounded-xl p-3 mb-4 text-sm space-y-2 border border-gray-100 dark:border-gray-700">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-500"><i class="fa-regular fa-clock ml-1"></i> الوقت:</span>
+                                    <span class="font-bold">01:00 ظهراً - 03:00 عصراً</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-500"><i class="fa-solid fa-location-dot ml-1"></i> المكان:</span>
+                                    <span class="font-bold">عن بعد (Microsoft Teams)</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-500"><i class="fa-solid fa-list-check ml-1"></i> البنود:</span>
+                                    <span class="font-bold">3 بنود رئيسية</span>
+                                </div>
+                            </div>
+                            
+                            <div class="flex gap-2">
+                                <button class="flex-1 py-2 bg-lavender-500 text-white rounded-lg text-sm font-bold shadow-md hover:bg-lavender-600 transition-colors">
+                                    <i class="fa-solid fa-briefcase ml-1"></i> حقيبة الاجتماع
+                                </button>
+                                <button class="px-4 py-2 border border-gray-200 dark:border-gray-600 text-gray-600 dark:text-gray-300 rounded-lg text-sm font-bold hover:bg-gray-100 dark:hover:bg-charcoal transition-colors" title="رابط الحضور">
+                                    <i class="fa-solid fa-video"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- اجتماع 2 (لجنة المراجعة) -->
+                        <div class="glass-panel p-5 rounded-2xl hover:border-blue-300 transition-colors relative overflow-hidden opacity-70">
+                            <div class="absolute right-0 top-0 h-full w-1.5 bg-blue-500"></div>
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="flex gap-4">
+                                    <div class="text-center bg-gray-50 dark:bg-charcoal border border-gray-100 dark:border-gray-600 rounded-lg px-3 py-2 min-w-[70px]">
+                                        <p class="text-xs text-gray-500">أكتوبر</p>
+                                        <p class="font-bold text-2xl text-blue-600 dark:text-blue-400">18</p>
+                                    </div>
+                                    <div>
+                                        <span class="px-2 py-0.5 bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 text-[10px] rounded font-bold mb-1 inline-block">لجنة المراجعة</span>
+                                        <h4 class="font-bold text-gray-800 dark:text-gray-100 text-lg">مناقشة القوائم للربع الثالث</h4>
+                                        <p class="text-xs text-gray-500 mt-1">الاجتماع الدوري برئاسة أ. محمد الحزيم.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gray-50/50 dark:bg-charcoal/50 rounded-xl p-3 mb-4 text-sm space-y-2 border border-gray-100 dark:border-gray-700">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-500"><i class="fa-regular fa-clock ml-1"></i> الوقت:</span>
+                                    <span class="font-bold">10:00 صباحاً - 12:00 ظهراً</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-500"><i class="fa-solid fa-location-dot ml-1"></i> المكان:</span>
+                                    <span class="font-bold">مقر الشركة (الرياض)</span>
+                                </div>
+                            </div>
+                            
+                            <div class="text-center p-2 bg-gray-100 dark:bg-gray-800 rounded-lg text-xs text-gray-500 font-bold border border-gray-200 dark:border-gray-700">
+                                <i class="fa-solid fa-lock ml-1"></i> لست عضواً في هذه اللجنة (للاطلاع فقط)
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- أرشيف المحاضر والاجتماعات السابقة -->
+                <div>
+                    <div class="flex justify-between items-center mb-4 border-b-2 border-gray-300 dark:border-gray-700 pb-2">
+                        <h3 class="font-bold text-lg text-gray-800 dark:text-gray-100">أرشيف الاجتماعات والمحاضر (الدورة السابقة)</h3>
+                        <div class="flex gap-2">
+                            <select class="bg-white dark:bg-charcoal border border-gray-200 dark:border-gray-700 text-sm rounded-lg px-3 py-1 outline-none">
+                                <option>عام 2026</option>
+                                <option>عام 2025</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-panel rounded-2xl overflow-hidden">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-right text-sm">
+                                <thead class="bg-gray-50 dark:bg-charcoal-light border-b border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400">
+                                    <tr>
+                                        <th class="p-4 font-normal">الاجتماع</th>
+                                        <th class="p-4 font-normal">التاريخ</th>
+                                        <th class="p-4 font-normal text-center">النصاب</th>
+                                        <th class="p-4 font-normal text-center">حالة المحضر</th>
+                                        <th class="p-4 font-normal text-center">إجراء</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+                                    
+                                    <tr class="hover:bg-gray-50 dark:hover:bg-charcoal-light/50 transition-colors">
+                                        <td class="p-4 font-bold text-gray-800 dark:text-gray-100">الاجتماع الرابع - الدورة الخامسة</td>
+                                        <td class="p-4 text-gray-600 dark:text-gray-300">20 أغسطس 2026</td>
+                                        <td class="p-4 text-center"><span class="text-emerald-500 font-bold">100% (6/6)</span></td>
+                                        <td class="p-4 text-center"><span class="px-2 py-1 bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 text-xs rounded-md">معتمد وموقع</span></td>
+                                        <td class="p-4 text-center">
+                                            <button class="text-gray-400 hover:text-lavender-500 mx-1" title="عرض المحضر"><i class="fa-solid fa-file-pdf"></i></button>
+                                            <button class="text-gray-400 hover:text-lavender-500 mx-1" title="حقيبة الاجتماع"><i class="fa-solid fa-folder-open"></i></button>
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr class="hover:bg-gray-50 dark:hover:bg-charcoal-light/50 transition-colors">
+                                        <td class="p-4 font-bold text-gray-800 dark:text-gray-100">الاجتماع الثالث - الدورة الخامسة</td>
+                                        <td class="p-4 text-gray-600 dark:text-gray-300">15 مايو 2026</td>
+                                        <td class="p-4 text-center"><span class="text-emerald-500 font-bold">83% (5/6)</span></td>
+                                        <td class="p-4 text-center"><span class="px-2 py-1 bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 text-xs rounded-md">معتمد وموقع</span></td>
+                                        <td class="p-4 text-center">
+                                            <button class="text-gray-400 hover:text-lavender-500 mx-1" title="عرض المحضر"><i class="fa-solid fa-file-pdf"></i></button>
+                                            <button class="text-gray-400 hover:text-lavender-500 mx-1" title="حقيبة الاجتماع"><i class="fa-solid fa-folder-open"></i></button>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- تذييل الصفحة -->
+                <footer class="mt-8 pt-4 border-t border-gray-200 dark:border-gray-700 text-center text-sm text-gray-500 flex flex-col md:flex-row justify-between items-center gap-2">
+                    <p>بوابة مجلس الإدارة - نسخة تجريبية (Demo) صممت خصيصاً لشركة بحر العرب.</p>
+                    <p>برمجة وتطوير <span class="font-bold text-lavender-600 dark:text-lavender-400">م. أيمن علي المغربي</span> &copy; 2026</p>
+                </footer>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- سكريبت الوضع الداكن -->
+    <script>
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            htmlElement.classList.add('dark');
+        }
+
+        themeToggleBtn.addEventListener('click', function() {
+            htmlElement.classList.toggle('dark');
+            if (htmlElement.classList.contains('dark')) {
+                localStorage.setItem('color-theme', 'dark');
+            } else {
+                localStorage.setItem('color-theme', 'light');
+            }
+        });
+    </script>
+</body>
+</html>
