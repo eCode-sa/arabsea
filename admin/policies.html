@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eGov - السياسات واللوائح | بحر العرب</title>
+    <!-- خطوط جوجل (Tajawal) -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- مكتبة الأيقونات FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- مكتبة Tailwind CSS للتصميم -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Tajawal', 'sans-serif'] },
+                    colors: {
+                        lavender: {
+                            100: '#F3E8FF',
+                            300: '#D8B4FE',
+                            500: '#A855F7',
+                            700: '#7E22CE',
+                            900: '#581C87',
+                        },
+                        charcoal: {
+                            light: '#2D2E32',
+                            DEFAULT: '#1F2022',
+                            dark: '#151618',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #A855F7; border-radius: 10px; }
+        body { font-family: 'Tajawal', sans-serif; transition: background-color 0.3s, color 0.3s; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+        }
+        .dark .glass-panel {
+            background: rgba(45, 46, 50, 0.85);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-charcoal dark:text-gray-100 overflow-hidden">
+
+    <div class="flex h-screen">
+        
+        <!-- القائمة الجانبية (Sidebar) -->
+        <aside class="w-64 glass-panel shadow-lg flex flex-col justify-between hidden md:flex transition-all duration-300 z-20">
+            <div>
+                <!-- الشعار -->
+                <div class="p-6 border-b border-gray-200 dark:border-gray-700 text-center">
+                    <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-lavender-500 to-lavender-700 text-white shadow-lg mb-3">
+                        <i class="fa-solid fa-building-shield text-2xl"></i>
+                    </div>
+                    <h1 class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-lavender-500 to-lavender-700 dark:from-lavender-300 dark:to-lavender-500">
+                        eGov
+                    </h1>
+                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">نسخة تجريبية (Demo)</p>
+                    <p class="text-[10px] font-bold text-lavender-700 dark:text-lavender-300">شركة بحر العرب لأنظمة المعلومات</p>
+                </div>
+
+                <!-- الروابط -->
+                <nav class="p-4 space-y-1 h-[calc(100vh-220px)] overflow-y-auto">
+                    <a href="index.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors">
+                        <i class="fa-solid fa-chart-pie w-5 text-gray-400"></i> <span>نظرة عامة</span>
+                    </a>
+                    
+                    <div class="text-xs font-bold text-gray-400 mt-4 mb-2 px-4">حوكمة الشركات</div>
+                    <a href="board.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-users-tie w-5 text-gray-400"></i> <span>مجلس الإدارة</span></a>
+                    <a href="committees.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-people-group w-5 text-gray-400"></i> <span>اللجان المنبثقة</span></a>
+                    <a href="ga.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-building-user w-5 text-gray-400"></i> <span>الجمعية العامة</span></a>
+                    <a href="shareholders.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-handshake w-5 text-gray-400"></i> <span>المساهمين</span></a>
+
+                    <div class="text-xs font-bold text-gray-400 mt-4 mb-2 px-4">الإدارة والتشغيل</div>
+                    <a href="finance.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-file-invoice-dollar w-5 text-gray-400"></i> <span>المالية</span></a>
+                    <a href="hr.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-user-tie w-5 text-gray-400"></i> <span>الموارد البشرية</span></a>
+                    <a href="it.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-network-wired w-5 text-gray-400"></i> <span>تقنية المعلومات</span></a>
+                    <a href="procurement.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-cart-shopping w-5 text-gray-400"></i> <span>المشتريات</span></a>
+
+                    <div class="text-xs font-bold text-gray-400 mt-4 mb-2 px-4">الرقابة والامتثال</div>
+                    <a href="audit.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-magnifying-glass-chart w-5 text-gray-400"></i> <span>المراجعة الداخلية</span></a>
+                    <a href="compliance.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-clipboard-check w-5 text-gray-400"></i> <span>الامتثال والمخاطر</span></a>
+                    
+                    <!-- تم تفعيل هذا الرابط ليدل على الصفحة الحالية -->
+                    <a href="policies.html" class="flex items-center gap-3 px-4 py-2.5 rounded-lg bg-lavender-100 dark:bg-lavender-900/50 text-lavender-700 dark:text-lavender-300 font-bold transition-colors"><i class="fa-solid fa-file-shield w-5"></i> <span>السياسات واللوائح</span></a>
+                    
+                    <a href="doa.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-sitemap w-5 text-gray-400"></i> <span>جدول الصلاحيات (DOA)</span></a>
+
+                    <div class="text-xs font-bold text-gray-400 mt-4 mb-2 px-4">مساحة العمل</div>
+                    <a href="tasks.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-list-check w-5 text-gray-400"></i> <span>المهام</span></a>
+                    <a href="admin_circulars.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-bullhorn w-5 text-gray-400"></i> <span>التعاميم</span></a>
+                    <a href="admin_chat.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-comments w-5 text-gray-400"></i> <span>المحادثات</span></a>
+
+                    <div class="text-xs font-bold text-gray-400 mt-4 mb-2 px-4">النظام</div>
+                    <a href="users.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-users w-5 text-gray-400"></i> <span>المستخدمين</span></a>
+                    <a href="admin_settings.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors"><i class="fa-solid fa-gear w-5 text-gray-400"></i> <span>الإعدادات</span></a>
+                </nav>
+            </div>
+
+            <!-- معلومات المطور -->
+            <div class="p-4 border-t border-gray-200 dark:border-gray-700 text-center">
+                <p class="text-xs text-gray-500">تطوير م. أيمن علي المغربي</p>
+                <p class="text-[10px] text-gray-400">eGov System © 2026</p>
+            </div>
+        </aside>
+
+        <!-- المحتوى الرئيسي -->
+        <main class="flex-1 flex flex-col h-screen overflow-hidden bg-gray-50 dark:bg-charcoal-dark">
+            
+            <!-- الشريط العلوي -->
+            <header class="h-16 glass-panel border-b border-gray-200 dark:border-gray-700 flex items-center justify-between px-6 z-10">
+                <div class="flex items-center gap-4">
+                    <button class="md:hidden text-gray-500 hover:text-lavender-500"><i class="fa-solid fa-bars text-xl"></i></button>
+                    <h2 class="text-lg font-bold hidden sm:block">السياسات واللوائح المعتمدة</h2>
+                </div>
+                
+                <div class="flex items-center gap-4">
+                    <button id="themeToggle" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-charcoal flex items-center justify-center text-gray-500 hover:text-lavender-500 transition-colors">
+                        <i class="fa-solid fa-moon dark:hidden"></i>
+                        <i class="fa-solid fa-sun hidden dark:block text-yellow-400"></i>
+                    </button>
+                    
+                    <button class="relative w-10 h-10 rounded-full bg-gray-100 dark:bg-charcoal flex items-center justify-center text-gray-500 hover:text-lavender-500 transition-colors">
+                        <i class="fa-regular fa-bell"></i>
+                    </button>
+
+                    <a href="profile.html" class="flex items-center gap-3 p-1 pr-3 rounded-full bg-gray-100 dark:bg-charcoal border border-gray-200 dark:border-gray-700 hover:border-lavender-300 transition-all cursor-pointer">
+                        <div class="text-left hidden sm:block">
+                            <p class="text-sm font-bold text-gray-800 dark:text-gray-100 leading-none">الإدارة العليا</p>
+                            <p class="text-[10px] text-gray-500 mt-1">بحر العرب</p>
+                        </div>
+                        <img src="https://ui-avatars.com/api/?name=Admin&background=A855F7&color=fff" alt="User" class="w-8 h-8 rounded-full">
+                    </a>
+                    
+                    <!-- زر تسجيل الخروج -->
+                    <a href="../login.html" title="تسجيل الخروج" class="w-10 h-10 rounded-full bg-red-50 dark:bg-red-900/20 flex items-center justify-center text-red-500 hover:bg-red-500 hover:text-white transition-colors border border-red-100 dark:border-red-900/30">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    </a>
+                </div>
+            </header>
+
+            <!-- منطقة المحتوى القابلة للتمرير -->
+            <div class="flex-1 overflow-y-auto p-6">
+                
+                <!-- رأس الصفحة -->
+                <div class="glass-panel p-6 rounded-2xl mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <div>
+                        <h2 class="text-2xl font-bold mb-1">المكتبة الرقمية للسياسات واللوائح</h2>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 flex items-center gap-2">
+                            <i class="fa-solid fa-shield-halved text-lavender-500"></i> الإطار التنظيمي والقانوني المعتمد لشركة بحر العرب لأنظمة المعلومات
+                        </p>
+                    </div>
+                    <div class="flex gap-2 w-full md:w-auto">
+                        <div class="relative flex-1 md:w-64">
+                            <input type="text" placeholder="ابحث في اللوائح..." class="w-full pr-10 pl-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-charcoal text-sm outline-none focus:border-lavender-500 transition-colors">
+                            <i class="fa-solid fa-search absolute top-3 right-3 text-gray-400"></i>
+                        </div>
+                        <button class="px-4 py-2 bg-white dark:bg-charcoal border border-gray-200 dark:border-gray-700 rounded-lg text-sm font-bold hover:border-lavender-500 transition-colors shadow-sm text-gray-700 dark:text-gray-200 shrink-0">
+                            <i class="fa-solid fa-filter ml-2"></i> تصفية
+                        </button>
+                    </div>
+                </div>
+
+                <!-- تصنيفات اللوائح -->
+                
+                <!-- 1. الحوكمة والشؤون القانونية -->
+                <h3 class="font-bold text-lg mb-4 text-gray-800 dark:text-gray-100 border-b-2 border-lavender-500 pb-2 inline-block">الحوكمة والشؤون القانونية</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                    
+                    <!-- النظام الأساسي -->
+                    <div class="bg-white dark:bg-charcoal-light border border-gray-200 dark:border-gray-700 rounded-xl p-5 hover:shadow-md transition-shadow relative group">
+                        <div class="absolute top-0 right-0 w-1 h-full bg-emerald-500 rounded-r-xl"></div>
+                        <div class="flex justify-between items-start mb-3">
+                            <div class="w-10 h-10 rounded-lg bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-book-scale"></i>
+                            </div>
+                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-[10px] font-bold rounded">أساسي</span>
+                        </div>
+                        <h4 class="font-bold text-gray-800 dark:text-gray-100 mb-1">النظام الأساسي للشركة</h4>
+                        <p class="text-xs text-gray-500 mb-4 line-clamp-2">النظام الأساس المعتمد لشركة بحر العرب لأنظمة المعلومات (شركة مساهمة مدرجة).</p>
+                        <div class="flex justify-between items-center pt-3 border-t border-gray-100 dark:border-gray-700">
+                            <span class="text-xs font-bold text-gray-400"><i class="fa-regular fa-clock ml-1"></i> النسخة الرابعة</span>
+                            <button class="text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 text-sm font-bold flex items-center gap-1 group-hover:underline">
+                                استعراض <i class="fa-solid fa-arrow-left text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- سياسة المكافآت -->
+                    <div class="bg-white dark:bg-charcoal-light border border-gray-200 dark:border-gray-700 rounded-xl p-5 hover:shadow-md transition-shadow relative group">
+                        <div class="absolute top-0 right-0 w-1 h-full bg-emerald-500 rounded-r-xl"></div>
+                        <div class="flex justify-between items-start mb-3">
+                            <div class="w-10 h-10 rounded-lg bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-money-bill-trend-up"></i>
+                            </div>
+                        </div>
+                        <h4 class="font-bold text-gray-800 dark:text-gray-100 mb-1">سياسة مكافآت المجلس واللجان</h4>
+                        <p class="text-xs text-gray-500 mb-4 line-clamp-2">سياسة مكافآت مجلس الإدارة ولجانه والإدارة التنفيذية، والمعايير العامة المنظمة لها.</p>
+                        <div class="flex justify-between items-center pt-3 border-t border-gray-100 dark:border-gray-700">
+                            <span class="text-xs font-bold text-gray-400"><i class="fa-regular fa-calendar ml-1"></i> معتمدة</span>
+                            <button class="text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 text-sm font-bold flex items-center gap-1 group-hover:underline">
+                                استعراض <i class="fa-solid fa-arrow-left text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- الشؤون القانونية -->
+                    <div class="bg-white dark:bg-charcoal-light border border-gray-200 dark:border-gray-700 rounded-xl p-5 hover:shadow-md transition-shadow relative group">
+                        <div class="absolute top-0 right-0 w-1 h-full bg-emerald-500 rounded-r-xl"></div>
+                        <div class="flex justify-between items-start mb-3">
+                            <div class="w-10 h-10 rounded-lg bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-gavel"></i>
+                            </div>
+                        </div>
+                        <h4 class="font-bold text-gray-800 dark:text-gray-100 mb-1">دليل الشؤون القانونية</h4>
+                        <p class="text-xs text-gray-500 mb-4 line-clamp-2">سياسات معالجة العقود، تقديم المشورة القانونية، إدارة المرافعات، وشكاوى العملاء التعاقدية.</p>
+                        <div class="flex justify-between items-center pt-3 border-t border-gray-100 dark:border-gray-700">
+                            <span class="text-xs font-bold text-gray-400"><i class="fa-regular fa-calendar ml-1"></i> يناير 2024</span>
+                            <button class="text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 text-sm font-bold flex items-center gap-1 group-hover:underline">
+                                استعراض <i class="fa-solid fa-arrow-left text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- 2. الإدارة والتشغيل -->
+                <h3 class="font-bold text-lg mb-4 text-gray-800 dark:text-gray-100 border-b-2 border-lavender-500 pb-2 inline-block">الإدارة والتشغيل</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                    
+                    <!-- الموارد البشرية -->
+                    <div class="bg-white dark:bg-charcoal-light border border-gray-200 dark:border-gray-700 rounded-xl p-5 hover:shadow-md transition-shadow relative group">
+                        <div class="absolute top-0 right-0 w-1 h-full bg-blue-500 rounded-r-xl"></div>
+                        <div class="flex justify-between items-start mb-3">
+                            <div class="w-10 h-10 rounded-lg bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-users"></i>
+                            </div>
+                        </div>
+                        <h4 class="font-bold text-gray-800 dark:text-gray-100 mb-1">دليل الموارد البشرية</h4>
+                        <p class="text-xs text-gray-500 mb-4 line-clamp-2">سياسات التوظيف، الإجازات، الرواتب، التدريب، تقييم الأداء، واللوائح التنظيمية للموظفين.</p>
+                        <div class="flex justify-between items-center pt-3 border-t border-gray-100 dark:border-gray-700">
+                            <span class="text-xs font-bold text-gray-400"><i class="fa-regular fa-calendar ml-1"></i> يناير 2024</span>
+                            <button class="text-blue-600 dark:text-blue-400 hover:text-blue-700 text-sm font-bold flex items-center gap-1 group-hover:underline">
+                                استعراض <i class="fa-solid fa-arrow-left text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- السياسات المالية -->
+                    <div class="bg-white dark:bg-charcoal-light border border-gray-200 dark:border-gray-700 rounded-xl p-5 hover:shadow-md transition-shadow relative group">
+                        <div class="absolute top-0 right-0 w-1 h-full bg-blue-500 rounded-r-xl"></div>
+                        <div class="flex justify-between items-start mb-3">
+                            <div class="w-10 h-10 rounded-lg bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-file-invoice-dollar"></i>
+                            </div>
+                        </div>
+                        <h4 class="font-bold text-gray-800 dark:text-gray-100 mb-1">دليل السياسات المالية</h4>
+                        <p class="text-xs text-gray-500 mb-4 line-clamp-2">القواعد المحاسبية، الموازنة، الإيرادات والنفقات، والصلاحيات المالية المعتمدة.</p>
+                        <div class="flex justify-between items-center pt-3 border-t border-gray-100 dark:border-gray-700">
+                            <span class="text-xs font-bold text-gray-400"><i class="fa-regular fa-calendar ml-1"></i> يناير 2024</span>
+                            <button class="text-blue-600 dark:text-blue-400 hover:text-blue-700 text-sm font-bold flex items-center gap-1 group-hover:underline">
+                                استعراض <i class="fa-solid fa-arrow-left text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. العمليات التجارية والتقنية -->
+                <h3 class="font-bold text-lg mb-4 text-gray-800 dark:text-gray-100 border-b-2 border-lavender-500 pb-2 inline-block">العمليات التجارية والتقنية</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    
+                    <!-- المبيعات -->
+                    <div class="bg-white dark:bg-charcoal-light border border-gray-200 dark:border-gray-700 rounded-xl p-5 hover:shadow-md transition-shadow relative group">
+                        <div class="absolute top-0 right-0 w-1 h-full bg-orange-500 rounded-r-xl"></div>
+                        <div class="flex justify-between items-start mb-3">
+                            <div class="w-10 h-10 rounded-lg bg-orange-50 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-chart-line"></i>
+                            </div>
+                        </div>
+                        <h4 class="font-bold text-gray-800 dark:text-gray-100 mb-1 text-sm">سياسات المبيعات</h4>
+                        <div class="flex justify-between items-center pt-3 mt-3 border-t border-gray-100 dark:border-gray-700">
+                            <span class="text-[10px] font-bold text-gray-400">يناير 2024</span>
+                            <button class="text-orange-600 dark:text-orange-400 hover:text-orange-700 text-xs font-bold flex items-center gap-1 group-hover:underline">عرض</button>
+                        </div>
+                    </div>
+
+                    <!-- التسويق -->
+                    <div class="bg-white dark:bg-charcoal-light border border-gray-200 dark:border-gray-700 rounded-xl p-5 hover:shadow-md transition-shadow relative group">
+                        <div class="absolute top-0 right-0 w-1 h-full bg-orange-500 rounded-r-xl"></div>
+                        <div class="flex justify-between items-start mb-3">
+                            <div class="w-10 h-10 rounded-lg bg-orange-50 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-bullhorn"></i>
+                            </div>
+                        </div>
+                        <h4 class="font-bold text-gray-800 dark:text-gray-100 mb-1 text-sm">سياسات التسويق</h4>
+                        <div class="flex justify-between items-center pt-3 mt-3 border-t border-gray-100 dark:border-gray-700">
+                            <span class="text-[10px] font-bold text-gray-400">يناير 2024</span>
+                            <button class="text-orange-600 dark:text-orange-400 hover:text-orange-700 text-xs font-bold flex items-center gap-1 group-hover:underline">عرض</button>
+                        </div>
+                    </div>
+
+                    <!-- التدريب ونقل المعرفة -->
+                    <div class="bg-white dark:bg-charcoal-light border border-gray-200 dark:border-gray-700 rounded-xl p-5 hover:shadow-md transition-shadow relative group">
+                        <div class="absolute top-0 right-0 w-1 h-full bg-orange-500 rounded-r-xl"></div>
+                        <div class="flex justify-between items-start mb-3">
+                            <div class="w-10 h-10 rounded-lg bg-orange-50 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-chalkboard-user"></i>
+                            </div>
+                        </div>
+                        <h4 class="font-bold text-gray-800 dark:text-gray-100 mb-1 text-sm">التدريب ونقل المعرفة</h4>
+                        <div class="flex justify-between items-center pt-3 mt-3 border-t border-gray-100 dark:border-gray-700">
+                            <span class="text-[10px] font-bold text-gray-400">يناير 2024</span>
+                            <button class="text-orange-600 dark:text-orange-400 hover:text-orange-700 text-xs font-bold flex items-center gap-1 group-hover:underline">عرض</button>
+                        </div>
+                    </div>
+
+                    <!-- نجاحات العملاء -->
+                    <div class="bg-white dark:bg-charcoal-light border border-gray-200 dark:border-gray-700 rounded-xl p-5 hover:shadow-md transition-shadow relative group">
+                        <div class="absolute top-0 right-0 w-1 h-full bg-orange-500 rounded-r-xl"></div>
+                        <div class="flex justify-between items-start mb-3">
+                            <div class="w-10 h-10 rounded-lg bg-orange-50 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-headset"></i>
+                            </div>
+                        </div>
+                        <h4 class="font-bold text-gray-800 dark:text-gray-100 mb-1 text-sm">نجاحات العملاء (L1)</h4>
+                        <div class="flex justify-between items-center pt-3 mt-3 border-t border-gray-100 dark:border-gray-700">
+                            <span class="text-[10px] font-bold text-gray-400">يناير 2024</span>
+                            <button class="text-orange-600 dark:text-orange-400 hover:text-orange-700 text-xs font-bold flex items-center gap-1 group-hover:underline">عرض</button>
+                        </div>
+                    </div>
+
+                    <!-- تشغيل الأنظمة والدعم الفني -->
+                    <div class="bg-white dark:bg-charcoal-light border border-gray-200 dark:border-gray-700 rounded-xl p-5 hover:shadow-md transition-shadow relative group">
+                        <div class="absolute top-0 right-0 w-1 h-full bg-purple-500 rounded-r-xl"></div>
+                        <div class="flex justify-between items-start mb-3">
+                            <div class="w-10 h-10 rounded-lg bg-purple-50 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-server"></i>
+                            </div>
+                        </div>
+                        <h4 class="font-bold text-gray-800 dark:text-gray-100 mb-1 text-sm">تشغيل الأنظمة والدعم</h4>
+                        <div class="flex justify-between items-center pt-3 mt-3 border-t border-gray-100 dark:border-gray-700">
+                            <span class="text-[10px] font-bold text-gray-400">يناير 2024</span>
+                            <button class="text-purple-600 dark:text-purple-400 hover:text-purple-700 text-xs font-bold flex items-center gap-1 group-hover:underline">عرض</button>
+                        </div>
+                    </div>
+
+                    <!-- تطوير النظم -->
+                    <div class="bg-white dark:bg-charcoal-light border border-gray-200 dark:border-gray-700 rounded-xl p-5 hover:shadow-md transition-shadow relative group">
+                        <div class="absolute top-0 right-0 w-1 h-full bg-purple-500 rounded-r-xl"></div>
+                        <div class="flex justify-between items-start mb-3">
+                            <div class="w-10 h-10 rounded-lg bg-purple-50 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-code"></i>
+                            </div>
+                        </div>
+                        <h4 class="font-bold text-gray-800 dark:text-gray-100 mb-1 text-sm">تطوير النظم</h4>
+                        <div class="flex justify-between items-center pt-3 mt-3 border-t border-gray-100 dark:border-gray-700">
+                            <span class="text-[10px] font-bold text-gray-400">يناير 2024</span>
+                            <button class="text-purple-600 dark:text-purple-400 hover:text-purple-700 text-xs font-bold flex items-center gap-1 group-hover:underline">عرض</button>
+                        </div>
+                    </div>
+
+                    <!-- تقنية المعلومات -->
+                    <div class="bg-white dark:bg-charcoal-light border border-gray-200 dark:border-gray-700 rounded-xl p-5 hover:shadow-md transition-shadow relative group">
+                        <div class="absolute top-0 right-0 w-1 h-full bg-purple-500 rounded-r-xl"></div>
+                        <div class="flex justify-between items-start mb-3">
+                            <div class="w-10 h-10 rounded-lg bg-purple-50 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-network-wired"></i>
+                            </div>
+                        </div>
+                        <h4 class="font-bold text-gray-800 dark:text-gray-100 mb-1 text-sm">تقنية المعلومات (IT)</h4>
+                        <div class="flex justify-between items-center pt-3 mt-3 border-t border-gray-100 dark:border-gray-700">
+                            <span class="text-[10px] font-bold text-gray-400">يناير 2024</span>
+                            <button class="text-purple-600 dark:text-purple-400 hover:text-purple-700 text-xs font-bold flex items-center gap-1 group-hover:underline">عرض</button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- تذييل الصفحة -->
+                <footer class="mt-8 pt-4 border-t border-gray-200 dark:border-gray-700 text-center text-sm text-gray-500 flex flex-col md:flex-row justify-between items-center gap-2">
+                    <p>هذا النظام عبارة عن نسخة تجريبية (Demo) صممت خصيصاً لشركة بحر العرب.</p>
+                    <p>برمجة وتطوير <span class="font-bold text-lavender-600 dark:text-lavender-400">م. أيمن علي المغربي</span> &copy; 2026</p>
+                </footer>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- سكريبت الوضع الداكن -->
+    <script>
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            htmlElement.classList.add('dark');
+        }
+
+        themeToggleBtn.addEventListener('click', function() {
+            htmlElement.classList.toggle('dark');
+            if (htmlElement.classList.contains('dark')) {
+                localStorage.setItem('color-theme', 'dark');
+            } else {
+                localStorage.setItem('color-theme', 'light');
+            }
+        });
+    </script>
+</body>
+</html>
