@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eGov - مراكز التكلفة | الإدارة المالية - بحر العرب</title>
+    <!-- خطوط جوجل (Tajawal) -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- مكتبة الأيقونات FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- مكتبة Tailwind CSS للتصميم -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Tajawal', 'sans-serif'] },
+                    colors: {
+                        lavender: {
+                            100: '#F3E8FF',
+                            300: '#D8B4FE',
+                            500: '#A855F7',
+                            700: '#7E22CE',
+                            900: '#581C87',
+                        },
+                        charcoal: {
+                            light: '#2D2E32',
+                            DEFAULT: '#1F2022',
+                            dark: '#151618',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #14B8A6; border-radius: 10px; }
+        body { font-family: 'Tajawal', sans-serif; transition: background-color 0.3s, color 0.3s; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(20, 184, 166, 0.2);
+        }
+        .dark .glass-panel {
+            background: rgba(45, 46, 50, 0.85);
+            border: 1px solid rgba(20, 184, 166, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-charcoal dark:text-gray-100 overflow-hidden">
+
+    <div class="flex h-screen">
+        
+        <!-- القائمة الجانبية الخاصة ببوابة الإدارة المالية -->
+        <aside class="w-64 glass-panel shadow-lg flex flex-col justify-between hidden md:flex transition-all duration-300 z-20 shrink-0">
+            <div>
+                <!-- الشعار -->
+                <div class="p-6 border-b border-gray-200 dark:border-gray-700 text-center">
+                    <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-teal-500 to-teal-700 text-white shadow-lg mb-3">
+                        <i class="fa-solid fa-file-invoice-dollar text-2xl"></i>
+                    </div>
+                    <h1 class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-teal-500 to-teal-700 dark:from-teal-300 dark:to-teal-500">
+                        الإدارة المالية
+                    </h1>
+                    <p class="text-[10px] font-bold text-gray-500 dark:text-gray-400 mt-1">بحر العرب لأنظمة المعلومات (7201)</p>
+                </div>
+
+                <!-- الروابط -->
+                <nav class="p-4 space-y-1 h-[calc(100vh-220px)] overflow-y-auto">
+                    
+                    <div class="text-xs font-bold text-gray-400 mt-2 mb-2 px-4 uppercase">الرئيسية</div>
+                    <a href="index.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-chart-pie w-5 text-gray-400"></i> <span>نظرة عامة</span>
+                    </a>
+                    <a href="approvals.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-clipboard-check w-5 text-gray-400"></i> <span>الاعتمادات</span>
+                    </a>
+                    <a href="internal_chat.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-comments w-5 text-gray-400"></i> <span>المحادثات</span>
+                    </a>
+
+                    <div class="text-xs font-bold text-gray-400 mt-4 mb-2 px-4 uppercase">الحسابات العامة (GL)</div>
+                    <a href="gl_journal.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-book w-5 text-gray-400"></i> <span>قيود اليومية</span>
+                    </a>
+                    <a href="gl_coa.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-sitemap w-5 text-gray-400"></i> <span>دليل الحسابات</span>
+                    </a>
+                    <!-- الصفحة الحالية -->
+                    <a href="gl_cost_centers.html" class="flex items-center gap-3 px-4 py-2 rounded-xl bg-teal-100 dark:bg-teal-900/50 text-teal-800 dark:text-teal-300 font-bold transition-colors">
+                        <i class="fa-solid fa-building w-5"></i> <span>مراكز التكلفة</span>
+                    </a>
+
+                    <div class="text-xs font-bold text-gray-400 mt-4 mb-2 px-4 uppercase">الموردين (AP)</div>
+                    <a href="ap_bills.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-file-invoice w-5 text-gray-400"></i> <span>فواتير الموردين</span>
+                    </a>
+                    <a href="ap_payments.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-money-bill-transfer w-5 text-gray-400"></i> <span>المدفوعات</span>
+                    </a>
+                    <a href="ap_vendors.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-truck-field w-5 text-gray-400"></i> <span>سجل الموردين</span>
+                    </a>
+
+                    <div class="text-xs font-bold text-gray-400 mt-4 mb-2 px-4 uppercase">العملاء (AR)</div>
+                    <a href="ar_invoices.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-file-lines w-5 text-gray-400"></i> <span>فواتير العملاء</span>
+                    </a>
+                    <a href="ar_receipts.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-hand-holding-dollar w-5 text-gray-400"></i> <span>المقبوضات</span>
+                    </a>
+
+                    <div class="text-xs font-bold text-gray-400 mt-4 mb-2 px-4 uppercase">الأصول والمخزون</div>
+                    <a href="inv_dashboard.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-boxes-stacked w-5 text-gray-400"></i> <span>لوحة المخزون</span>
+                    </a>
+                    <a href="inv_assets.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-laptop-house w-5 text-gray-400"></i> <span>الأصول الثابتة</span>
+                    </a>
+
+                    <div class="text-xs font-bold text-gray-400 mt-4 mb-2 px-4 uppercase">التقارير والنظام</div>
+                    <a href="rep_statements.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-chart-line w-5 text-gray-400"></i> <span>القوائم المالية</span>
+                    </a>
+                    <a href="rep_budget.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-scale-unbalanced w-5 text-gray-400"></i> <span>الموازنات التقديرية</span>
+                    </a>
+                    <a href="rep_tax.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-percent w-5 text-gray-400"></i> <span>الإقرارات الضريبية</span>
+                    </a>
+                    <a href="fin_settings.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-gear w-5 text-gray-400"></i> <span>الإعدادات</span>
+                    </a>
+                    <a href="profile.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-user-tie w-5 text-gray-400"></i> <span>الملف الشخصي</span>
+                    </a>
+                    
+                    <div class="pt-3 mt-3 border-t border-gray-200 dark:border-gray-700">
+                        <a href="../login.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-red-500 text-xs font-bold">
+                            <i class="fa-solid fa-arrow-right-from-bracket w-5"></i> <span>تسجيل الخروج</span>
+                        </a>
+                    </div>
+                </nav>
+            </div>
+
+            <!-- معلومات المطور -->
+            <div class="p-4 border-t border-gray-200 dark:border-gray-700 text-center">
+                <p class="text-xs text-gray-500">تطوير م. أيمن علي المغربي</p>
+                <p class="text-[10px] text-gray-400">eGov System © 2026</p>
+            </div>
+        </aside>
+
+        <!-- المحتوى الرئيسي -->
+        <main class="flex-1 flex flex-col h-screen overflow-hidden bg-gray-50 dark:bg-charcoal-dark">
+            
+            <!-- الشريط العلوي -->
+            <header class="h-16 glass-panel border-b border-gray-200 dark:border-gray-700 flex items-center justify-between px-6 z-10 shrink-0">
+                <div class="flex items-center gap-4">
+                    <button class="md:hidden text-gray-500 hover:text-teal-500"><i class="fa-solid fa-bars text-xl"></i></button>
+                    <h2 class="text-lg font-bold hidden sm:block">الحسابات العامة - مراكز التكلفة (Cost Centers)</h2>
+                </div>
+                
+                <div class="flex items-center gap-4">
+                    <span title="متصل بنظام SMACC" class="hidden md:flex items-center gap-2 px-3 py-1 bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 text-xs font-bold rounded-lg border border-emerald-200 dark:border-emerald-800">
+                        <i class="fa-solid fa-link"></i> SMACC Linked
+                    </span>
+                    <button id="themeToggle" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-charcoal flex items-center justify-center text-gray-500 hover:text-teal-500 transition-colors">
+                        <i class="fa-solid fa-moon dark:hidden"></i>
+                        <i class="fa-solid fa-sun hidden dark:block text-yellow-400"></i>
+                    </button>
+                    <button class="relative w-10 h-10 rounded-full bg-gray-100 dark:bg-charcoal flex items-center justify-center text-gray-500 hover:text-teal-500 transition-colors">
+                        <i class="fa-regular fa-bell"></i>
+                    </button>
+                    <!-- بروفايل المدير المالي -->
+                    <a href="profile.html" class="flex items-center gap-3 p-1 pr-3 rounded-full bg-teal-50 dark:bg-charcoal border border-teal-200 dark:border-gray-700 hover:border-teal-400 transition-all cursor-pointer">
+                        <div class="text-left hidden sm:block">
+                            <p class="text-sm font-bold text-gray-800 dark:text-gray-100 leading-none">الإدارة المالية</p>
+                            <p class="text-[10px] text-teal-600 dark:text-teal-400 mt-1 font-bold">CFO / Chief Accountant</p>
+                        </div>
+                        <img src="https://ui-avatars.com/api/?name=Finance&background=14B8A6&color=fff" alt="CFO" class="w-8 h-8 rounded-full border border-teal-200">
+                    </a>
+                </div>
+            </header>
+
+            <!-- منطقة المحتوى القابلة للتمرير -->
+            <div class="flex-1 overflow-y-auto p-6">
+                
+                <!-- رأس الصفحة -->
+                <div class="glass-panel p-6 rounded-2xl mb-8 border-r-4 border-r-teal-500 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <div>
+                        <h2 class="text-2xl font-bold mb-1">دليل مراكز التكلفة والمشاريع</h2>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">متابعة الموازنات المخصصة ومراقبة المصروفات الفعلية لكل إدارة أو فرع بوضوح</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button class="px-4 py-2.5 bg-gray-100 dark:bg-charcoal-light text-gray-700 dark:text-gray-300 rounded-xl text-sm font-bold hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors flex items-center gap-2">
+                            <i class="fa-solid fa-file-export"></i> تصدير (Excel)
+                        </button>
+                        <button class="px-4 py-2.5 bg-teal-600 hover:bg-teal-700 text-white rounded-xl text-sm font-bold shadow-md transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-plus"></i> إضافة مركز تكلفة
+                        </button>
+                    </div>
+                </div>
+
+                <!-- الإحصائيات -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                    <div class="glass-panel p-5 rounded-2xl border border-gray-200 dark:border-gray-700">
+                        <p class="text-gray-500 text-xs mb-1">إجمالي مراكز التكلفة النشطة</p>
+                        <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">18</h3>
+                    </div>
+                    <div class="glass-panel p-5 rounded-2xl border border-gray-200 dark:border-gray-700">
+                        <p class="text-gray-500 text-xs mb-1">الموازنة التقديرية الإجمالية</p>
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-gray-100">46,800,000 <span class="text-[10px]">SAR</span></h3>
+                    </div>
+                    <div class="glass-panel p-5 rounded-2xl bg-teal-50/50 dark:bg-teal-950/20 border-teal-200 dark:border-teal-900/40">
+                        <p class="text-teal-600 dark:text-teal-400 text-xs font-bold mb-1">المنصرف الفعلي (YTD)</p>
+                        <h3 class="text-xl font-bold text-teal-600 dark:text-teal-400">38,200,000 <span class="text-[10px]">SAR</span></h3>
+                    </div>
+                    <div class="glass-panel p-5 rounded-2xl bg-orange-50/50 dark:bg-orange-950/20 border-orange-200 dark:border-orange-900/40">
+                        <p class="text-orange-600 dark:text-orange-400 text-xs font-bold mb-1">أعلى مركز استهلاكاً</p>
+                        <h3 class="text-sm font-bold text-orange-600 dark:text-orange-400 mt-2">قطاع العمليات التقنية (IT) <br><span class="text-xs font-normal">استهلاك 82%</span></h3>
+                    </div>
+                </div>
+
+                <!-- أدوات الفلترة والبحث -->
+                <div class="flex flex-col md:flex-row gap-4 mb-4">
+                    <div class="flex-1 relative">
+                        <input type="text" placeholder="البحث برقم المركز، الاسم، أو القسم..." class="w-full bg-white dark:bg-charcoal border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-teal-500 pr-10">
+                        <i class="fa-solid fa-search absolute right-3 top-3 text-gray-400"></i>
+                    </div>
+                    <select class="bg-white dark:bg-charcoal border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-teal-500 w-full md:w-48">
+                        <option>جميع الفئات</option>
+                        <option>الإدارات والأقسام</option>
+                        <option>الفروع الجغرافية</option>
+                        <option>المشاريع المستقلة</option>
+                    </select>
+                </div>
+
+                <!-- جدول مراكز التكلفة مع نسب الاستهلاك -->
+                <div class="glass-panel rounded-2xl overflow-hidden mb-8">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-right text-sm border-collapse">
+                            <thead class="bg-gray-50 dark:bg-charcoal-light border-b border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400">
+                                <tr>
+                                    <th class="p-4 font-normal text-xs">رقم المركز</th>
+                                    <th class="p-4 font-normal text-xs">الاسم / القسم</th>
+                                    <th class="p-4 font-normal text-xs">الموازنة (SAR)</th>
+                                    <th class="p-4 font-normal text-xs">المنصرف (SAR)</th>
+                                    <th class="p-4 font-normal text-xs w-48 text-center">نسبة الاستهلاك</th>
+                                    <th class="p-4 font-normal text-xs text-center">إجراء</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+                                
+                                <tr class="hover:bg-gray-50 dark:hover:bg-charcoal-light/50 transition-colors">
+                                    <td class="p-4 font-mono font-bold text-gray-600 dark:text-gray-400">CC-101</td>
+                                    <td class="p-4">
+                                        <div class="font-bold text-gray-800 dark:text-gray-100">قطاع العمليات التقنية (IT)</div>
+                                        <div class="text-[10px] text-gray-500 mt-0.5">الإدارات والأقسام</div>
+                                    </td>
+                                    <td class="p-4 font-bold text-gray-800 dark:text-gray-100">22,000,000.00</td>
+                                    <td class="p-4 font-bold text-teal-600 dark:text-teal-400">18,100,000.00</td>
+                                    <td class="p-4">
+                                        <div class="flex items-center gap-2">
+                                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                                <div class="bg-orange-500 h-2 rounded-full" style="width: 82%"></div>
+                                            </div>
+                                            <span class="text-xs font-bold text-gray-600 dark:text-gray-300">82%</span>
+                                        </div>
+                                    </td>
+                                    <td class="p-4 text-center">
+                                        <button class="text-gray-500 hover:text-teal-600 transition-colors" title="كشف حساب المركز"><i class="fa-solid fa-file-invoice"></i></button>
+                                    </td>
+                                </tr>
+
+                                <tr class="hover:bg-gray-50 dark:hover:bg-charcoal-light/50 transition-colors">
+                                    <td class="p-4 font-mono font-bold text-gray-600 dark:text-gray-400">CC-102</td>
+                                    <td class="p-4">
+                                        <div class="font-bold text-gray-800 dark:text-gray-100">قطاع العمليات التجارية (المبيعات)</div>
+                                        <div class="text-[10px] text-gray-500 mt-0.5">الإدارات والأقسام</div>
+                                    </td>
+                                    <td class="p-4 font-bold text-gray-800 dark:text-gray-100">18,500,000.00</td>
+                                    <td class="p-4 font-bold text-teal-600 dark:text-teal-400">14,200,000.00</td>
+                                    <td class="p-4">
+                                        <div class="flex items-center gap-2">
+                                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                                <div class="bg-teal-500 h-2 rounded-full" style="width: 76%"></div>
+                                            </div>
+                                            <span class="text-xs font-bold text-gray-600 dark:text-gray-300">76%</span>
+                                        </div>
+                                    </td>
+                                    <td class="p-4 text-center">
+                                        <button class="text-gray-500 hover:text-teal-600 transition-colors" title="كشف حساب المركز"><i class="fa-solid fa-file-invoice"></i></button>
+                                    </td>
+                                </tr>
+
+                                <tr class="hover:bg-gray-50 dark:hover:bg-charcoal-light/50 transition-colors">
+                                    <td class="p-4 font-mono font-bold text-gray-600 dark:text-gray-400">CC-103</td>
+                                    <td class="p-4">
+                                        <div class="font-bold text-gray-800 dark:text-gray-100">الإدارة العامة والموارد البشرية</div>
+                                        <div class="text-[10px] text-gray-500 mt-0.5">الإدارات والأقسام</div>
+                                    </td>
+                                    <td class="p-4 font-bold text-gray-800 dark:text-gray-100">12,000,000.00</td>
+                                    <td class="p-4 font-bold text-teal-600 dark:text-teal-400">8,500,000.00</td>
+                                    <td class="p-4">
+                                        <div class="flex items-center gap-2">
+                                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                                <div class="bg-emerald-500 h-2 rounded-full" style="width: 70%"></div>
+                                            </div>
+                                            <span class="text-xs font-bold text-gray-600 dark:text-gray-300">70%</span>
+                                        </div>
+                                    </td>
+                                    <td class="p-4 text-center">
+                                        <button class="text-gray-500 hover:text-teal-600 transition-colors" title="كشف حساب المركز"><i class="fa-solid fa-file-invoice"></i></button>
+                                    </td>
+                                </tr>
+
+                                <tr class="hover:bg-gray-50 dark:hover:bg-charcoal-light/50 transition-colors">
+                                    <td class="p-4 font-mono font-bold text-gray-600 dark:text-gray-400">CC-201</td>
+                                    <td class="p-4">
+                                        <div class="font-bold text-gray-800 dark:text-gray-100">فرع المنطقة الغربية (جدة)</div>
+                                        <div class="text-[10px] text-gray-500 mt-0.5">الفروع الجغرافية</div>
+                                    </td>
+                                    <td class="p-4 font-bold text-gray-800 dark:text-gray-100">2,500,000.00</td>
+                                    <td class="p-4 font-bold text-teal-600 dark:text-teal-400">1,100,000.00</td>
+                                    <td class="p-4">
+                                        <div class="flex items-center gap-2">
+                                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                                <div class="bg-emerald-400 h-2 rounded-full" style="width: 44%"></div>
+                                            </div>
+                                            <span class="text-xs font-bold text-gray-600 dark:text-gray-300">44%</span>
+                                        </div>
+                                    </td>
+                                    <td class="p-4 text-center">
+                                        <button class="text-gray-500 hover:text-teal-600 transition-colors" title="كشف حساب المركز"><i class="fa-solid fa-file-invoice"></i></button>
+                                    </td>
+                                </tr>
+
+                                <tr class="hover:bg-gray-50 dark:hover:bg-charcoal-light/50 transition-colors">
+                                    <td class="p-4 font-mono font-bold text-gray-600 dark:text-gray-400">PRJ-001</td>
+                                    <td class="p-4">
+                                        <div class="font-bold text-gray-800 dark:text-gray-100">مشروع تحديث البنية التحتية السحابية (AWS)</div>
+                                        <div class="text-[10px] text-gray-500 mt-0.5">المشاريع المستقلة (CAPEX/OPEX)</div>
+                                    </td>
+                                    <td class="p-4 font-bold text-gray-800 dark:text-gray-100">1,500,000.00</td>
+                                    <td class="p-4 font-bold text-red-600 dark:text-red-400">1,450,000.00</td>
+                                    <td class="p-4">
+                                        <div class="flex items-center gap-2">
+                                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                                <div class="bg-red-500 h-2 rounded-full" style="width: 96%"></div>
+                                            </div>
+                                            <span class="text-xs font-bold text-red-600 dark:text-red-400">96%</span>
+                                        </div>
+                                    </td>
+                                    <td class="p-4 text-center">
+                                        <button class="text-gray-500 hover:text-teal-600 transition-colors" title="كشف حساب المركز"><i class="fa-solid fa-file-invoice"></i></button>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- تذييل الصفحة -->
+                <footer class="mt-8 pt-4 border-t border-gray-200 dark:border-gray-700 text-center text-sm text-gray-500 flex flex-col md:flex-row justify-between items-center gap-2">
+                    <p>بوابة الإدارة المالية - نسخة تجريبية (Demo) صممت خصيصاً لشركة بحر العرب.</p>
+                    <p>برمجة وتطوير <span class="font-bold text-teal-600 dark:text-teal-400">م. أيمن علي المغربي</span> &copy; 2026</p>
+                </footer>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- سكريبت الوضع الداكن -->
+    <script>
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            htmlElement.classList.add('dark');
+        }
+
+        themeToggleBtn.addEventListener('click', function() {
+            htmlElement.classList.toggle('dark');
+            if (htmlElement.classList.contains('dark')) {
+                localStorage.setItem('color-theme', 'dark');
+            } else {
+                localStorage.setItem('color-theme', 'light');
+            }
+        });
+    </script>
+</body>
+</html>
