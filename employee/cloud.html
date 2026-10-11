@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eGov - ملفاتي السحابية | بوابة الموظف - بحر العرب</title>
+    <!-- خطوط جوجل (Tajawal) -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- مكتبة الأيقونات FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- مكتبة Tailwind CSS للتصميم -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Tajawal', 'sans-serif'] },
+                    colors: {
+                        charcoal: {
+                            light: '#2D2E32',
+                            DEFAULT: '#1F2022',
+                            dark: '#151618',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #14B8A6; border-radius: 10px; } /* Teal-500 */
+        body { font-family: 'Tajawal', sans-serif; transition: background-color 0.3s, color 0.3s; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(20, 184, 166, 0.2);
+        }
+        .dark .glass-panel {
+            background: rgba(45, 46, 50, 0.85);
+            border: 1px solid rgba(20, 184, 166, 0.3);
+        }
+        /* تأثير سحب وإفلات الملفات */
+        .drop-zone {
+            border: 2px dashed #14B8A6;
+            transition: all 0.3s ease;
+        }
+        .drop-zone:hover {
+            background-color: rgba(20, 184, 166, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-charcoal dark:text-gray-100 overflow-hidden">
+
+    <div class="flex h-screen">
+        
+        <!-- القائمة الجانبية الخاصة ببوابة الموظف -->
+        <aside class="w-64 glass-panel shadow-lg flex flex-col justify-between hidden md:flex transition-all duration-300 z-20 shrink-0">
+            <div>
+                <!-- الشعار -->
+                <div class="p-6 border-b border-gray-200 dark:border-gray-700 text-center">
+                    <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-teal-500 to-teal-700 text-white shadow-lg mb-3">
+                        <i class="fa-solid fa-user-tie text-2xl"></i>
+                    </div>
+                    <h1 class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-teal-500 to-teal-700 dark:from-teal-400 dark:to-teal-500">
+                        مساحة الموظف
+                    </h1>
+                    <p class="text-[10px] font-bold text-gray-500 dark:text-gray-400 mt-1">بحر العرب لأنظمة المعلومات (7201)</p>
+                </div>
+
+                <!-- الروابط -->
+                <nav class="p-4 space-y-1 h-[calc(100vh-220px)] overflow-y-auto">
+                    
+                    <div class="text-xs font-bold text-gray-400 mt-2 mb-2 px-4 uppercase">الخدمات الذاتية</div>
+                    <a href="index.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-house w-5 text-gray-400"></i> <span>الرئيسية</span>
+                    </a>
+                    <a href="requests.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-clipboard-list w-5 text-gray-400"></i> <span>الطلبات الإدارية</span>
+                    </a>
+                    <a href="finance.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-wallet w-5 text-gray-400"></i> <span>الخدمات المالية</span>
+                    </a>
+                    <a href="support.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-headset w-5 text-gray-400"></i> <span>الدعم الفني والخدمات</span>
+                    </a>
+
+                    <div class="text-xs font-bold text-gray-400 mt-4 mb-2 px-4 uppercase">مساحة العمل (Workspace)</div>
+                    <!-- الصفحة الحالية -->
+                    <a href="cloud.html" class="flex items-center gap-3 px-4 py-2 rounded-xl bg-teal-100 dark:bg-teal-900/50 text-teal-800 dark:text-teal-300 font-bold transition-colors">
+                        <i class="fa-solid fa-cloud-arrow-up w-5"></i> <span>ملفاتي السحابية</span>
+                    </a>
+                    <a href="approvals.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-file-signature w-5 text-gray-400"></i> <span>الاعتمادات والتواقيع</span>
+                        <span class="mr-auto w-5 h-5 bg-orange-500 text-white rounded-full flex items-center justify-center text-[10px]">2</span>
+                    </a>
+                    <a href="performance.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-award w-5 text-gray-400"></i> <span>الأداء والتدريب</span>
+                    </a>
+
+                    <div class="text-xs font-bold text-gray-400 mt-4 mb-2 px-4 uppercase">معلومات الشركة</div>
+                    <a href="policies.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-book-open w-5 text-gray-400"></i> <span>اللوائح والسياسات</span>
+                    </a>
+                    <a href="profile.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-id-card w-5 text-gray-400"></i> <span>الملف الشخصي</span>
+                    </a>
+                    
+                    <div class="pt-3 mt-3 border-t border-gray-200 dark:border-gray-700">
+                        <a href="../login.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-red-500 text-xs font-bold">
+                            <i class="fa-solid fa-arrow-right-from-bracket w-5"></i> <span>تسجيل الخروج</span>
+                        </a>
+                    </div>
+                </nav>
+            </div>
+
+            <!-- معلومات المطور -->
+            <div class="p-4 border-t border-gray-200 dark:border-gray-700 text-center">
+                <p class="text-xs text-gray-500">تطوير م. أيمن علي المغربي</p>
+                <p class="text-[10px] text-gray-400">eGov System © 2026</p>
+            </div>
+        </aside>
+
+        <!-- المحتوى الرئيسي -->
+        <main class="flex-1 flex flex-col h-screen overflow-hidden bg-gray-50 dark:bg-charcoal-dark">
+            
+            <!-- الشريط العلوي -->
+            <header class="h-16 glass-panel border-b border-gray-200 dark:border-gray-700 flex items-center justify-between px-6 z-10 shrink-0">
+                <div class="flex items-center gap-4">
+                    <button class="md:hidden text-gray-500 hover:text-teal-500"><i class="fa-solid fa-bars text-xl"></i></button>
+                    <h2 class="text-lg font-bold hidden sm:block">مساحة العمل - ملفاتي السحابية (My Drive)</h2>
+                </div>
+                
+                <div class="flex items-center gap-4">
+                    <button id="themeToggle" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-charcoal flex items-center justify-center text-gray-500 hover:text-teal-500 transition-colors">
+                        <i class="fa-solid fa-moon dark:hidden"></i>
+                        <i class="fa-solid fa-sun hidden dark:block text-yellow-400"></i>
+                    </button>
+                    
+                    <button class="relative w-10 h-10 rounded-full bg-gray-100 dark:bg-charcoal flex items-center justify-center text-gray-500 hover:text-teal-500 transition-colors">
+                        <i class="fa-regular fa-bell"></i>
+                    </button>
+
+                    <!-- بروفايل الموظف -->
+                    <a href="profile.html" class="flex items-center gap-3 p-1 pr-3 rounded-full bg-teal-50 dark:bg-charcoal border border-teal-200 dark:border-gray-700 hover:border-teal-400 transition-all cursor-pointer">
+                        <div class="text-left hidden sm:block">
+                            <p class="text-sm font-bold text-gray-800 dark:text-gray-100 leading-none">م. أيمن المغربي</p>
+                            <p class="text-[10px] text-teal-600 dark:text-teal-400 mt-1 font-bold">مهندس برمجيات</p>
+                        </div>
+                        <img src="https://ui-avatars.com/api/?name=Ayman&background=14B8A6&color=fff" alt="User" class="w-8 h-8 rounded-full border border-teal-200">
+                    </a>
+                </div>
+            </header>
+
+            <!-- منطقة المحتوى القابلة للتمرير -->
+            <div class="flex-1 overflow-y-auto p-6">
+                
+                <!-- رأس الصفحة ومساحة التخزين -->
+                <div class="glass-panel p-6 rounded-2xl mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 border-b-4 border-teal-500">
+                    <div class="flex-1">
+                        <h2 class="text-2xl font-bold mb-1">مساحة التخزين السحابية <i class="fa-solid fa-cloud text-teal-500 ml-1"></i></h2>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">حفظ، إدارة، ومشاركة ملفات العمل الخاصة بك بشكل آمن.</p>
+                        
+                        <!-- شريط استهلاك المساحة -->
+                        <div class="max-w-md">
+                            <div class="flex justify-between text-xs font-bold mb-1">
+                                <span class="text-teal-600 dark:text-teal-400">مُستخدم: 4.2 GB</span>
+                                <span class="text-gray-500">الإجمالي: 15 GB</span>
+                            </div>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                <div class="bg-teal-500 h-2 rounded-full" style="width: 28%"></div>
+                            </div>
+                            <p class="text-[10px] text-gray-400 mt-1">تستخدم 28% من السعة المتاحة لك</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-col gap-2 min-w-[200px]">
+                        <button class="w-full px-4 py-3 bg-teal-600 hover:bg-teal-700 text-white rounded-xl text-sm font-bold shadow-md transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-cloud-arrow-up"></i> رفع ملفات جديدة
+                        </button>
+                        <button class="w-full px-4 py-2.5 bg-gray-100 dark:bg-charcoal-light text-gray-700 dark:text-gray-300 rounded-xl text-sm font-bold hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors flex items-center justify-center gap-2 border border-gray-200 dark:border-gray-700">
+                            <i class="fa-solid fa-folder-plus text-teal-600"></i> مجلد جديد
+                        </button>
+                    </div>
+                </div>
+
+                <!-- مسار التنقل (Breadcrumbs) والبحث -->
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-6">
+                    <div class="flex items-center gap-2 text-sm font-bold text-gray-600 dark:text-gray-300">
+                        <a href="#" class="hover:text-teal-600 transition-colors"><i class="fa-solid fa-house-chimney"></i> ملفاتي</a>
+                        <i class="fa-solid fa-chevron-left text-xs text-gray-400"></i>
+                        <span class="text-teal-600 dark:text-teal-400">المشاريع الحالية</span>
+                    </div>
+                    
+                    <div class="relative w-full md:w-64">
+                        <input type="text" placeholder="البحث في ملفاتي..." class="w-full bg-white dark:bg-charcoal-light border border-gray-200 dark:border-gray-700 rounded-full px-4 py-2 text-sm outline-none focus:border-teal-500 pr-10">
+                        <i class="fa-solid fa-search absolute right-3 top-2.5 text-gray-400"></i>
+                    </div>
+                </div>
+
+                <!-- قسم المجلدات -->
+                <h3 class="text-sm font-bold text-gray-500 dark:text-gray-400 mb-4">المجلدات (Folders)</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 mb-8">
+                    
+                    <!-- Folder 1 -->
+                    <div class="glass-panel p-4 rounded-xl flex items-center gap-3 cursor-pointer hover:border-teal-400 hover:shadow-md transition-all group">
+                        <i class="fa-solid fa-folder text-3xl text-teal-500 group-hover:scale-110 transition-transform"></i>
+                        <div class="overflow-hidden">
+                            <p class="font-bold text-sm text-gray-800 dark:text-gray-100 truncate">المشاريع الحالية</p>
+                            <p class="text-[10px] text-gray-500">12 ملف</p>
+                        </div>
+                    </div>
+
+                    <!-- Folder 2 -->
+                    <div class="glass-panel p-4 rounded-xl flex items-center gap-3 cursor-pointer hover:border-teal-400 hover:shadow-md transition-all group">
+                        <i class="fa-solid fa-folder text-3xl text-teal-500 group-hover:scale-110 transition-transform"></i>
+                        <div class="overflow-hidden">
+                            <p class="font-bold text-sm text-gray-800 dark:text-gray-100 truncate">مستندات شخصية (HR)</p>
+                            <p class="text-[10px] text-gray-500">5 ملفات</p>
+                        </div>
+                    </div>
+
+                    <!-- Folder 3 -->
+                    <div class="glass-panel p-4 rounded-xl flex items-center gap-3 cursor-pointer hover:border-teal-400 hover:shadow-md transition-all group">
+                        <i class="fa-solid fa-folder text-3xl text-indigo-500 group-hover:scale-110 transition-transform"></i>
+                        <div class="overflow-hidden">
+                            <p class="font-bold text-sm text-gray-800 dark:text-gray-100 truncate">تصاميم ومسودات</p>
+                            <p class="text-[10px] text-gray-500">24 ملف</p>
+                        </div>
+                    </div>
+
+                    <!-- Folder 4 (Shared) -->
+                    <div class="glass-panel p-4 rounded-xl flex items-center gap-3 cursor-pointer hover:border-teal-400 hover:shadow-md transition-all group relative">
+                        <i class="fa-solid fa-folder-user text-3xl text-blue-500 group-hover:scale-110 transition-transform"></i>
+                        <div class="overflow-hidden">
+                            <p class="font-bold text-sm text-gray-800 dark:text-gray-100 truncate">تمت مشاركتها معي</p>
+                            <p class="text-[10px] text-gray-500">من الإدارة</p>
+                        </div>
+                        <div class="absolute top-2 left-2 w-2 h-2 bg-red-500 rounded-full"></div>
+                    </div>
+
+                </div>
+
+                <!-- قسم الملفات -->
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-sm font-bold text-gray-500 dark:text-gray-400">الملفات (Files)</h3>
+                    <div class="flex gap-2">
+                        <button class="text-gray-400 hover:text-teal-600 transition-colors"><i class="fa-solid fa-table-cells-large"></i></button>
+                        <button class="text-teal-600 transition-colors"><i class="fa-solid fa-list"></i></button>
+                    </div>
+                </div>
+
+                <!-- منطقة السحب والإفلات -->
+                <div class="glass-panel rounded-2xl overflow-hidden drop-zone mb-8">
+                    
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-right text-sm">
+                            <thead class="bg-gray-50 dark:bg-charcoal-light border-b border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400">
+                                <tr>
+                                    <th class="p-4 font-normal text-xs w-10 text-center"><i class="fa-regular fa-square"></i></th>
+                                    <th class="p-4 font-normal text-xs">اسم الملف</th>
+                                    <th class="p-4 font-normal text-xs text-center">الحجم</th>
+                                    <th class="p-4 font-normal text-xs">تاريخ التعديل</th>
+                                    <th class="p-4 font-normal text-xs text-center">المشاركة</th>
+                                    <th class="p-4 font-normal text-xs text-center">إجراءات</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+                                
+                                <!-- File 1 (PDF) -->
+                                <tr class="hover:bg-gray-50 dark:hover:bg-charcoal-light/50 transition-colors group">
+                                    <td class="p-4 text-center"><input type="checkbox" class="accent-teal-500 rounded cursor-pointer"></td>
+                                    <td class="p-4">
+                                        <div class="flex items-center gap-3">
+                                            <i class="fa-solid fa-file-pdf text-2xl text-red-500"></i>
+                                            <div>
+                                                <div class="font-bold text-gray-800 dark:text-gray-100 group-hover:text-teal-600 cursor-pointer transition-colors">CV_Ayman_Almaghrabi_2026.pdf</div>
+                                                <div class="text-[10px] text-gray-500 mt-0.5">مستند PDF</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="p-4 text-center font-mono text-xs text-gray-500">1.2 MB</td>
+                                    <td class="p-4 text-xs font-mono text-gray-500">اليوم 10:15 ص</td>
+                                    <td class="p-4 text-center text-gray-400"><i class="fa-solid fa-lock text-xs" title="خاص بك فقط"></i></td>
+                                    <td class="p-4 text-center">
+                                        <div class="flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                                            <button class="text-gray-400 hover:text-teal-600 transition-colors" title="تحميل"><i class="fa-solid fa-download"></i></button>
+                                            <button class="text-gray-400 hover:text-blue-500 transition-colors" title="مشاركة رابط"><i class="fa-solid fa-share-nodes"></i></button>
+                                            <button class="text-gray-400 hover:text-red-500 transition-colors" title="حذف"><i class="fa-solid fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- File 2 (Excel) -->
+                                <tr class="hover:bg-gray-50 dark:hover:bg-charcoal-light/50 transition-colors group">
+                                    <td class="p-4 text-center"><input type="checkbox" class="accent-teal-500 rounded cursor-pointer"></td>
+                                    <td class="p-4">
+                                        <div class="flex items-center gap-3">
+                                            <i class="fa-solid fa-file-excel text-2xl text-emerald-600"></i>
+                                            <div>
+                                                <div class="font-bold text-gray-800 dark:text-gray-100 group-hover:text-teal-600 cursor-pointer transition-colors">Project_Plan_Q4_Draft.xlsx</div>
+                                                <div class="text-[10px] text-gray-500 mt-0.5">جدول بيانات Excel</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="p-4 text-center font-mono text-xs text-gray-500">840 KB</td>
+                                    <td class="p-4 text-xs font-mono text-gray-500">أمس 03:40 م</td>
+                                    <td class="p-4 text-center text-blue-500"><i class="fa-solid fa-user-group text-xs" title="تمت مشاركته"></i></td>
+                                    <td class="p-4 text-center">
+                                        <div class="flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                                            <button class="text-gray-400 hover:text-teal-600 transition-colors" title="تحميل"><i class="fa-solid fa-download"></i></button>
+                                            <button class="text-gray-400 hover:text-blue-500 transition-colors" title="مشاركة رابط"><i class="fa-solid fa-share-nodes"></i></button>
+                                            <button class="text-gray-400 hover:text-red-500 transition-colors" title="حذف"><i class="fa-solid fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- File 3 (Word) -->
+                                <tr class="hover:bg-gray-50 dark:hover:bg-charcoal-light/50 transition-colors group">
+                                    <td class="p-4 text-center"><input type="checkbox" class="accent-teal-500 rounded cursor-pointer"></td>
+                                    <td class="p-4">
+                                        <div class="flex items-center gap-3">
+                                            <i class="fa-solid fa-file-word text-2xl text-blue-600"></i>
+                                            <div>
+                                                <div class="font-bold text-gray-800 dark:text-gray-100 group-hover:text-teal-600 cursor-pointer transition-colors">System_Requirements_Spec.docx</div>
+                                                <div class="text-[10px] text-gray-500 mt-0.5">مستند Word</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="p-4 text-center font-mono text-xs text-gray-500">2.4 MB</td>
+                                    <td class="p-4 text-xs font-mono text-gray-500">05-10-2026</td>
+                                    <td class="p-4 text-center text-gray-400"><i class="fa-solid fa-lock text-xs" title="خاص بك فقط"></i></td>
+                                    <td class="p-4 text-center">
+                                        <div class="flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                                            <button class="text-gray-400 hover:text-teal-600 transition-colors" title="تحميل"><i class="fa-solid fa-download"></i></button>
+                                            <button class="text-gray-400 hover:text-blue-500 transition-colors" title="مشاركة رابط"><i class="fa-solid fa-share-nodes"></i></button>
+                                            <button class="text-gray-400 hover:text-red-500 transition-colors" title="حذف"><i class="fa-solid fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- File 4 (Image) -->
+                                <tr class="hover:bg-gray-50 dark:hover:bg-charcoal-light/50 transition-colors group">
+                                    <td class="p-4 text-center"><input type="checkbox" class="accent-teal-500 rounded cursor-pointer"></td>
+                                    <td class="p-4">
+                                        <div class="flex items-center gap-3">
+                                            <i class="fa-regular fa-image text-2xl text-amber-500"></i>
+                                            <div>
+                                                <div class="font-bold text-gray-800 dark:text-gray-100 group-hover:text-teal-600 cursor-pointer transition-colors">eGov_Architecture_Diagram.png</div>
+                                                <div class="text-[10px] text-gray-500 mt-0.5">صورة (PNG)</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="p-4 text-center font-mono text-xs text-gray-500">4.1 MB</td>
+                                    <td class="p-4 text-xs font-mono text-gray-500">01-10-2026</td>
+                                    <td class="p-4 text-center text-gray-400"><i class="fa-solid fa-lock text-xs" title="خاص بك فقط"></i></td>
+                                    <td class="p-4 text-center">
+                                        <div class="flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                                            <button class="text-gray-400 hover:text-teal-600 transition-colors" title="تحميل"><i class="fa-solid fa-download"></i></button>
+                                            <button class="text-gray-400 hover:text-blue-500 transition-colors" title="مشاركة رابط"><i class="fa-solid fa-share-nodes"></i></button>
+                                            <button class="text-gray-400 hover:text-red-500 transition-colors" title="حذف"><i class="fa-solid fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- Drag and Drop helper -->
+                                <tr>
+                                    <td colspan="6" class="p-8 text-center text-gray-400 border-t-2 border-dashed border-gray-200 dark:border-gray-700 bg-gray-50/50 dark:bg-charcoal/30">
+                                        <i class="fa-solid fa-cloud-arrow-up text-3xl mb-2 text-teal-400"></i>
+                                        <p class="font-bold text-sm">اسحب وأفلت الملفات هنا لرفعها</p>
+                                        <p class="text-[10px] mt-1">أو <button class="text-teal-600 hover:underline">تصفح جهازك</button> لرفع ملف جديد</p>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- تذييل الصفحة -->
+                <footer class="mt-8 pt-4 border-t border-gray-200 dark:border-gray-700 text-center text-sm text-gray-500 flex flex-col md:flex-row justify-between items-center gap-2">
+                    <p>بوابة خدمة الموظفين - مساحة العمل الذكية (eGov Workspace).</p>
+                    <p>برمجة وتطوير <span class="font-bold text-teal-600 dark:text-teal-400">م. أيمن علي المغربي</span> &copy; 2026</p>
+                </footer>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- سكريبت الوضع الداكن -->
+    <script>
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            htmlElement.classList.add('dark');
+        }
+
+        themeToggleBtn.addEventListener('click', function() {
+            htmlElement.classList.toggle('dark');
+            if (htmlElement.classList.contains('dark')) {
+                localStorage.setItem('color-theme', 'dark');
+            } else {
+                localStorage.setItem('color-theme', 'light');
+            }
+        });
+    </script>
+</body>
+</html>
