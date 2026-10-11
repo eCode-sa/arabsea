@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eGov - النظام الإداري المتكامل | بحر العرب</title>
+    <!-- خطوط جوجل (Tajawal) -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- مكتبة الأيقونات FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- مكتبة Tailwind CSS للتصميم -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Tajawal', 'sans-serif'] },
+                    colors: {
+                        charcoal: {
+                            light: '#2D2E32',
+                            DEFAULT: '#1F2022',
+                            dark: '#151618',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #6366F1; border-radius: 10px; } /* Indigo-500 */
+        body { font-family: 'Tajawal', sans-serif; transition: background-color 0.3s, color 0.3s; }
+        
+        /* تأثيرات الزجاج (Glassmorphism) */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+        }
+        .dark .glass-panel {
+            background: rgba(45, 46, 50, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        /* خلفية ديناميكية متحركة للصفحة الرئيسية */
+        .bg-animated {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            opacity: 0.05;
+        }
+        .dark .bg-animated {
+            background: linear-gradient(-45deg, #1e1b4b, #312e81, #111827, #0f172a);
+            opacity: 0.5;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* تأثير كروت البوابات */
+        .portal-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .portal-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            z-index: 10;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-charcoal-dark dark:text-gray-100 min-h-screen flex flex-col relative">
+
+    <!-- الخلفية المتحركة -->
+    <div class="bg-animated"></div>
+
+    <!-- الشريط العلوي المركزي -->
+    <header class="h-20 glass-panel border-b border-gray-200 dark:border-gray-800 flex items-center justify-between px-4 sm:px-8 lg:px-16 z-20 sticky top-0">
+        <div class="flex items-center gap-4">
+            <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-br from-indigo-600 to-purple-600 text-white shadow-lg shadow-indigo-500/30">
+                <i class="fa-solid fa-layer-group text-2xl"></i>
+            </div>
+            <div>
+                <h1 class="text-xl md:text-2xl font-black bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 tracking-tight">
+                    نظام eGov المتكامل
+                </h1>
+                <p class="text-[10px] md:text-xs font-bold text-gray-500 dark:text-gray-400 mt-0.5">بحر العرب لأنظمة المعلومات (Arab Sea - 7201)</p>
+            </div>
+        </div>
+        
+        <div class="flex items-center gap-3 sm:gap-5">
+            <div class="hidden md:block text-left mr-4">
+                <p class="text-sm font-bold text-gray-800 dark:text-gray-100">الأحد، 11 أكتوبر 2026</p>
+            </div>
+            
+            <button id="themeToggle" class="w-10 h-10 rounded-full bg-white dark:bg-charcoal border border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-500 hover:text-indigo-600 transition-colors shadow-sm">
+                <i class="fa-solid fa-moon dark:hidden"></i>
+                <i class="fa-solid fa-sun hidden dark:block text-yellow-400"></i>
+            </button>
+            
+            <!-- زر تسجيل الخروج -->
+            <a href="login.html" class="flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 hover:bg-red-100 dark:bg-red-900/20 dark:hover:bg-red-900/40 text-red-600 dark:text-red-400 border border-red-100 dark:border-red-900/30 transition-all font-bold text-xs sm:text-sm">
+                <span class="hidden sm:inline">تسجيل الخروج</span>
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- المحتوى الرئيسي (شبكة البوابات) -->
+    <main class="flex-1 container mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col justify-center relative z-10">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 class="text-3xl md:text-5xl font-black mb-4 text-gray-900 dark:text-white leading-tight">مرحباً بك في مركز التحكم الشامل</h2>
+            <p class="text-gray-600 dark:text-gray-400 text-sm md:text-base leading-relaxed">
+                اختر البوابة أو القسم المطلوب للدخول إلى مساحة العمل المخصصة لك. جميع الأنظمة مترابطة ومحمية بأعلى معايير الأمان لتسهيل تدفق المعلومات.
+            </p>
+        </div>
+
+        <!-- Grid البوابات -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8 max-w-7xl mx-auto w-full">
+            
+            <!-- 1. بوابة الرئيس التنفيذي (CEO) -->
+            <a href="ceo/index.html" class="portal-card relative overflow-hidden rounded-3xl bg-white dark:bg-charcoal shadow-xl border border-gray-100 dark:border-gray-800 group">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 dark:bg-emerald-500/20 rounded-full blur-3xl -mr-10 -mt-10 transition-all group-hover:bg-emerald-500/30"></div>
+                <div class="p-8 relative z-10 flex flex-col h-full">
+                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-400 to-emerald-600 text-white flex items-center justify-center text-3xl mb-6 shadow-lg shadow-emerald-500/40">
+                        <i class="fa-solid fa-chess-king"></i>
+                    </div>
+                    <h3 class="text-xl font-black text-gray-900 dark:text-white mb-2">الإدارة العليا (CEO)</h3>
+                    <p class="text-xs text-gray-500 dark:text-gray-400 mb-6 flex-1 line-clamp-2">مركز اتخاذ القرار، لوحات المؤشرات الاستراتيجية، ومتابعة الأداء العام للشركة.</p>
+                    <div class="flex items-center text-emerald-600 dark:text-emerald-400 font-bold text-sm">
+                        <span>الدخول للبوابة</span>
+                        <i class="fa-solid fa-arrow-left mr-2 group-hover:-translate-x-2 transition-transform"></i>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 2. بوابة الإدارة المالية (Finance) -->
+            <a href="finance/index.html" class="portal-card relative overflow-hidden rounded-3xl bg-white dark:bg-charcoal shadow-xl border border-gray-100 dark:border-gray-800 group">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 dark:bg-blue-500/20 rounded-full blur-3xl -mr-10 -mt-10 transition-all group-hover:bg-blue-500/30"></div>
+                <div class="p-8 relative z-10 flex flex-col h-full">
+                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-700 text-white flex items-center justify-center text-3xl mb-6 shadow-lg shadow-blue-500/40">
+                        <i class="fa-solid fa-building-columns"></i>
+                    </div>
+                    <h3 class="text-xl font-black text-gray-900 dark:text-white mb-2">الإدارة المالية (CFO)</h3>
+                    <p class="text-xs text-gray-500 dark:text-gray-400 mb-6 flex-1 line-clamp-2">إدارة الحسابات، التدفقات النقدية، الميزانيات، الرواتب، والمصاريف التشغيلية.</p>
+                    <div class="flex items-center text-blue-600 dark:text-blue-400 font-bold text-sm">
+                        <span>الدخول للبوابة</span>
+                        <i class="fa-solid fa-arrow-left mr-2 group-hover:-translate-x-2 transition-transform"></i>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 3. بوابة الموارد البشرية (HR) -->
+            <a href="hr/index.html" class="portal-card relative overflow-hidden rounded-3xl bg-white dark:bg-charcoal shadow-xl border border-gray-100 dark:border-gray-800 group">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-rose-500/10 dark:bg-rose-500/20 rounded-full blur-3xl -mr-10 -mt-10 transition-all group-hover:bg-rose-500/30"></div>
+                <div class="p-8 relative z-10 flex flex-col h-full">
+                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-rose-400 to-rose-600 text-white flex items-center justify-center text-3xl mb-6 shadow-lg shadow-rose-500/40">
+                        <i class="fa-solid fa-users-gear"></i>
+                    </div>
+                    <h3 class="text-xl font-black text-gray-900 dark:text-white mb-2">الموارد البشرية (HR)</h3>
+                    <p class="text-xs text-gray-500 dark:text-gray-400 mb-6 flex-1 line-clamp-2">إدارة شؤون الموظفين، الحضور والانصراف، التوظيف، وتقييم الأداء السنوي.</p>
+                    <div class="flex items-center text-rose-600 dark:text-rose-400 font-bold text-sm">
+                        <span>الدخول للبوابة</span>
+                        <i class="fa-solid fa-arrow-left mr-2 group-hover:-translate-x-2 transition-transform"></i>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 4. بوابة المبيعات والتسويق (Sales) -->
+            <a href="sales/index.html" class="portal-card relative overflow-hidden rounded-3xl bg-white dark:bg-charcoal shadow-xl border border-gray-100 dark:border-gray-800 group">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 dark:bg-amber-500/20 rounded-full blur-3xl -mr-10 -mt-10 transition-all group-hover:bg-amber-500/30"></div>
+                <div class="p-8 relative z-10 flex flex-col h-full">
+                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 text-white flex items-center justify-center text-3xl mb-6 shadow-lg shadow-amber-500/40">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-xl font-black text-gray-900 dark:text-white mb-2">المبيعات والتسويق</h3>
+                    <p class="text-xs text-gray-500 dark:text-gray-400 mb-6 flex-1 line-clamp-2">إدارة علاقات العملاء (CRM)، الفرص البيعية (Pipeline)، عروض الأسعار والمستهدفات.</p>
+                    <div class="flex items-center text-amber-600 dark:text-amber-400 font-bold text-sm">
+                        <span>الدخول للبوابة</span>
+                        <i class="fa-solid fa-arrow-left mr-2 group-hover:-translate-x-2 transition-transform"></i>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 5. بوابة تقنية المعلومات (CTO / IT) -->
+            <a href="cto/index.html" class="portal-card relative overflow-hidden rounded-3xl bg-white dark:bg-charcoal shadow-xl border border-gray-100 dark:border-gray-800 group">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 dark:bg-purple-500/20 rounded-full blur-3xl -mr-10 -mt-10 transition-all group-hover:bg-purple-500/30"></div>
+                <div class="p-8 relative z-10 flex flex-col h-full">
+                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-indigo-600 text-white flex items-center justify-center text-3xl mb-6 shadow-lg shadow-purple-500/40">
+                        <i class="fa-solid fa-microchip"></i>
+                    </div>
+                    <h3 class="text-xl font-black text-gray-900 dark:text-white mb-2">تقنية المعلومات (IT)</h3>
+                    <p class="text-xs text-gray-500 dark:text-gray-400 mb-6 flex-1 line-clamp-2">إدارة البنية التحتية، الخوادم، الأمن السيبراني (SOC)، نظام السنترال والدعم الفني.</p>
+                    <div class="flex items-center text-purple-600 dark:text-purple-400 font-bold text-sm">
+                        <span>الدخول للبوابة</span>
+                        <i class="fa-solid fa-arrow-left mr-2 group-hover:-translate-x-2 transition-transform"></i>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 6. بوابة المراجعة الداخلية (Audit) -->
+            <a href="audit/index.html" class="portal-card relative overflow-hidden rounded-3xl bg-white dark:bg-charcoal shadow-xl border border-gray-100 dark:border-gray-800 group">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 dark:bg-cyan-500/20 rounded-full blur-3xl -mr-10 -mt-10 transition-all group-hover:bg-cyan-500/30"></div>
+                <div class="p-8 relative z-10 flex flex-col h-full">
+                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-400 to-cyan-600 text-white flex items-center justify-center text-3xl mb-6 shadow-lg shadow-cyan-500/40">
+                        <i class="fa-solid fa-shield-check"></i>
+                    </div>
+                    <h3 class="text-xl font-black text-gray-900 dark:text-white mb-2">المراجعة والتدقيق</h3>
+                    <p class="text-xs text-gray-500 dark:text-gray-400 mb-6 flex-1 line-clamp-2">مراقبة الامتثال، تدقيق العمليات المالية والإدارية، تقييم المخاطر والحوكمة المكتسبة.</p>
+                    <div class="flex items-center text-cyan-600 dark:text-cyan-400 font-bold text-sm">
+                        <span>الدخول للبوابة</span>
+                        <i class="fa-solid fa-arrow-left mr-2 group-hover:-translate-x-2 transition-transform"></i>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 7. مساحة الموظف الذاتية (Employee Portal) -->
+            <a href="employee/index.html" class="portal-card relative overflow-hidden rounded-3xl bg-white dark:bg-charcoal shadow-xl border border-gray-100 dark:border-gray-800 group xl:col-span-2">
+                <div class="absolute top-0 left-0 w-64 h-64 bg-teal-500/5 dark:bg-teal-500/10 rounded-full blur-3xl -ml-20 -mt-20 transition-all group-hover:bg-teal-500/20"></div>
+                <div class="p-8 relative z-10 flex flex-col sm:flex-row items-center sm:items-start gap-6 h-full text-center sm:text-right">
+                    <div class="w-20 h-20 shrink-0 rounded-2xl bg-gradient-to-br from-teal-400 to-teal-600 text-white flex items-center justify-center text-4xl shadow-lg shadow-teal-500/40">
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+                    <div class="flex flex-col h-full justify-center">
+                        <h3 class="text-2xl font-black text-gray-900 dark:text-white mb-2">مساحة الموظف (الخدمة الذاتية)</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-4 flex-1 max-w-md">
+                            مساحتك الرقمية المتكاملة.. لتقديم الطلبات الإدارية، استعراض مسيرات الرواتب، رفع ملفاتك السحابية، وإنشاء طلبات الاعتماد والتوقيع بكل سهولة.
+                        </p>
+                        <div class="flex items-center justify-center sm:justify-start text-teal-600 dark:text-teal-400 font-bold text-sm bg-teal-50 dark:bg-teal-900/30 px-4 py-2 rounded-xl w-max mx-auto sm:mx-0">
+                            <span>الدخول لمساحة العمل</span>
+                            <i class="fa-solid fa-arrow-left mr-2 group-hover:-translate-x-2 transition-transform"></i>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+
+    </main>
+
+    <!-- تذييل الصفحة المركزية -->
+    <footer class="glass-panel border-t border-gray-200 dark:border-gray-800 py-6 text-center relative z-20">
+        <p class="text-sm font-bold text-gray-600 dark:text-gray-300">
+            &copy; 2026 جميع الحقوق محفوظة لشركة بحر العرب لأنظمة المعلومات.
+        </p>
+        <p class="text-xs text-gray-500 mt-2">
+            تم التصميم والبرمجة بواسطة <span class="font-black text-indigo-600 dark:text-indigo-400">م. أيمن علي المغربي</span>
+        </p>
+    </footer>
+
+    <!-- سكريبت الوضع الداكن -->
+    <script>
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            htmlElement.classList.add('dark');
+        }
+
+        themeToggleBtn.addEventListener('click', function() {
+            htmlElement.classList.toggle('dark');
+            if (htmlElement.classList.contains('dark')) {
+                localStorage.setItem('color-theme', 'dark');
+            } else {
+                localStorage.setItem('color-theme', 'light');
+            }
+        });
+    </script>
+</body>
+</html>
