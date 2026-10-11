@@ -106,18 +106,10 @@
                 <span>العودة للرئيسية</span>
             </a>
 
-            <div class="flex items-center gap-2">
-                <button id="languageToggle" type="button"
-                    class="h-10 px-3 rounded-full flex items-center gap-2 bg-gray-100 dark:bg-charcoal-light text-gray-600 dark:text-gray-300 hover:bg-lavender-100 dark:hover:bg-gray-700 transition-all focus:outline-none font-bold text-xs"
-                    aria-label="تغيير اللغة">
-                    <i class="fa-solid fa-language"></i>
-                    <span id="languageToggleText">EN</span>
-                </button>
-                <button id="themeToggle" type="button" class="w-10 h-10 rounded-full flex items-center justify-center bg-gray-100 dark:bg-charcoal-light text-gray-600 dark:text-gray-300 hover:bg-lavender-100 dark:hover:bg-gray-700 transition-all focus:outline-none" aria-label="تبديل المظهر">
+            <button id="themeToggle" type="button" class="w-10 h-10 rounded-full flex items-center justify-center bg-gray-100 dark:bg-charcoal-light text-gray-600 dark:text-gray-300 hover:bg-lavender-100 dark:hover:bg-gray-700 transition-all focus:outline-none" aria-label="تبديل المظهر">
                     <i class="fa-solid fa-moon text-lg dark:hidden"></i>
                     <i class="fa-solid fa-sun text-lg hidden dark:block text-yellow-400"></i>
                 </button>
-            </div>
         </div>
 
         <div class="flex-grow flex items-center justify-center p-6 sm:p-12 w-full mt-12 md:mt-0">
@@ -254,132 +246,6 @@
     }
 
     initTheme();
-</script>
-
-<script>
-/* Complete bilingual translation for the public login page.
-   Kept page-local so this page remains fully translated even if the shared dictionary changes. */
-(function () {
-    const AR = 'ar', EN = 'en';
-
-    const pairs = [
-        ['ديمو تجريبي (Demo)', 'Demo Version'],
-        ['منصة الحوكمة الرقمية الشاملة', 'Integrated Digital Governance Platform'],
-        ['نموذج معروض لشركة بحر العرب لأنظمة المعلومات (7201)', 'Demo presented to Arab Sea Information Systems (7201)'],
-        ['حوكمة الشركات واللجان', 'Corporate Governance & Committees'],
-        ['إدارة اجتماعات ومحاضر مجلس الإدارة، اللجان المنبثقة، والجمعية العامة مع متابعة قرارات التمرير.', 'Manage board meetings and minutes, board committees, general assemblies, and circular resolutions.'],
-        ['العمليات واللوائح التنظيمية', 'Operations & Corporate Policies'],
-        ['ربط سياسات الموارد البشرية، الإدارة المالية، تقنية المعلومات، والمشتريات بجداول الصلاحيات المعتمدة.', 'Connect HR, finance, IT, and procurement policies to approved delegation-of-authority matrices.'],
-        ['علاقات المساهمين', 'Shareholder Relations'],
-        ['سجل المساهمين، إحصائيات التصويت الإلكتروني (إيداع/تداول)، وتوثيق نسب الملكية بشفافية.', 'Manage shareholder records, electronic voting statistics (Edaa/Tadawul), and transparent ownership records.'],
-        ['تنويه: هذا النظام عبارة عن نسخة تجريبية (Demo) مخصصة للعرض والتقديم.', 'Notice: This system is a demo version intended for presentation and evaluation.'],
-        ['تصميم وتطوير:', 'Designed & developed by:'],
-        ['أيمن علي المغربي', 'Ayman Ali Almaghrabi'],
-        ['العودة للرئيسية', 'Back to Home'],
-        ['تسجيل الدخول', 'Sign In'],
-        ['أدخل بياناتك أو اختر أحد حسابات الديمو المخصصة لشركة بحر العرب', 'Enter your credentials or choose one of the Arab Sea demo accounts below.'],
-        ['اسم المستخدم', 'Username'],
-        ['أدخل اسم المستخدم', 'Enter username'],
-        ['كلمة المرور', 'Password'],
-        ['أدخل كلمة المرور', 'Enter password'],
-        ['نسيت كلمة المرور؟', 'Forgot password?'],
-        ['دخول النظام', 'Sign In'],
-        ['حسابات الوصول السريع (Demo Access - بحر العرب)', 'QUICK DEMO ACCESS — ARAB SEA'],
-        ['الإدارة العليا / المشرف', 'Executive Management / Admin'],
-        ['المشرف العام', 'System Administrator'],
-        ['مجلس الإدارة', 'Board of Directors'],
-        ['أ. عبد الله الحواس', 'Mr. Abdullah Al-Hawas'],
-        ['الرئيس التنفيذي', 'Chief Executive Officer'],
-        ['أ. هيثم السحيباني', 'Mr. Haitham Al-Suhaibani'],
-        ['بوابة المساهمين', 'Shareholder Portal'],
-        ['سجل إيداع (تداول)', 'Edaa / Tadawul Register'],
-        ['الإدارة المالية', 'Finance'],
-        ['القوائم والموازنة', 'Financials & Budget'],
-        ['الموارد البشرية', 'Human Resources'],
-        ['شؤون الموظفين', 'Employee Affairs'],
-        ['المراجعة الداخلية', 'Internal Audit'],
-        ['تقارير الضبط', 'Control Reports'],
-        ['العمليات التقنية', 'Technology Operations'],
-        ['تطوير النظم والتشغيل', 'Systems Development & Operations'],
-        ['قطاع المبيعات', 'Sales'],
-        ['إدارة الحسابات', 'Account Management'],
-        ['بوابة الموظف', 'Employee Portal'],
-        ['الخدمات الذاتية', 'Self-Service']
-    ];
-
-    const arToEn = new Map(pairs);
-    const enToAr = new Map(pairs.map(([a,e]) => [e,a]));
-
-    function replaceTextNodes(root, map) {
-        const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
-        const nodes = [];
-        while (walker.nextNode()) nodes.push(walker.currentNode);
-        nodes.forEach(node => {
-            const raw = node.nodeValue;
-            const trimmed = raw.trim();
-            if (!trimmed) return;
-            if (map.has(trimmed)) {
-                const lead = raw.match(/^\s*/)[0], tail = raw.match(/\s*$/)[0];
-                node.nodeValue = lead + map.get(trimmed) + tail;
-            } else {
-                // Handles the footer line where text and a nested span share one paragraph.
-                for (const [from,to] of map.entries()) {
-                    if (node.nodeValue.includes(from)) node.nodeValue = node.nodeValue.replace(from,to);
-                }
-            }
-        });
-    }
-
-    function setPlaceholders(lang) {
-        const u = document.getElementById('username');
-        const p = document.getElementById('password');
-        if (u) u.placeholder = lang === EN ? 'Enter username' : 'أدخل اسم المستخدم';
-        if (p) p.placeholder = lang === EN ? 'Enter password' : 'أدخل كلمة المرور';
-    }
-
-    function setLanguage(lang) {
-        const current = document.documentElement.lang || AR;
-        if (current !== lang) replaceTextNodes(document.body, lang === EN ? arToEn : enToAr);
-
-        document.documentElement.lang = lang;
-        document.documentElement.dir = lang === AR ? 'rtl' : 'ltr';
-        document.body.dir = lang === AR ? 'rtl' : 'ltr';
-
-        const toggle = document.getElementById('languageToggleText');
-        if (toggle) toggle.textContent = lang === AR ? 'EN' : 'عربي';
-
-        const back = document.querySelector('a[href="index.html"]');
-        if (back) back.setAttribute('aria-label', lang === AR ? 'العودة إلى الصفحة الرئيسية' : 'Back to home');
-
-        const theme = document.getElementById('themeToggle');
-        if (theme) theme.setAttribute('aria-label', lang === AR ? 'تبديل المظهر' : 'Toggle theme');
-
-        const langBtn = document.getElementById('languageToggle');
-        if (langBtn) langBtn.setAttribute('aria-label', lang === AR ? 'تغيير اللغة' : 'Change language');
-
-        document.title = lang === AR
-            ? 'eGov - تسجيل الدخول | نسخة تجريبية مقدمة لشركة بحر العرب'
-            : 'eGov - Sign In | Demo for Arab Sea Information Systems';
-
-        setPlaceholders(lang);
-        localStorage.setItem('egov-language', lang);
-        localStorage.setItem('language', lang);
-    }
-
-    window.egovLoginLanguage = {
-        get: () => document.documentElement.lang || AR,
-        set: setLanguage
-    };
-
-    document.addEventListener('DOMContentLoaded', function () {
-        const saved = localStorage.getItem('egov-language') || localStorage.getItem('language') || AR;
-        setLanguage(saved === EN ? EN : AR);
-        const btn = document.getElementById('languageToggle');
-        if (btn) btn.addEventListener('click', function () {
-            setLanguage(document.documentElement.lang === AR ? EN : AR);
-        });
-    });
-})();
 </script>
 
 <script src="assets/js/core/i18n.js" defer></script>
