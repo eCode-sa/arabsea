@@ -4,18 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>eGov - تسجيل الدخول | نسخة تجريبية مقدمة لشركة بحر العرب</title>
-    
-    <!-- Google Fonts: Tajawal -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
-    
-    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -23,343 +18,225 @@
                 extend: {
                     colors: {
                         lavender: {
-                            50: '#F9F6FC',
-                            100: '#F3E8FF',
-                            300: '#D8B4FE',
-                            500: '#A855F7',
-                            600: '#9B62C5',
-                            700: '#7E22CE',
-                            900: '#581C87',
+                            50: '#F9F6FC', 100: '#F3E8FF', 300: '#D8B4FE',
+                            500: '#A855F7', 600: '#9B62C5', 700: '#7E22CE', 900: '#581C87'
                         },
-                        charcoal: {
-                            light: '#2D2E32',
-                            DEFAULT: '#1F2022',
-                            dark: '#151618',
-                        }
+                        charcoal: { light: '#2D2E32', DEFAULT: '#1F2022', dark: '#151618' }
                     },
-                    fontFamily: {
-                        sans: ['Tajawal', 'sans-serif'],
-                    }
+                    fontFamily: { sans: ['Tajawal', 'sans-serif'] }
                 }
             }
         }
     </script>
 
     <style>
-        body {
-            font-family: 'Tajawal', sans-serif;
-            -webkit-font-smoothing: antialiased;
-        }
-        .fade-in {
-            animation: fadeIn 0.5s ease-in-out;
-        }
+        body { font-family: 'Tajawal', sans-serif; -webkit-font-smoothing: antialiased; }
+        .fade-in { animation: fadeIn .5s ease-in-out; }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .toast-enter {
-            transform: translateY(100%);
-            opacity: 0;
-        }
+        .toast-enter { transform: translateY(100%); opacity: 0; }
         .toast-active {
-            transform: translateY(0);
-            opacity: 1;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(0); opacity: 1;
+            transition: all .3s cubic-bezier(.4,0,.2,1);
         }
     </style>
 </head>
 
 <body class="bg-white dark:bg-charcoal text-gray-800 dark:text-gray-200 transition-colors duration-300 min-h-screen overflow-x-hidden">
+<div class="flex flex-col md:flex-row min-h-screen">
 
-    <!-- Main Container: Split Screen -->
-    <div class="flex flex-col md:flex-row min-h-screen">
+    <!-- Information panel -->
+    <div class="w-full md:w-5/12 relative overflow-hidden bg-gradient-to-br from-lavender-100 to-white dark:from-charcoal-dark dark:to-charcoal p-8 md:p-12 flex flex-col justify-between border-l border-lavender-100 dark:border-gray-800 z-10">
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 rounded-full bg-lavender-300 opacity-20 blur-3xl dark:bg-lavender-900 dark:opacity-30"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-lavender-500 opacity-10 blur-3xl dark:bg-lavender-700 dark:opacity-20"></div>
 
-        <!-- SIDE A: Information Panel (Right side in RTL) -->
-        <div class="w-full md:w-5/12 relative overflow-hidden bg-gradient-to-br from-lavender-100 to-white dark:from-charcoal-dark dark:to-charcoal p-8 md:p-12 flex flex-col justify-between border-l border-lavender-100 dark:border-gray-800 z-10">
-            
-            <!-- Decorative Background Elements -->
-            <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 rounded-full bg-lavender-300 opacity-20 blur-3xl dark:bg-lavender-900 dark:opacity-30"></div>
-            <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-lavender-500 opacity-10 blur-3xl dark:bg-lavender-700 dark:opacity-20"></div>
-
-            <div class="relative z-10 fade-in">
-                <!-- Branding -->
-                <div class="mb-10">
-                    <div class="inline-block px-3 py-1 bg-lavender-500 text-white text-xs font-bold rounded-full mb-3 shadow-sm">
-                        ديمو تجريبي (Demo)
-                    </div>
-                    <h1 class="text-6xl font-extrabold text-lavender-700 dark:text-lavender-300 tracking-wider mb-2" dir="ltr" style="text-align: right;">eGov</h1>
-                    <h2 class="text-2xl md:text-3xl font-bold text-gray-800 dark:text-white mb-2">منصة الحوكمة الرقمية الشاملة</h2>
-                    <p class="text-sm md:text-base text-lavender-700 dark:text-lavender-300 font-bold">نموذج معروض لشركة بحر العرب لأنظمة المعلومات (7201)</p>
-                </div>
-
-                <!-- Features List -->
-                <div class="space-y-6 mt-8">
-                    <div class="flex items-start gap-4">
-                        <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-white dark:bg-charcoal-light shadow-md flex items-center justify-center text-lavender-500 dark:text-lavender-300 border border-lavender-100 dark:border-gray-700">
-                            <i class="fa-solid fa-gavel text-xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-bold text-gray-800 dark:text-gray-100 mb-1">حوكمة الشركات واللجان</h3>
-                            <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">إدارة اجتماعات ومحاضر مجلس الإدارة، اللجان المنبثقة، والجمعية العامة مع متابعة قرارات التمرير.</p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-start gap-4">
-                        <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-white dark:bg-charcoal-light shadow-md flex items-center justify-center text-lavender-500 dark:text-lavender-300 border border-lavender-100 dark:border-gray-700">
-                            <i class="fa-solid fa-gears text-xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-bold text-gray-800 dark:text-gray-100 mb-1">العمليات واللوائح التنظيمية</h3>
-                            <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">ربط سياسات الموارد البشرية، الإدارة المالية، تقنية المعلومات، والمشتريات بجداول الصلاحيات المعتمدة.</p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-start gap-4">
-                        <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-white dark:bg-charcoal-light shadow-md flex items-center justify-center text-lavender-500 dark:text-lavender-300 border border-lavender-100 dark:border-gray-700">
-                            <i class="fa-solid fa-handshake text-xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-bold text-gray-800 dark:text-gray-100 mb-1">علاقات المساهمين</h3>
-                            <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">سجل المساهمين، إحصائيات التصويت الإلكتروني (إيداع/تداول)، وتوثيق نسب الملكية بشفافية.</p>
-                        </div>
-                    </div>
-                </div>
+        <div class="relative z-10 fade-in">
+            <div class="mb-10">
+                <div class="inline-block px-3 py-1 bg-lavender-500 text-white text-xs font-bold rounded-full mb-3 shadow-sm">ديمو تجريبي (Demo)</div>
+                <h1 class="text-6xl font-extrabold text-lavender-700 dark:text-lavender-300 tracking-wider mb-2" dir="ltr" style="text-align:right">eGov</h1>
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-800 dark:text-white mb-2">منصة الحوكمة الرقمية الشاملة</h2>
+                <p class="text-sm md:text-base text-lavender-700 dark:text-lavender-300 font-bold">نموذج معروض لشركة بحر العرب لأنظمة المعلومات (7201)</p>
             </div>
 
-            <!-- Footer Information -->
-            <div class="relative z-10 mt-12 pt-6 border-t border-gray-200 dark:border-gray-800 fade-in">
-                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
-                    تنويه: هذا النظام عبارة عن نسخة تجريبية (Demo) مخصصة للعرض والتقديم.<br>
-                    تصميم وتطوير: <span class="font-bold text-lavender-700 dark:text-lavender-300">أيمن علي المغربي</span> &copy; 2026.
-                </p>
+            <div class="space-y-6 mt-8">
+                <div class="flex items-start gap-4">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-white dark:bg-charcoal-light shadow-md flex items-center justify-center text-lavender-500 dark:text-lavender-300 border border-lavender-100 dark:border-gray-700"><i class="fa-solid fa-gavel text-xl"></i></div>
+                    <div>
+                        <h3 class="text-lg font-bold text-gray-800 dark:text-gray-100 mb-1">حوكمة الشركات واللجان</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">إدارة اجتماعات ومحاضر مجلس الإدارة، اللجان المنبثقة، والجمعية العامة مع متابعة قرارات التمرير.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-4">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-white dark:bg-charcoal-light shadow-md flex items-center justify-center text-lavender-500 dark:text-lavender-300 border border-lavender-100 dark:border-gray-700"><i class="fa-solid fa-gears text-xl"></i></div>
+                    <div>
+                        <h3 class="text-lg font-bold text-gray-800 dark:text-gray-100 mb-1">العمليات واللوائح التنظيمية</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">ربط سياسات الموارد البشرية، الإدارة المالية، تقنية المعلومات، والمشتريات بجداول الصلاحيات المعتمدة.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-4">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-white dark:bg-charcoal-light shadow-md flex items-center justify-center text-lavender-500 dark:text-lavender-300 border border-lavender-100 dark:border-gray-700"><i class="fa-solid fa-handshake text-xl"></i></div>
+                    <div>
+                        <h3 class="text-lg font-bold text-gray-800 dark:text-gray-100 mb-1">علاقات المساهمين</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">سجل المساهمين، إحصائيات التصويت الإلكتروني (إيداع/تداول)، وتوثيق نسب الملكية بشفافية.</p>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- SIDE B: Login Area (Left side in RTL) -->
-        <div class="w-full md:w-7/12 bg-white dark:bg-charcoal flex flex-col relative min-h-screen">
-            
-            <!-- Top Navigation / Controls -->
-            <div class="w-full p-6 flex justify-between items-center absolute top-0 left-0 right-0 z-20">
-                <button onclick="showToast('الرئيسية متوفرة عبر الدخول التجريبي بالأسفل')" class="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-lavender-600 dark:text-gray-400 dark:hover:text-lavender-300 transition-colors px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light">
-                    <i class="fa-solid fa-arrow-right"></i>
-                    العودة للرئيسية
-                </button>
+        <div class="relative z-10 mt-12 pt-6 border-t border-gray-200 dark:border-gray-800 fade-in">
+            <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+                تنويه: هذا النظام عبارة عن نسخة تجريبية (Demo) مخصصة للعرض والتقديم.<br>
+                تصميم وتطوير: <span class="font-bold text-lavender-700 dark:text-lavender-300">أيمن علي المغربي</span> &copy; 2026.
+            </p>
+        </div>
+    </div>
 
-                <!-- Theme Toggle Button -->
-                <button id="themeToggle" class="w-10 h-10 rounded-full flex items-center justify-center bg-gray-100 dark:bg-charcoal-light text-gray-600 dark:text-gray-300 hover:bg-lavender-100 dark:hover:bg-gray-700 transition-all focus:outline-none" aria-label="تبديل المظهر">
-                    <i class="fa-solid fa-moon text-lg dark:hidden"></i>
-                    <i class="fa-solid fa-sun text-lg hidden dark:block text-yellow-400"></i>
-                </button>
-            </div>
+    <!-- Login area -->
+    <div class="w-full md:w-7/12 bg-white dark:bg-charcoal flex flex-col relative min-h-screen">
+        <div class="w-full p-6 flex justify-between items-center absolute top-0 left-0 right-0 z-20">
+            <!-- فعلياً يرجع إلى الصفحة الرئيسية -->
+            <a href="index.html"
+               class="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-lavender-600 dark:text-gray-400 dark:hover:text-lavender-300 transition-colors px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light"
+               aria-label="العودة إلى الصفحة الرئيسية">
+                <i class="fa-solid fa-arrow-right"></i>
+                <span>العودة للرئيسية</span>
+            </a>
 
-            <!-- Form Container -->
-            <div class="flex-grow flex items-center justify-center p-6 sm:p-12 w-full mt-12 md:mt-0">
-                <div class="w-full max-w-lg fade-in">
-                    
-                    <div class="text-center mb-8">
-                        <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-lavender-100 dark:bg-charcoal-light text-lavender-600 dark:text-lavender-300 mb-4 shadow-sm border border-lavender-200 dark:border-gray-700">
-                            <i class="fa-solid fa-user-lock text-2xl"></i>
-                        </div>
-                        <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white mb-2">تسجيل الدخول</h2>
-                        <p class="text-gray-500 dark:text-gray-400 text-sm">أدخل بياناتك أو اختر أحد حسابات الديمو المخصصة لشركة بحر العرب</p>
+            <button id="themeToggle" type="button" class="w-10 h-10 rounded-full flex items-center justify-center bg-gray-100 dark:bg-charcoal-light text-gray-600 dark:text-gray-300 hover:bg-lavender-100 dark:hover:bg-gray-700 transition-all focus:outline-none" aria-label="تبديل المظهر">
+                <i class="fa-solid fa-moon text-lg dark:hidden"></i>
+                <i class="fa-solid fa-sun text-lg hidden dark:block text-yellow-400"></i>
+            </button>
+        </div>
+
+        <div class="flex-grow flex items-center justify-center p-6 sm:p-12 w-full mt-12 md:mt-0">
+            <div class="w-full max-w-lg fade-in">
+                <div class="text-center mb-8">
+                    <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-lavender-100 dark:bg-charcoal-light text-lavender-600 dark:text-lavender-300 mb-4 shadow-sm border border-lavender-200 dark:border-gray-700">
+                        <i class="fa-solid fa-user-lock text-2xl"></i>
                     </div>
+                    <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white mb-2">تسجيل الدخول</h2>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm">أدخل بياناتك أو اختر أحد حسابات الديمو المخصصة لشركة بحر العرب</p>
+                </div>
 
-                    <form id="loginForm" class="space-y-4">
-                        <div>
-                            <label for="username" class="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-1.5">اسم المستخدم</label>
-                            <div class="relative">
-                                <span class="absolute inset-y-0 right-0 flex items-center pr-4 text-gray-400">
-                                    <i class="fa-regular fa-user"></i>
-                                </span>
-                                <input type="text" id="username" required
-                                    class="block w-full pr-11 pl-4 py-3 bg-gray-50 dark:bg-charcoal-dark border border-gray-200 dark:border-gray-700 rounded-xl text-gray-900 dark:text-white focus:ring-2 focus:ring-lavender-500 focus:border-lavender-500 transition-all outline-none"
-                                    placeholder="أدخل اسم المستخدم">
-                            </div>
-                        </div>
-
-                        <div>
-                            <label for="password" class="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-1.5">كلمة المرور</label>
-                            <div class="relative">
-                                <span class="absolute inset-y-0 right-0 flex items-center pr-4 text-gray-400">
-                                    <i class="fa-solid fa-lock"></i>
-                                </span>
-                                <input type="password" id="password" required
-                                    class="block w-full pr-11 pl-4 py-3 bg-gray-50 dark:bg-charcoal-dark border border-gray-200 dark:border-gray-700 rounded-xl text-gray-900 dark:text-white focus:ring-2 focus:ring-lavender-500 focus:border-lavender-500 transition-all outline-none"
-                                    placeholder="أدخل كلمة المرور">
-                            </div>
-                            <div class="flex justify-end mt-2">
-                                <a href="#" onclick="showToast('في نسخة الديمو يمكنك استكشاف الحسابات أدناه المخصصة لشركة بحر العرب'); return false;" class="text-xs font-semibold text-lavender-600 hover:text-lavender-700 dark:text-lavender-300 transition-colors">نسيت كلمة المرور؟</a>
-                            </div>
-                        </div>
-
-                        <button type="submit" class="w-full flex justify-center py-3.5 px-4 rounded-xl shadow-md text-sm font-bold text-white bg-gradient-to-r from-lavender-500 to-lavender-700 hover:from-lavender-600 hover:to-lavender-800 focus:outline-none transition-all duration-200 mt-4">
-                            دخول النظام
-                        </button>
-                    </form>
-
-                    <!-- Demo Access Section (محدثة بالروابط الـ 10 الدقيقة) -->
-                    <div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-800">
-                        <p class="text-center text-xs font-bold text-gray-500 dark:text-gray-400 mb-4 uppercase tracking-wider">حسابات الوصول السريع (Demo Access - بحر العرب)</p>
-                        
-                        <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
-                            
-                            <!-- 1. الإدارة العليا / المشرف -->
-                            <button onclick="handleDemoLogin('الإدارة العليا / المشرف', 'admin/index.html')" class="flex flex-col items-center justify-center p-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-charcoal-light hover:bg-lavender-50 hover:border-lavender-300 dark:hover:bg-charcoal dark:hover:border-lavender-500 transition-all group">
-                                <i class="fa-solid fa-user-shield text-lavender-600 dark:text-lavender-300 mb-1 text-base"></i>
-                                <span class="text-xs font-bold text-gray-800 dark:text-gray-100 group-hover:text-lavender-700 dark:group-hover:text-lavender-300">الإدارة العليا / المشرف</span>
-                                <span class="text-[10px] text-gray-400">المشرف العام</span>
-                            </button>
-
-                            <!-- 2. مجلس الإدارة -->
-                            <button onclick="handleDemoLogin('بوابة مجلس الإدارة', 'board/index.html')" class="flex flex-col items-center justify-center p-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-charcoal-light hover:bg-lavender-50 hover:border-lavender-300 dark:hover:bg-charcoal dark:hover:border-lavender-500 transition-all group">
-                                <i class="fa-solid fa-users-tie text-purple-600 mb-1 text-base"></i>
-                                <span class="text-xs font-bold text-gray-800 dark:text-gray-100 group-hover:text-lavender-700 dark:group-hover:text-lavender-300">مجلس الإدارة</span>
-                                <span class="text-[10px] text-gray-400">أ. عبد الله الحواس</span>
-                            </button>
-
-                            <!-- 3. الرئيس التنفيذي -->
-                            <button onclick="handleDemoLogin('بوابة الرئيس التنفيذي', 'ceo/index.html')" class="flex flex-col items-center justify-center p-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-charcoal-light hover:bg-lavender-50 hover:border-lavender-300 dark:hover:bg-charcoal dark:hover:border-lavender-500 transition-all group">
-                                <i class="fa-solid fa-user-gear text-blue-500 mb-1 text-base"></i>
-                                <span class="text-xs font-bold text-gray-800 dark:text-gray-100 group-hover:text-lavender-700 dark:group-hover:text-lavender-300">الرئيس التنفيذي</span>
-                                <span class="text-[10px] text-gray-400">أ. هيثم السحيباني</span>
-                            </button>
-
-                            <!-- 4. المساهمين -->
-                            <button onclick="handleDemoLogin('بوابة المساهمين', 'shareholder/index.html')" class="flex flex-col items-center justify-center p-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-charcoal-light hover:bg-lavender-50 hover:border-lavender-300 dark:hover:bg-charcoal dark:hover:border-lavender-500 transition-all group">
-                                <i class="fa-solid fa-handshake text-emerald-500 mb-1 text-base"></i>
-                                <span class="text-xs font-bold text-gray-800 dark:text-gray-100 group-hover:text-lavender-700 dark:group-hover:text-lavender-300">بوابة المساهمين</span>
-                                <span class="text-[10px] text-gray-400">سجل إيداع (تداول)</span>
-                            </button>
-
-                            <!-- 5. الإدارة المالية -->
-                            <button onclick="handleDemoLogin('بوابة الإدارة المالية', 'finance/index.html')" class="flex flex-col items-center justify-center p-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-charcoal-light hover:bg-lavender-50 hover:border-lavender-300 dark:hover:bg-charcoal dark:hover:border-lavender-500 transition-all group">
-                                <i class="fa-solid fa-file-invoice-dollar text-teal-500 mb-1 text-base"></i>
-                                <span class="text-xs font-bold text-gray-800 dark:text-gray-100 group-hover:text-lavender-700 dark:group-hover:text-lavender-300">الإدارة المالية</span>
-                                <span class="text-[10px] text-gray-400">القوائم والموازنة</span>
-                            </button>
-
-                            <!-- 6. الموارد البشرية -->
-                            <button onclick="handleDemoLogin('بوابة الموارد البشرية', 'hr/index.html')" class="flex flex-col items-center justify-center p-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-charcoal-light hover:bg-lavender-50 hover:border-lavender-300 dark:hover:bg-charcoal dark:hover:border-lavender-500 transition-all group">
-                                <i class="fa-solid fa-user-tie text-orange-500 mb-1 text-base"></i>
-                                <span class="text-xs font-bold text-gray-800 dark:text-gray-100 group-hover:text-lavender-700 dark:group-hover:text-lavender-300">الموارد البشرية</span>
-                                <span class="text-[10px] text-gray-400">شؤون الموظفين</span>
-                            </button>
-
-                            <!-- 7. المراجعة الداخلية -->
-                            <button onclick="handleDemoLogin('بوابة المراجعة الداخلية', 'audit/index.html')" class="flex flex-col items-center justify-center p-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-charcoal-light hover:bg-lavender-50 hover:border-lavender-300 dark:hover:bg-charcoal dark:hover:border-lavender-500 transition-all group">
-                                <i class="fa-solid fa-magnifying-glass-chart text-indigo-500 mb-1 text-base"></i>
-                                <span class="text-xs font-bold text-gray-800 dark:text-gray-100 group-hover:text-lavender-700 dark:group-hover:text-lavender-300">المراجعة الداخلية</span>
-                                <span class="text-[10px] text-gray-400">تقارير الضبط</span>
-                            </button>
-
-                            <!-- 8. قطاع العمليات التقنية (CTO) -->
-                            <button onclick="handleDemoLogin('قطاع العمليات التقنية (CTO)', 'cto/index.html')" class="flex flex-col items-center justify-center p-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-charcoal-light hover:bg-lavender-50 hover:border-lavender-300 dark:hover:bg-charcoal dark:hover:border-lavender-500 transition-all group">
-                                <i class="fa-solid fa-network-wired text-cyan-500 mb-1 text-base"></i>
-                                <span class="text-xs font-bold text-gray-800 dark:text-gray-100 group-hover:text-lavender-700 dark:group-hover:text-lavender-300">العمليات التقنية</span>
-                                <span class="text-[10px] text-gray-400">تطوير النظم والتشغيل</span>
-                            </button>
-
-                            <!-- 9. قطاع المبيعات -->
-                            <button onclick="handleDemoLogin('بوابة قطاع المبيعات', 'sales/index.html')" class="flex flex-col items-center justify-center p-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-charcoal-light hover:bg-lavender-50 hover:border-lavender-300 dark:hover:bg-charcoal dark:hover:border-lavender-500 transition-all group">
-                                <i class="fa-solid fa-chart-line text-rose-500 mb-1 text-base"></i>
-                                <span class="text-xs font-bold text-gray-800 dark:text-gray-100 group-hover:text-lavender-700 dark:group-hover:text-lavender-300">قطاع المبيعات</span>
-                                <span class="text-[10px] text-gray-400">إدارة الحسابات</span>
-                            </button>
-
-                            <!-- 10. بوابة الموظف -->
-                            <button onclick="handleDemoLogin('بوابة الموظف', 'employee/index.html')" class="flex flex-col items-center justify-center p-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-charcoal-light hover:bg-lavender-50 hover:border-lavender-300 dark:hover:bg-charcoal dark:hover:border-lavender-500 transition-all group sm:col-span-2 lg:col-span-1">
-                                <i class="fa-solid fa-id-card-clip text-amber-500 mb-1 text-base"></i>
-                                <span class="text-xs font-bold text-gray-800 dark:text-gray-100 group-hover:text-lavender-700 dark:group-hover:text-lavender-300">بوابة الموظف</span>
-                                <span class="text-[10px] text-gray-400">الخدمات الذاتية</span>
-                            </button>
-
+                <form id="loginForm" class="space-y-4">
+                    <div>
+                        <label for="username" class="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-1.5">اسم المستخدم</label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 right-0 flex items-center pr-4 text-gray-400"><i class="fa-regular fa-user"></i></span>
+                            <input type="text" id="username" required autocomplete="username"
+                                   class="block w-full pr-11 pl-4 py-3 bg-gray-50 dark:bg-charcoal-dark border border-gray-200 dark:border-gray-700 rounded-xl text-gray-900 dark:text-white focus:ring-2 focus:ring-lavender-500 focus:border-lavender-500 transition-all outline-none"
+                                   placeholder="أدخل اسم المستخدم">
                         </div>
                     </div>
 
+                    <div>
+                        <label for="password" class="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-1.5">كلمة المرور</label>
+                        <div class="relative">
+                            <span class="absolute inset-y-0 right-0 flex items-center pr-4 text-gray-400"><i class="fa-solid fa-lock"></i></span>
+                            <input type="password" id="password" required autocomplete="current-password"
+                                   class="block w-full pr-11 pl-4 py-3 bg-gray-50 dark:bg-charcoal-dark border border-gray-200 dark:border-gray-700 rounded-xl text-gray-900 dark:text-white focus:ring-2 focus:ring-lavender-500 focus:border-lavender-500 transition-all outline-none"
+                                   placeholder="أدخل كلمة المرور">
+                        </div>
+                        <div class="flex justify-end mt-2">
+                            <a href="#" onclick="showToast('في نسخة الديمو يمكنك استكشاف الحسابات أدناه المخصصة لشركة بحر العرب'); return false;" class="text-xs font-semibold text-lavender-600 hover:text-lavender-700 dark:text-lavender-300 transition-colors">نسيت كلمة المرور؟</a>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full flex justify-center py-3.5 px-4 rounded-xl shadow-md text-sm font-bold text-white bg-gradient-to-r from-lavender-500 to-lavender-700 hover:from-lavender-600 hover:to-lavender-800 focus:outline-none transition-all duration-200 mt-4">
+                        دخول النظام
+                    </button>
+                </form>
+
+                <div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-800">
+                    <p class="text-center text-xs font-bold text-gray-500 dark:text-gray-400 mb-4 uppercase tracking-wider">حسابات الوصول السريع (Demo Access - بحر العرب)</p>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
+                        <button type="button" onclick="handleDemoLogin('الإدارة العليا / المشرف','admin/index.html')" class="demo-card"><i class="fa-solid fa-user-shield text-lavender-600 dark:text-lavender-300 mb-1 text-base"></i><span class="text-xs font-bold">الإدارة العليا / المشرف</span><span class="text-[10px] text-gray-400">المشرف العام</span></button>
+                        <button type="button" onclick="handleDemoLogin('بوابة مجلس الإدارة','board/index.html')" class="demo-card"><i class="fa-solid fa-users-tie text-purple-600 mb-1 text-base"></i><span class="text-xs font-bold">مجلس الإدارة</span><span class="text-[10px] text-gray-400">أ. عبد الله الحواس</span></button>
+                        <button type="button" onclick="handleDemoLogin('بوابة الرئيس التنفيذي','ceo/index.html')" class="demo-card"><i class="fa-solid fa-user-gear text-blue-500 mb-1 text-base"></i><span class="text-xs font-bold">الرئيس التنفيذي</span><span class="text-[10px] text-gray-400">أ. هيثم السحيباني</span></button>
+                        <button type="button" onclick="handleDemoLogin('بوابة المساهمين','shareholder/index.html')" class="demo-card"><i class="fa-solid fa-handshake text-emerald-500 mb-1 text-base"></i><span class="text-xs font-bold">بوابة المساهمين</span><span class="text-[10px] text-gray-400">سجل إيداع (تداول)</span></button>
+                        <button type="button" onclick="handleDemoLogin('بوابة الإدارة المالية','finance/index.html')" class="demo-card"><i class="fa-solid fa-file-invoice-dollar text-teal-500 mb-1 text-base"></i><span class="text-xs font-bold">الإدارة المالية</span><span class="text-[10px] text-gray-400">القوائم والموازنة</span></button>
+                        <button type="button" onclick="handleDemoLogin('بوابة الموارد البشرية','hr/index.html')" class="demo-card"><i class="fa-solid fa-user-tie text-orange-500 mb-1 text-base"></i><span class="text-xs font-bold">الموارد البشرية</span><span class="text-[10px] text-gray-400">شؤون الموظفين</span></button>
+                        <button type="button" onclick="handleDemoLogin('بوابة المراجعة الداخلية','audit/index.html')" class="demo-card"><i class="fa-solid fa-magnifying-glass-chart text-indigo-500 mb-1 text-base"></i><span class="text-xs font-bold">المراجعة الداخلية</span><span class="text-[10px] text-gray-400">تقارير الضبط</span></button>
+                        <button type="button" onclick="handleDemoLogin('قطاع العمليات التقنية (CTO)','cto/index.html')" class="demo-card"><i class="fa-solid fa-network-wired text-cyan-500 mb-1 text-base"></i><span class="text-xs font-bold">العمليات التقنية</span><span class="text-[10px] text-gray-400">تطوير النظم والتشغيل</span></button>
+                        <button type="button" onclick="handleDemoLogin('بوابة قطاع المبيعات','sales/index.html')" class="demo-card"><i class="fa-solid fa-chart-line text-rose-500 mb-1 text-base"></i><span class="text-xs font-bold">قطاع المبيعات</span><span class="text-[10px] text-gray-400">إدارة الحسابات</span></button>
+                        <button type="button" onclick="handleDemoLogin('بوابة الموظف','employee/index.html')" class="demo-card sm:col-span-2 lg:col-span-1"><i class="fa-solid fa-id-card-clip text-amber-500 mb-1 text-base"></i><span class="text-xs font-bold">بوابة الموظف</span><span class="text-[10px] text-gray-400">الخدمات الذاتية</span></button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Custom Toast Notification Container -->
-    <div id="toastContainer" class="fixed bottom-5 left-1/2 transform -translate-x-1/2 z-50 flex flex-col gap-2 pointer-events-none w-full max-w-xs px-4"></div>
+<div id="toastContainer" class="fixed bottom-5 left-1/2 transform -translate-x-1/2 z-50 flex flex-col gap-2 pointer-events-none w-full max-w-xs px-4"></div>
 
-    <script>
-        // DOM Elements
-        const html = document.documentElement;
-        const themeToggleBtn = document.getElementById('themeToggle');
-        const loginForm = document.getElementById('loginForm');
-        const toastContainer = document.getElementById('toastContainer');
+<style>
+    .demo-card {
+        display:flex; flex-direction:column; align-items:center; justify-content:center;
+        padding:.625rem; border-radius:.75rem; border:1px solid rgb(229 231 235);
+        background:white; transition:all .2s;
+    }
+    .demo-card:hover { background:#F9F6FC; border-color:#D8B4FE; transform:translateY(-1px); }
+    .dark .demo-card { background:#2D2E32; border-color:rgb(55 65 81); color:rgb(243 244 246); }
+    .dark .demo-card:hover { background:#1F2022; border-color:#A855F7; }
+</style>
 
-        // Dark Mode Logic
-        function toggleDarkMode() {
-            if (html.classList.contains('dark')) {
-                html.classList.remove('dark');
-                localStorage.setItem('theme', 'light');
-            } else {
-                html.classList.add('dark');
-                localStorage.setItem('theme', 'dark');
-            }
-        }
+<script>
+    const html = document.documentElement;
+    const themeToggleBtn = document.getElementById('themeToggle');
+    const loginForm = document.getElementById('loginForm');
+    const toastContainer = document.getElementById('toastContainer');
 
-        function initTheme() {
-            const savedTheme = localStorage.getItem('theme');
-            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-            
-            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-                html.classList.add('dark');
-            } else {
-                html.classList.remove('dark');
-            }
-        }
+    // نفس مفتاح الصفحة الرئيسية، مع دعم المفتاح القديم احتياطياً
+    function initTheme() {
+        const savedTheme = localStorage.getItem('color-theme') || localStorage.getItem('theme');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) html.classList.add('dark');
+        else html.classList.remove('dark');
+    }
 
-        themeToggleBtn.addEventListener('click', toggleDarkMode);
+    function toggleDarkMode() {
+        html.classList.toggle('dark');
+        const value = html.classList.contains('dark') ? 'dark' : 'light';
+        localStorage.setItem('color-theme', value);
+        localStorage.setItem('theme', value);
+    }
 
-        // Toast System
-        function showToast(message) {
-            const toast = document.createElement('div');
-            toast.className = "flex items-center w-full p-4 rounded-xl shadow-lg text-sm font-bold text-white bg-lavender-600 dark:bg-lavender-700 border border-lavender-500 toast-enter pointer-events-auto transition-all duration-300";
-            toast.innerHTML = `
-                <i class="fa-solid fa-circle-check ml-3 text-lg"></i>
-                <span>${message}</span>
-            `;
-            
-            toastContainer.appendChild(toast);
-            
-            setTimeout(() => {
-                toast.classList.remove('toast-enter');
-                toast.classList.add('toast-active');
-            }, 10);
-            
-            setTimeout(() => {
-                toast.classList.remove('toast-active');
-                toast.classList.add('toast-enter');
-                setTimeout(() => toast.remove(), 300);
-            }, 3000);
-        }
+    themeToggleBtn.addEventListener('click', toggleDarkMode);
 
-        // Form Submit
-        loginForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            showToast('جاري تسجيل الدخول للوحة التحكم...');
-            setTimeout(() => {
-                window.location.href = 'admin/index.html';
-            }, 1000);
-        });
+    function showToast(message) {
+        const toast = document.createElement('div');
+        toast.className = "flex items-center w-full p-4 rounded-xl shadow-lg text-sm font-bold text-white bg-lavender-600 dark:bg-lavender-700 border border-lavender-500 toast-enter pointer-events-auto transition-all duration-300";
+        toast.innerHTML = `<i class="fa-solid fa-circle-check ml-3 text-lg"></i><span>${message}</span>`;
+        toastContainer.appendChild(toast);
+        setTimeout(() => { toast.classList.remove('toast-enter'); toast.classList.add('toast-active'); }, 10);
+        setTimeout(() => {
+            toast.classList.remove('toast-active'); toast.classList.add('toast-enter');
+            setTimeout(() => toast.remove(), 300);
+        }, 3000);
+    }
 
-        // Demo Direct Login
-        function handleDemoLogin(role, targetPage) {
-            showToast(`تم الدخول بصلاحية: ${role}`);
-            setTimeout(() => {
-                window.location.href = targetPage;
-            }, 800);
-        }
+    loginForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        showToast('جاري تسجيل الدخول للوحة التحكم...');
+        setTimeout(() => { window.location.href = 'admin/index.html'; }, 1000);
+    });
 
-        initTheme();
-    </script>
+    function handleDemoLogin(role, targetPage) {
+        localStorage.setItem('egov-demo-role', role);
+        showToast(`تم الدخول بصلاحية: ${role}`);
+        setTimeout(() => { window.location.href = targetPage; }, 800);
+    }
 
-    <script src="assets/js/core/i18n.js" defer></script>
-    <script src="assets/js/core/actions.js" defer></script>
-    <script src="assets/js/core/app.js" defer></script>
-  </body>
+    initTheme();
+</script>
+
+<script src="assets/js/core/i18n.js" defer></script>
+<script src="assets/js/core/actions.js" defer></script>
+<script src="assets/js/core/app.js" defer></script>
+</body>
 </html>
