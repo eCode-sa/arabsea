@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eGov - بوابة الموارد البشرية | بحر العرب</title>
+    <!-- خطوط جوجل (Tajawal) -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- مكتبة الأيقونات FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- مكتبة Tailwind CSS للتصميم -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Tajawal', 'sans-serif'] },
+                    colors: {
+                        charcoal: {
+                            light: '#2D2E32',
+                            DEFAULT: '#1F2022',
+                            dark: '#151618',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #E11D48; border-radius: 10px; } /* Rose-600 */
+        body { font-family: 'Tajawal', sans-serif; transition: background-color 0.3s, color 0.3s; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(225, 29, 72, 0.2);
+        }
+        .dark .glass-panel {
+            background: rgba(45, 46, 50, 0.85);
+            border: 1px solid rgba(225, 29, 72, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-charcoal dark:text-gray-100 overflow-hidden">
+
+    <div class="flex h-screen">
+        
+        <!-- القائمة الجانبية الخاصة ببوابة الموارد البشرية -->
+        <aside class="w-64 glass-panel shadow-lg flex flex-col justify-between hidden md:flex transition-all duration-300 z-20 shrink-0">
+            <div>
+                <!-- الشعار -->
+                <div class="p-6 border-b border-gray-200 dark:border-gray-700 text-center">
+                    <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-rose-500 to-rose-700 text-white shadow-lg mb-3">
+                        <i class="fa-solid fa-users-gear text-2xl"></i>
+                    </div>
+                    <h1 class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-rose-500 to-rose-700 dark:from-rose-400 dark:to-rose-500">
+                        الموارد البشرية
+                    </h1>
+                    <p class="text-[10px] font-bold text-gray-500 dark:text-gray-400 mt-1">بحر العرب لأنظمة المعلومات (7201)</p>
+                </div>
+
+                <!-- الروابط المحدثة -->
+                <nav class="p-4 space-y-1 h-[calc(100vh-220px)] overflow-y-auto">
+                    
+                    <div class="text-xs font-bold text-gray-400 mt-2 mb-2 px-4 uppercase">الرئيسية</div>
+                    <!-- الصفحة الحالية -->
+                    <a href="index.html" class="flex items-center gap-3 px-4 py-2 rounded-xl bg-rose-100 dark:bg-rose-900/50 text-rose-800 dark:text-rose-300 font-bold transition-colors">
+                        <i class="fa-solid fa-chart-pie w-5"></i> <span>نظرة عامة</span>
+                    </a>
+                    <a href="hr_approvals.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-clipboard-check w-5 text-gray-400"></i> <span>الاعتمادات والطلبات</span>
+                        <span class="mr-auto w-5 h-5 bg-rose-500 text-white rounded-full flex items-center justify-center text-[10px]">15</span>
+                    </a>
+                    <a href="internal_chat.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-comments w-5 text-gray-400"></i> <span>المحادثات الداخلية</span>
+                    </a>
+
+                    <div class="text-xs font-bold text-gray-400 mt-4 mb-2 px-4 uppercase">شؤون الموظفين</div>
+                    <a href="hr_employees.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-id-card w-5 text-gray-400"></i> <span>دليل الموظفين</span>
+                    </a>
+                    <a href="hr_contracts.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-file-signature w-5 text-gray-400"></i> <span>العقود الوظيفية</span>
+                    </a>
+                    <a href="hr_org.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-sitemap w-5 text-gray-400"></i> <span>الهيكل التنظيمي</span>
+                    </a>
+
+                    <div class="text-xs font-bold text-gray-400 mt-4 mb-2 px-4 uppercase">العمليات والرواتب</div>
+                    <a href="hr_attendance.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-user-clock w-5 text-gray-400"></i> <span>الحضور والانصراف</span>
+                    </a>
+                    <a href="hr_leaves.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-calendar-alt w-5 text-gray-400"></i> <span>الإجازات والمغادرات</span>
+                    </a>
+                    <a href="hr_payroll.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-file-invoice-dollar w-5 text-gray-400"></i> <span>مسيرات الرواتب</span>
+                    </a>
+
+                    <div class="text-xs font-bold text-gray-400 mt-4 mb-2 px-4 uppercase">الخدمات والعهد</div>
+                    <a href="hr_trips.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-plane-departure w-5 text-gray-400"></i> <span>رحلات العمل والانتدابات</span>
+                    </a>
+                    <a href="hr_assets.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-laptop w-5 text-gray-400"></i> <span>عهد الموظفين</span>
+                    </a>
+                    <a href="hr_logistics.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-building w-5 text-gray-400"></i> <span>الخدمات اللوجستية</span>
+                    </a>
+                    <a href="hr_purchases.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-cart-shopping w-5 text-gray-400"></i> <span>مشتريات الإدارة</span>
+                    </a>
+
+                    <div class="text-xs font-bold text-gray-400 mt-4 mb-2 px-4 uppercase">الجهات الخارجية</div>
+                    <a href="hr_partners.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-handshake w-5 text-gray-400"></i> <span>شركاء التوظيف والتأمين</span>
+                    </a>
+                    <a href="hr_govt.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-landmark w-5 text-gray-400"></i> <span>الخدمات الحكومية</span>
+                    </a>
+                    <a href="hr_recruitment.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-user-tie w-5 text-gray-400"></i> <span>التوظيف والمقابلات</span>
+                    </a>
+
+                    <div class="text-xs font-bold text-gray-400 mt-4 mb-2 px-4 uppercase">النظام</div>
+                    <a href="profile.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-user-shield w-5 text-gray-400"></i> <span>الملف الشخصي</span>
+                    </a>
+                    
+                    <div class="pt-3 mt-3 border-t border-gray-200 dark:border-gray-700">
+                        <a href="../login.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-red-500 text-xs font-bold">
+                            <i class="fa-solid fa-arrow-right-from-bracket w-5"></i> <span>تسجيل الخروج</span>
+                        </a>
+                    </div>
+                </nav>
+            </div>
+
+            <!-- معلومات المطور -->
+            <div class="p-4 border-t border-gray-200 dark:border-gray-700 text-center">
+                <p class="text-xs text-gray-500">تطوير م. أيمن علي المغربي</p>
+                <p class="text-[10px] text-gray-400">eGov System © 2026</p>
+            </div>
+        </aside>
+
+        <!-- المحتوى الرئيسي -->
+        <main class="flex-1 flex flex-col h-screen overflow-hidden bg-gray-50 dark:bg-charcoal-dark">
+            
+            <!-- الشريط العلوي -->
+            <header class="h-16 glass-panel border-b border-gray-200 dark:border-gray-700 flex items-center justify-between px-6 z-10 shrink-0">
+                <div class="flex items-center gap-4">
+                    <button class="md:hidden text-gray-500 hover:text-rose-500"><i class="fa-solid fa-bars text-xl"></i></button>
+                    <h2 class="text-lg font-bold hidden sm:block">لوحة القيادة (HR Dashboard)</h2>
+                </div>
+                
+                <div class="flex items-center gap-4">
+                    <button id="themeToggle" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-charcoal flex items-center justify-center text-gray-500 hover:text-rose-500 transition-colors">
+                        <i class="fa-solid fa-moon dark:hidden"></i>
+                        <i class="fa-solid fa-sun hidden dark:block text-yellow-400"></i>
+                    </button>
+
+                    <button class="relative w-10 h-10 rounded-full bg-gray-100 dark:bg-charcoal flex items-center justify-center text-gray-500 hover:text-rose-500 transition-colors">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="absolute top-2 right-2 w-2 h-2 bg-rose-500 rounded-full"></span>
+                    </button>
+
+                    <!-- بروفايل مدير الموارد البشرية -->
+                    <a href="profile.html" class="flex items-center gap-3 p-1 pr-3 rounded-full bg-rose-50 dark:bg-charcoal border border-rose-200 dark:border-gray-700 hover:border-rose-400 transition-all cursor-pointer">
+                        <div class="text-left hidden sm:block">
+                            <p class="text-sm font-bold text-gray-800 dark:text-gray-100 leading-none">إدارة الموارد البشرية</p>
+                            <p class="text-[10px] text-rose-600 dark:text-rose-400 mt-1 font-bold">HR Manager</p>
+                        </div>
+                        <img src="https://ui-avatars.com/api/?name=HR&background=E11D48&color=fff" alt="HR" class="w-8 h-8 rounded-full border border-rose-200">
+                    </a>
+                </div>
+            </header>
+
+            <!-- منطقة المحتوى القابلة للتمرير -->
+            <div class="flex-1 overflow-y-auto p-6">
+                
+                <!-- الترحيب والموقف السريع -->
+                <div class="bg-gradient-to-r from-rose-600 to-pink-700 text-white rounded-2xl p-6 shadow-lg mb-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-r-4 border-rose-300">
+                    <div>
+                        <span class="px-3 py-1 bg-white/20 text-white text-xs rounded-full font-bold mb-2 inline-block">أكتوبر 2026</span>
+                        <h2 class="text-2xl font-bold mb-1">مرحباً بك في بوابة رأس المال البشري</h2>
+                        <p class="text-rose-100 text-sm">متابعة إحصائيات الموظفين، الحضور والانصراف، والطلبات الإدارية في الوقت الفعلي.</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <a href="hr_employees.html" class="px-4 py-2.5 bg-white text-rose-800 rounded-xl text-sm font-bold shadow hover:bg-rose-50 transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-user-plus text-rose-600"></i> إضافة موظف جديد
+                        </a>
+                    </div>
+                </div>
+
+                <!-- البطاقات الإحصائية الرئيسية (KPIs) -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    
+                    <div class="glass-panel p-5 rounded-2xl border-b-4 border-b-blue-500">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <p class="text-gray-500 dark:text-gray-400 text-xs font-bold">إجمالي القوى العاملة</p>
+                                <h3 class="text-2xl font-bold mt-1 text-gray-800 dark:text-gray-100">452</h3>
+                            </div>
+                            <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/40 flex items-center justify-center text-blue-600 dark:text-blue-300 text-lg">
+                                <i class="fa-solid fa-users"></i>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center mt-3 text-[11px] text-gray-500">
+                            <span><i class="fa-solid fa-mars text-blue-400"></i> 310 ذكور</span>
+                            <span><i class="fa-solid fa-venus text-pink-400"></i> 142 إناث</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel p-5 rounded-2xl border-b-4 border-b-emerald-500">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <p class="text-gray-500 dark:text-gray-400 text-xs font-bold">حالة الحضور (اليوم)</p>
+                                <h3 class="text-2xl font-bold mt-1 text-gray-800 dark:text-gray-100">425</h3>
+                            </div>
+                            <div class="w-10 h-10 rounded-full bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center text-emerald-600 dark:text-emerald-300 text-lg">
+                                <i class="fa-solid fa-fingerprint"></i>
+                            </div>
+                        </div>
+                        <p class="text-[11px] text-gray-500 mt-2">نسبة الحضور: <span class="text-emerald-500 font-bold">96.5%</span> <i class="fa-solid fa-arrow-trend-up text-emerald-500"></i></p>
+                    </div>
+
+                    <div class="glass-panel p-5 rounded-2xl border-b-4 border-b-orange-500">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <p class="text-gray-500 dark:text-gray-400 text-xs font-bold">في إجازة / غياب</p>
+                                <h3 class="text-2xl font-bold mt-1 text-gray-800 dark:text-gray-100">27</h3>
+                            </div>
+                            <div class="w-10 h-10 rounded-full bg-orange-100 dark:bg-orange-900/40 flex items-center justify-center text-orange-600 dark:text-orange-300 text-lg">
+                                <i class="fa-solid fa-plane-departure"></i>
+                            </div>
+                        </div>
+                        <div class="flex gap-3 mt-2 text-[10px] text-gray-500 font-bold">
+                            <span class="text-orange-500">18 إجازة سنوية</span>
+                            <span class="text-red-500">4 غياب بدون عذر</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel p-5 rounded-2xl border-b-4 border-b-rose-500">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <p class="text-gray-500 dark:text-gray-400 text-xs font-bold">الطلبات المعلقة للـ HR</p>
+                                <h3 class="text-2xl font-bold mt-1 text-rose-600 dark:text-rose-400">15</h3>
+                            </div>
+                            <div class="w-10 h-10 rounded-full bg-rose-100 dark:bg-rose-900/40 flex items-center justify-center text-rose-600 dark:text-rose-300 text-lg">
+                                <i class="fa-solid fa-inbox"></i>
+                            </div>
+                        </div>
+                        <p class="text-[11px] text-gray-500 mt-2">تحتاج إلى مراجعة واعتماد الإدارة</p>
+                    </div>
+
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+                    
+                    <!-- الطلبات المعلقة (Pending Requests) -->
+                    <div class="lg:col-span-2 glass-panel rounded-2xl overflow-hidden">
+                        <div class="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center bg-gray-50/50 dark:bg-charcoal/50">
+                            <h3 class="font-bold flex items-center gap-2">
+                                <i class="fa-solid fa-bell text-rose-600"></i> طلبات الموظفين الحديثة
+                            </h3>
+                            <a href="hr_approvals.html" class="text-xs text-rose-600 dark:text-rose-400 font-bold hover:underline">عرض الكل</a>
+                        </div>
+                        <div class="p-0 overflow-x-auto">
+                            <table class="w-full text-right text-sm">
+                                <thead class="bg-gray-50 dark:bg-charcoal-light border-b border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400">
+                                    <tr>
+                                        <th class="p-3 font-normal text-xs">رقم الطلب</th>
+                                        <th class="p-3 font-normal text-xs">الموظف</th>
+                                        <th class="p-3 font-normal text-xs">نوع الطلب</th>
+                                        <th class="p-3 font-normal text-xs">التاريخ</th>
+                                        <th class="p-3 font-normal text-xs text-center">إجراء</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+                                    <tr class="hover:bg-gray-50 dark:hover:bg-charcoal-light/50">
+                                        <td class="p-3 text-xs font-mono text-gray-500">REQ-8902</td>
+                                        <td class="p-3 font-bold text-gray-800 dark:text-gray-100">أحمد عبدالله السالم<br><span class="text-[10px] text-gray-500 font-normal">تقنية المعلومات</span></td>
+                                        <td class="p-3"><span class="px-2 py-1 bg-orange-100 text-orange-700 dark:bg-orange-900/30 rounded text-[10px] font-bold">إجازة سنوية</span></td>
+                                        <td class="p-3 text-xs text-gray-500">منذ ساعتين</td>
+                                        <td class="p-3 text-center">
+                                            <button class="px-3 py-1 bg-rose-600 text-white rounded text-xs font-bold hover:bg-rose-700 transition-colors">مراجعة</button>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50 dark:hover:bg-charcoal-light/50">
+                                        <td class="p-3 text-xs font-mono text-gray-500">REQ-8901</td>
+                                        <td class="p-3 font-bold text-gray-800 dark:text-gray-100">سارة محمد الغامدي<br><span class="text-[10px] text-gray-500 font-normal">المبيعات والتسويق</span></td>
+                                        <td class="p-3"><span class="px-2 py-1 bg-blue-100 text-blue-700 dark:bg-blue-900/30 rounded text-[10px] font-bold">تعريف بالراتب (مصدق)</span></td>
+                                        <td class="p-3 text-xs text-gray-500">اليوم 09:15 ص</td>
+                                        <td class="p-3 text-center">
+                                            <button class="px-3 py-1 bg-rose-600 text-white rounded text-xs font-bold hover:bg-rose-700 transition-colors">مراجعة</button>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50 dark:hover:bg-charcoal-light/50">
+                                        <td class="p-3 text-xs font-mono text-gray-500">REQ-8899</td>
+                                        <td class="p-3 font-bold text-gray-800 dark:text-gray-100">خالد فهد الدوسري<br><span class="text-[10px] text-gray-500 font-normal">العمليات</span></td>
+                                        <td class="p-3"><span class="px-2 py-1 bg-purple-100 text-purple-700 dark:bg-purple-900/30 rounded text-[10px] font-bold">سلفة مالية</span></td>
+                                        <td class="p-3 text-xs text-gray-500">أمس</td>
+                                        <td class="p-3 text-center">
+                                            <button class="px-3 py-1 bg-rose-600 text-white rounded text-xs font-bold hover:bg-rose-700 transition-colors">مراجعة</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- التنبيهات والإشعارات السريعة -->
+                    <div class="glass-panel rounded-2xl overflow-hidden flex flex-col">
+                        <div class="p-4 border-b border-gray-200 dark:border-gray-700 bg-gray-50/50 dark:bg-charcoal/50">
+                            <h3 class="font-bold text-sm">تنبيهات وتواريخ هامة</h3>
+                        </div>
+                        <div class="p-4 flex-1 space-y-3">
+                            
+                            <div class="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 border border-red-100 dark:border-red-900/30 rounded-xl">
+                                <div class="w-8 h-8 rounded-full bg-red-100 text-red-600 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-id-card"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-sm text-gray-800 dark:text-gray-100">تجديد إقامات وشؤون جوازات</p>
+                                    <p class="text-xs text-gray-600 dark:text-gray-400 mt-1">يوجد <strong>8 إقامات</strong> تنتهي خلال 30 يوماً.</p>
+                                    <a href="#" class="text-[10px] text-red-600 font-bold mt-1 inline-block hover:underline">بدء إجراءات التجديد</a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3 p-3 bg-orange-50 dark:bg-orange-900/10 border border-orange-100 dark:border-orange-900/30 rounded-xl">
+                                <div class="w-8 h-8 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-file-signature"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-sm text-gray-800 dark:text-gray-100">نهاية فترة التجربة</p>
+                                    <p class="text-xs text-gray-600 dark:text-gray-400 mt-1">يوجد <strong>3 موظفين</strong> تنتهي فترة تجربتهم هذا الأسبوع.</p>
+                                    <a href="#" class="text-[10px] text-orange-600 font-bold mt-1 inline-block hover:underline">طلب تقييم المدراء</a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3 p-3 bg-teal-50 dark:bg-teal-900/10 border border-teal-100 dark:border-teal-900/30 rounded-xl">
+                                <div class="w-8 h-8 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-briefcase"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-sm text-gray-800 dark:text-gray-100">شواغر وظيفية نشطة</p>
+                                    <p class="text-xs text-gray-600 dark:text-gray-400 mt-1">يوجد <strong>5 وظائف مفتوحة</strong> للتوظيف.</p>
+                                    <a href="hr_recruitment.html" class="text-[10px] text-teal-600 font-bold mt-1 inline-block hover:underline">عرض المرشحين (24)</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- تذييل الصفحة -->
+                <footer class="mt-8 pt-4 border-t border-gray-200 dark:border-gray-700 text-center text-sm text-gray-500 flex flex-col md:flex-row justify-between items-center gap-2">
+                    <p>بوابة الموارد البشرية - نسخة تجريبية (Demo) صممت خصيصاً لشركة بحر العرب.</p>
+                    <p>برمجة وتطوير <span class="font-bold text-rose-600 dark:text-rose-400">م. أيمن علي المغربي</span> &copy; 2026</p>
+                </footer>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- سكريبت الوضع الداكن -->
+    <script>
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            htmlElement.classList.add('dark');
+        }
+
+        themeToggleBtn.addEventListener('click', function() {
+            htmlElement.classList.toggle('dark');
+            if (htmlElement.classList.contains('dark')) {
+                localStorage.setItem('color-theme', 'dark');
+            } else {
+                localStorage.setItem('color-theme', 'light');
+            }
+        });
+    </script>
+</body>
+</html>
