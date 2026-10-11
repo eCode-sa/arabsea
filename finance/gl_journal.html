@@ -1,4 +1,77 @@
-<div class="text-xs font-bold text-gray-400 mt-2 mb-2 px-4 uppercase">الرئيسية</div>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eGov - قيود اليومية العامة | الإدارة المالية - بحر العرب</title>
+    <!-- خطوط جوجل (Tajawal) -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- مكتبة الأيقونات FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- مكتبة Tailwind CSS للتصميم -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Tajawal', 'sans-serif'] },
+                    colors: {
+                        lavender: {
+                            100: '#F3E8FF',
+                            300: '#D8B4FE',
+                            500: '#A855F7',
+                            700: '#7E22CE',
+                            900: '#581C87',
+                        },
+                        charcoal: {
+                            light: '#2D2E32',
+                            DEFAULT: '#1F2022',
+                            dark: '#151618',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #14B8A6; border-radius: 10px; }
+        body { font-family: 'Tajawal', sans-serif; transition: background-color 0.3s, color 0.3s; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(20, 184, 166, 0.2);
+        }
+        .dark .glass-panel {
+            background: rgba(45, 46, 50, 0.85);
+            border: 1px solid rgba(20, 184, 166, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-charcoal dark:text-gray-100 overflow-hidden">
+
+    <div class="flex h-screen">
+        
+        <!-- القائمة الجانبية الخاصة ببوابة الإدارة المالية -->
+        <aside class="w-64 glass-panel shadow-lg flex flex-col justify-between hidden md:flex transition-all duration-300 z-20 shrink-0">
+            <div>
+                <!-- الشعار -->
+                <div class="p-6 border-b border-gray-200 dark:border-gray-700 text-center">
+                    <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-teal-500 to-teal-700 text-white shadow-lg mb-3">
+                        <i class="fa-solid fa-file-invoice-dollar text-2xl"></i>
+                    </div>
+                    <h1 class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-teal-500 to-teal-700 dark:from-teal-300 dark:to-teal-500">
+                        الإدارة المالية
+                    </h1>
+                    <p class="text-[10px] font-bold text-gray-500 dark:text-gray-400 mt-1">بحر العرب لأنظمة المعلومات (7201)</p>
+                </div>
+
+                <!-- الروابط -->
+                <nav class="p-4 space-y-1 h-[calc(100vh-220px)] overflow-y-auto">
+                    
+                    <div class="text-xs font-bold text-gray-400 mt-2 mb-2 px-4 uppercase">الرئيسية</div>
                     <a href="index.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
                         <i class="fa-solid fa-chart-pie w-5 text-gray-400"></i> <span>نظرة عامة</span>
                     </a>
