@@ -1,282 +1,196 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>eGov - النظام الإداري المتكامل | بحر العرب</title>
-    <!-- خطوط جوجل (Tajawal) -->
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-    <!-- مكتبة الأيقونات FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- مكتبة Tailwind CSS للتصميم -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['Tajawal', 'sans-serif'] },
-                    colors: {
-                        charcoal: {
-                            light: '#2D2E32',
-                            DEFAULT: '#1F2022',
-                            dark: '#151618',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #6366F1; border-radius: 10px; } /* Indigo-500 */
-        body { font-family: 'Tajawal', sans-serif; transition: background-color 0.3s, color 0.3s; }
-        
-        /* تأثيرات الزجاج (Glassmorphism) */
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
-        }
-        .dark .glass-panel {
-            background: rgba(45, 46, 50, 0.85);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-        }
-
-        /* خلفية ديناميكية متحركة للصفحة الرئيسية */
-        .bg-animated {
-            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
-            opacity: 0.05;
-        }
-        .dark .bg-animated {
-            background: linear-gradient(-45deg, #1e1b4b, #312e81, #111827, #0f172a);
-            opacity: 0.5;
-        }
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* تأثير كروت البوابات */
-        .portal-card {
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .portal-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            z-index: 10;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="منصة eGov المؤسسية من بحر العرب للحوكمة وسير العمل والموافقات وإدارة المخاطر والالتزام والمراجعة الداخلية.">
+  <title>eGov | منصة الحوكمة والإدارة المؤسسية - بحر العرب</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Tajawal','sans-serif'] } } }
+    };
+  </script>
+  <style>
+    html{scroll-behavior:smooth} body{font-family:'Tajawal',sans-serif}
+    .glass{background:rgba(255,255,255,.82);backdrop-filter:blur(18px);border:1px solid rgba(148,163,184,.18)}
+    .dark .glass{background:rgba(15,23,42,.80);border-color:rgba(148,163,184,.12)}
+    .hero-grid{background-image:linear-gradient(rgba(99,102,241,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(99,102,241,.07) 1px,transparent 1px);background-size:42px 42px}
+    .orb{filter:blur(70px);opacity:.22;pointer-events:none}
+    .feature-card{transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+    .feature-card:hover{transform:translateY(-5px);border-color:rgba(99,102,241,.35);box-shadow:0 22px 50px rgba(15,23,42,.08)}
+    .dark .feature-card:hover{box-shadow:0 22px 50px rgba(0,0,0,.24)}
+    .flow-line:after{content:'';position:absolute;top:50%;inset-inline-start:100%;width:2rem;height:2px;background:#cbd5e1}
+    [dir="ltr"] .rtl-arrow{transform:rotate(180deg)}
+    @media(max-width:767px){.flow-line:after{display:none}}
+  </style>
 </head>
-<body class="bg-gray-50 text-gray-800 dark:bg-charcoal-dark dark:text-gray-100 min-h-screen flex flex-col relative">
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors">
+  <div class="fixed inset-0 hero-grid pointer-events-none opacity-60 dark:opacity-25"></div>
+  <div class="orb fixed w-96 h-96 rounded-full bg-indigo-500 top-24 -right-24"></div>
+  <div class="orb fixed w-80 h-80 rounded-full bg-cyan-400 bottom-10 -left-24"></div>
 
-    <!-- الخلفية المتحركة -->
-    <div class="bg-animated"></div>
+  <header class="glass sticky top-0 z-50 border-b border-slate-200/70 dark:border-slate-800/70">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+      <a href="#home" class="flex items-center gap-3 min-w-0" aria-label="eGov">
+        <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-indigo-600 to-violet-600 text-white flex items-center justify-center shadow-lg shadow-indigo-500/20"><i class="fa-solid fa-layer-group"></i></div>
+        <div class="min-w-0"><div class="font-black text-xl leading-none">eGov</div><div class="text-[11px] text-slate-500 dark:text-slate-400 mt-1" data-ar="بحر العرب لأنظمة المعلومات" data-en="Arab Sea Information Systems">بحر العرب لأنظمة المعلومات</div></div>
+      </a>
 
-    <!-- الشريط العلوي المركزي -->
-    <header class="h-20 glass-panel border-b border-gray-200 dark:border-gray-800 flex items-center justify-between px-4 sm:px-8 lg:px-16 z-20 sticky top-0">
-        <div class="flex items-center gap-4">
-            <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-br from-indigo-600 to-purple-600 text-white shadow-lg shadow-indigo-500/30">
-                <i class="fa-solid fa-layer-group text-2xl"></i>
+      <nav class="hidden lg:flex items-center gap-7 text-sm font-bold text-slate-600 dark:text-slate-300">
+        <a href="#home" class="hover:text-indigo-600" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
+        <a href="#about" class="hover:text-indigo-600" data-ar="عن المنصة" data-en="About">عن المنصة</a>
+        <a href="#solutions" class="hover:text-indigo-600" data-ar="الحلول" data-en="Solutions">الحلول</a>
+        <a href="#governance" class="hover:text-indigo-600" data-ar="الحوكمة والرقابة" data-en="Governance & Oversight">الحوكمة والرقابة</a>
+        <a href="#features" class="hover:text-indigo-600" data-ar="المزايا" data-en="Features">المزايا</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <button id="langToggle" type="button" class="h-10 px-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 font-black text-xs hover:border-indigo-400" aria-label="Change language">EN</button>
+        <button id="themeToggle" type="button" class="w-10 h-10 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/70 flex items-center justify-center" aria-label="Theme"><i class="fa-solid fa-moon dark:hidden"></i><i class="fa-solid fa-sun hidden dark:block text-amber-400"></i></button>
+        <a href="login.html" class="hidden sm:inline-flex h-10 items-center gap-2 px-5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm shadow-lg shadow-indigo-500/20"><span data-ar="تسجيل الدخول" data-en="Login">تسجيل الدخول</span><i class="fa-solid fa-arrow-left rtl-arrow"></i></a>
+        <button id="mobileMenuBtn" type="button" class="lg:hidden w-10 h-10 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center justify-center" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="hidden lg:hidden border-t border-slate-200 dark:border-slate-800 px-4 py-4 bg-white/95 dark:bg-slate-950/95">
+      <div class="grid gap-2 font-bold text-sm">
+        <a href="#home" class="p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-900" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
+        <a href="#about" class="p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-900" data-ar="عن المنصة" data-en="About">عن المنصة</a>
+        <a href="#solutions" class="p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-900" data-ar="الحلول" data-en="Solutions">الحلول</a>
+        <a href="#governance" class="p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-900" data-ar="الحوكمة والرقابة" data-en="Governance & Oversight">الحوكمة والرقابة</a>
+        <a href="#features" class="p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-900" data-ar="المزايا" data-en="Features">المزايا</a>
+        <a href="login.html" class="p-3 rounded-xl bg-indigo-600 text-white text-center" data-ar="تسجيل الدخول" data-en="Login">تسجيل الدخول</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative z-10">
+    <section id="home" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 lg:pt-28 pb-20 lg:pb-28">
+      <div class="grid lg:grid-cols-[1.08fr_.92fr] gap-14 items-center">
+        <div>
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-indigo-200 dark:border-indigo-900 bg-indigo-50/80 dark:bg-indigo-950/50 text-indigo-700 dark:text-indigo-300 text-xs font-black mb-6"><i class="fa-solid fa-shield-halved"></i><span data-ar="الحوكمة • الصلاحيات • سير العمل • الرقابة" data-en="Governance • Authority • Workflow • Oversight">الحوكمة • الصلاحيات • سير العمل • الرقابة</span></div>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black leading-[1.18] tracking-tight"><span data-ar="منصة موحدة لحوكمة" data-en="One platform to govern">منصة موحدة لحوكمة</span><br><span class="text-transparent bg-clip-text bg-gradient-to-l from-indigo-600 to-violet-600" data-ar="وإدارة أعمال المنشأة" data-en="and operate the enterprise">وإدارة أعمال المنشأة</span></h1>
+          <p class="mt-7 text-base sm:text-lg leading-8 text-slate-600 dark:text-slate-300 max-w-2xl" data-ar="نظام مؤسسي متكامل يربط مجلس الإدارة والإدارة التنفيذية والإدارات والموظفين ضمن بيئة رقمية موحدة تعزز الحوكمة، وترفع كفاءة العمليات، وتنظم الصلاحيات والموافقات، وتدعم الرقابة والالتزام وإدارة المخاطر." data-en="An integrated enterprise platform connecting the Board, executive management, departments and employees in one digital environment that strengthens governance, streamlines operations, structures authority and approvals, and supports oversight, compliance and risk management.">نظام مؤسسي متكامل يربط مجلس الإدارة والإدارة التنفيذية والإدارات والموظفين ضمن بيئة رقمية موحدة تعزز الحوكمة، وترفع كفاءة العمليات، وتنظم الصلاحيات والموافقات، وتدعم الرقابة والالتزام وإدارة المخاطر.</p>
+          <div class="mt-9 flex flex-wrap gap-3">
+            <a href="login.html" class="inline-flex items-center gap-3 px-7 py-4 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-black shadow-xl shadow-indigo-500/20"><span data-ar="تسجيل الدخول" data-en="Login">تسجيل الدخول</span><i class="fa-solid fa-arrow-left rtl-arrow"></i></a>
+            <a href="#about" class="inline-flex items-center gap-3 px-7 py-4 rounded-2xl bg-white/80 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 font-black hover:border-indigo-400"><span data-ar="استكشف المنصة" data-en="Explore the platform">استكشف المنصة</span><i class="fa-solid fa-arrow-down"></i></a>
+          </div>
+          <div class="mt-10 flex flex-wrap gap-x-7 gap-y-3 text-xs font-bold text-slate-500 dark:text-slate-400">
+            <span><i class="fa-solid fa-circle-check text-emerald-500 ml-2"></i><span data-ar="صلاحيات حسب الدور" data-en="Role-based access">صلاحيات حسب الدور</span></span>
+            <span><i class="fa-solid fa-circle-check text-emerald-500 ml-2"></i><span data-ar="مسارات اعتماد واضحة" data-en="Structured approvals">مسارات اعتماد واضحة</span></span>
+            <span><i class="fa-solid fa-circle-check text-emerald-500 ml-2"></i><span data-ar="أثر تدقيقي متكامل" data-en="Complete audit trail">أثر تدقيقي متكامل</span></span>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="glass rounded-[2rem] p-5 sm:p-7 shadow-2xl shadow-slate-900/10 dark:shadow-black/30">
+            <div class="flex items-center justify-between mb-6"><div><div class="text-xs text-slate-500" data-ar="لوحة موحدة" data-en="Unified dashboard">لوحة موحدة</div><div class="font-black text-lg mt-1" data-ar="مركز الحوكمة والعمليات" data-en="Governance & Operations Center">مركز الحوكمة والعمليات</div></div><div class="w-11 h-11 rounded-2xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-300 flex items-center justify-center"><i class="fa-solid fa-chart-pie"></i></div></div>
+            <div class="grid grid-cols-2 gap-3 mb-4">
+              <div class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-4"><div class="text-xs text-slate-500" data-ar="موافقات معلقة" data-en="Pending approvals">موافقات معلقة</div><div class="text-3xl font-black mt-2">12</div><div class="text-[11px] text-amber-600 mt-1" data-ar="تتطلب إجراء" data-en="Require action">تتطلب إجراء</div></div>
+              <div class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-4"><div class="text-xs text-slate-500" data-ar="مخاطر عالية" data-en="High risks">مخاطر عالية</div><div class="text-3xl font-black mt-2">6</div><div class="text-[11px] text-rose-600 mt-1" data-ar="تحت المتابعة" data-en="Under monitoring">تحت المتابعة</div></div>
             </div>
-            <div>
-                <h1 class="text-xl md:text-2xl font-black bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 tracking-tight">
-                    نظام eGov المتكامل
-                </h1>
-                <p class="text-[10px] md:text-xs font-bold text-gray-500 dark:text-gray-400 mt-0.5">بحر العرب لأنظمة المعلومات (Arab Sea - 7201)</p>
+            <div class="rounded-2xl bg-slate-900 text-white p-5">
+              <div class="flex items-center justify-between mb-5"><span class="font-black text-sm" data-ar="مسار اعتماد" data-en="Approval workflow">مسار اعتماد</span><span class="text-[10px] bg-amber-400/15 text-amber-300 px-2 py-1 rounded-lg" data-ar="قيد الإجراء" data-en="In progress">قيد الإجراء</span></div>
+              <div class="space-y-4 text-xs">
+                <div class="flex gap-3"><span class="w-7 h-7 rounded-full bg-emerald-500 flex items-center justify-center shrink-0"><i class="fa-solid fa-check"></i></span><div><b data-ar="مدير الإدارة" data-en="Department Manager">مدير الإدارة</b><div class="text-slate-400 mt-1" data-ar="تمت الموافقة" data-en="Approved">تمت الموافقة</div></div></div>
+                <div class="flex gap-3"><span class="w-7 h-7 rounded-full bg-indigo-500 flex items-center justify-center shrink-0">2</span><div><b data-ar="الإدارة المالية" data-en="Finance">الإدارة المالية</b><div class="text-slate-400 mt-1" data-ar="بانتظار المراجعة" data-en="Awaiting review">بانتظار المراجعة</div></div></div>
+                <div class="flex gap-3 opacity-60"><span class="w-7 h-7 rounded-full border border-slate-600 flex items-center justify-center shrink-0">3</span><div><b data-ar="الرئيس التنفيذي" data-en="CEO">الرئيس التنفيذي</b><div class="text-slate-400 mt-1" data-ar="المرحلة التالية" data-en="Next stage">المرحلة التالية</div></div></div>
+              </div>
             </div>
+          </div>
         </div>
-        
-        <div class="flex items-center gap-3 sm:gap-5">
-            <div class="hidden md:block text-left mr-4">
-                <p class="text-sm font-bold text-gray-800 dark:text-gray-100">الأحد، 11 أكتوبر 2026</p>
-            </div>
-            
-            <button id="themeToggle" class="w-10 h-10 rounded-full bg-white dark:bg-charcoal border border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-500 hover:text-indigo-600 transition-colors shadow-sm">
-                <i class="fa-solid fa-moon dark:hidden"></i>
-                <i class="fa-solid fa-sun hidden dark:block text-yellow-400"></i>
-            </button>
-            
-            <!-- زر تسجيل الخروج -->
-            <a href="login.html" class="flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 hover:bg-red-100 dark:bg-red-900/20 dark:hover:bg-red-900/40 text-red-600 dark:text-red-400 border border-red-100 dark:border-red-900/30 transition-all font-bold text-xs sm:text-sm">
-                <span class="hidden sm:inline">تسجيل الخروج</span>
-                <i class="fa-solid fa-arrow-right-from-bracket"></i>
-            </a>
+      </div>
+    </section>
+
+    <section id="about" class="border-y border-slate-200 dark:border-slate-800 bg-white/65 dark:bg-slate-900/35">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div class="max-w-3xl mx-auto text-center mb-12"><div class="text-indigo-600 font-black text-sm mb-3" data-ar="منصة واحدة، رؤية موحدة" data-en="One platform, one view">منصة واحدة، رؤية موحدة</div><h2 class="text-3xl sm:text-4xl font-black" data-ar="اربط الحوكمة بالعمليات اليومية" data-en="Connect governance with daily operations">اربط الحوكمة بالعمليات اليومية</h2><p class="mt-4 text-slate-600 dark:text-slate-400 leading-7" data-ar="بدلاً من تشتت الطلبات والقرارات والموافقات بين الأنظمة والمراسلات، تجمع eGov دورة العمل والرقابة والمسؤولية في بيئة مؤسسية واحدة." data-en="Instead of scattering requests, decisions and approvals across systems and email, eGov brings workflow, oversight and accountability into one enterprise environment.">بدلاً من تشتت الطلبات والقرارات والموافقات بين الأنظمة والمراسلات، تجمع eGov دورة العمل والرقابة والمسؤولية في بيئة مؤسسية واحدة.</p></div>
+        <div class="grid md:grid-cols-3 gap-5">
+          <div class="feature-card rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-7"><div class="w-12 h-12 rounded-2xl bg-indigo-50 dark:bg-indigo-950 text-indigo-600 flex items-center justify-center mb-5"><i class="fa-solid fa-scale-balanced"></i></div><h3 class="font-black text-lg" data-ar="حوكمة مؤسسية" data-en="Corporate Governance">حوكمة مؤسسية</h3><p class="text-sm leading-7 text-slate-500 mt-3" data-ar="إدارة المجالس واللجان والقرارات والتكليفات والإفصاحات ضمن إطار واضح للمساءلة والمتابعة." data-en="Manage boards, committees, resolutions, assignments and disclosures within a clear accountability framework.">إدارة المجالس واللجان والقرارات والتكليفات والإفصاحات ضمن إطار واضح للمساءلة والمتابعة.</p></div>
+          <div class="feature-card rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-7"><div class="w-12 h-12 rounded-2xl bg-emerald-50 dark:bg-emerald-950 text-emerald-600 flex items-center justify-center mb-5"><i class="fa-solid fa-route"></i></div><h3 class="font-black text-lg" data-ar="سير العمل والموافقات" data-en="Workflow & Approvals">سير العمل والموافقات</h3><p class="text-sm leading-7 text-slate-500 mt-3" data-ar="حوّل الإجراءات إلى مسارات رقمية محددة تبدأ بالطلب وتنتهي بالاعتماد والتنفيذ مع وضوح المسؤوليات." data-en="Turn procedures into structured digital workflows from request through approval and execution with clear ownership.">حوّل الإجراءات إلى مسارات رقمية محددة تبدأ بالطلب وتنتهي بالاعتماد والتنفيذ مع وضوح المسؤوليات.</p></div>
+          <div class="feature-card rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-7"><div class="w-12 h-12 rounded-2xl bg-rose-50 dark:bg-rose-950 text-rose-600 flex items-center justify-center mb-5"><i class="fa-solid fa-shield"></i></div><h3 class="font-black text-lg" data-ar="المخاطر والالتزام" data-en="Risk & Compliance">المخاطر والالتزام</h3><p class="text-sm leading-7 text-slate-500 mt-3" data-ar="اربط المخاطر والضوابط والالتزامات وخطط المعالجة بالمسؤولين والمواعيد والأدلة والمتابعة." data-en="Connect risks, controls, obligations and treatment plans to owners, deadlines, evidence and follow-up.">اربط المخاطر والضوابط والالتزامات وخطط المعالجة بالمسؤولين والمواعيد والأدلة والمتابعة.</p></div>
         </div>
-    </header>
+      </div>
+    </section>
 
-    <!-- المحتوى الرئيسي (شبكة البوابات) -->
-    <main class="flex-1 container mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col justify-center relative z-10">
-        
-        <div class="text-center max-w-3xl mx-auto mb-16">
-            <h2 class="text-3xl md:text-5xl font-black mb-4 text-gray-900 dark:text-white leading-tight">مرحباً بك في مركز التحكم الشامل</h2>
-            <p class="text-gray-600 dark:text-gray-400 text-sm md:text-base leading-relaxed">
-                اختر البوابة أو القسم المطلوب للدخول إلى مساحة العمل المخصصة لك. جميع الأنظمة مترابطة ومحمية بأعلى معايير الأمان لتسهيل تدفق المعلومات.
-            </p>
+    <section id="solutions" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div class="grid lg:grid-cols-[.8fr_1.2fr] gap-12 items-start">
+        <div class="lg:sticky lg:top-28"><div class="text-indigo-600 font-black text-sm mb-3" data-ar="حلول مترابطة" data-en="Connected solutions">حلول مترابطة</div><h2 class="text-3xl sm:text-4xl font-black" data-ar="كل مستوى في المنشأة ضمن نفس المنظومة" data-en="Every organizational level in one ecosystem">كل مستوى في المنشأة ضمن نفس المنظومة</h2><p class="mt-5 text-slate-600 dark:text-slate-400 leading-7" data-ar="تتغير تجربة المستخدم حسب دوره وصلاحياته، بينما تبقى البيانات والقرارات وسير العمل مترابطة تحت إطار حوكمة موحد." data-en="The user experience adapts to each role and authority level while data, decisions and workflows remain connected under one governance framework.">تتغير تجربة المستخدم حسب دوره وصلاحياته، بينما تبقى البيانات والقرارات وسير العمل مترابطة تحت إطار حوكمة موحد.</p></div>
+        <div class="grid sm:grid-cols-2 gap-4" id="solutionCards">
+          <div class="feature-card rounded-2xl border border-slate-200 dark:border-slate-800 p-5 bg-white/80 dark:bg-slate-900/70"><i class="fa-solid fa-people-roof text-indigo-600 text-xl"></i><h3 class="font-black mt-4" data-ar="مجلس الإدارة واللجان" data-en="Board & Committees">مجلس الإدارة واللجان</h3><p class="text-xs text-slate-500 mt-2 leading-6" data-ar="اجتماعات، جداول أعمال، قرارات، تصويت ومتابعة تنفيذ." data-en="Meetings, agendas, resolutions, voting and execution tracking.">اجتماعات، جداول أعمال، قرارات، تصويت ومتابعة تنفيذ.</p></div>
+          <div class="feature-card rounded-2xl border border-slate-200 dark:border-slate-800 p-5 bg-white/80 dark:bg-slate-900/70"><i class="fa-solid fa-user-tie text-emerald-600 text-xl"></i><h3 class="font-black mt-4" data-ar="الإدارة التنفيذية" data-en="Executive Management">الإدارة التنفيذية</h3><p class="text-xs text-slate-500 mt-2 leading-6" data-ar="مؤشرات، موافقات، مخاطر، تكليفات وقرارات تحتاج المتابعة." data-en="KPIs, approvals, risks, assignments and decisions requiring attention.">مؤشرات، موافقات، مخاطر، تكليفات وقرارات تحتاج المتابعة.</p></div>
+          <div class="feature-card rounded-2xl border border-slate-200 dark:border-slate-800 p-5 bg-white/80 dark:bg-slate-900/70"><i class="fa-solid fa-building text-violet-600 text-xl"></i><h3 class="font-black mt-4" data-ar="الإدارات" data-en="Departments">الإدارات</h3><p class="text-xs text-slate-500 mt-2 leading-6" data-ar="مالية، موارد بشرية، تقنية، مبيعات وغيرها ضمن إجراءات موحدة." data-en="Finance, HR, IT, Sales and other functions within structured processes.">مالية، موارد بشرية، تقنية، مبيعات وغيرها ضمن إجراءات موحدة.</p></div>
+          <div class="feature-card rounded-2xl border border-slate-200 dark:border-slate-800 p-5 bg-white/80 dark:bg-slate-900/70"><i class="fa-solid fa-user-group text-cyan-600 text-xl"></i><h3 class="font-black mt-4" data-ar="الموظفون" data-en="Employees">الموظفون</h3><p class="text-xs text-slate-500 mt-2 leading-6" data-ar="طلبات ومهام وسياسات وإشعارات وخدمات ذاتية في مكان واحد." data-en="Requests, tasks, policies, notifications and self-service in one place.">طلبات ومهام وسياسات وإشعارات وخدمات ذاتية في مكان واحد.</p></div>
         </div>
+      </div>
+    </section>
 
-        <!-- Grid البوابات -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8 max-w-7xl mx-auto w-full">
-            
-            <!-- 1. بوابة الرئيس التنفيذي (CEO) -->
-            <a href="ceo/index.html" class="portal-card relative overflow-hidden rounded-3xl bg-white dark:bg-charcoal shadow-xl border border-gray-100 dark:border-gray-800 group">
-                <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 dark:bg-emerald-500/20 rounded-full blur-3xl -mr-10 -mt-10 transition-all group-hover:bg-emerald-500/30"></div>
-                <div class="p-8 relative z-10 flex flex-col h-full">
-                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-400 to-emerald-600 text-white flex items-center justify-center text-3xl mb-6 shadow-lg shadow-emerald-500/40">
-                        <i class="fa-solid fa-chess-king"></i>
-                    </div>
-                    <h3 class="text-xl font-black text-gray-900 dark:text-white mb-2">الإدارة العليا (CEO)</h3>
-                    <p class="text-xs text-gray-500 dark:text-gray-400 mb-6 flex-1 line-clamp-2">مركز اتخاذ القرار، لوحات المؤشرات الاستراتيجية، ومتابعة الأداء العام للشركة.</p>
-                    <div class="flex items-center text-emerald-600 dark:text-emerald-400 font-bold text-sm">
-                        <span>الدخول للبوابة</span>
-                        <i class="fa-solid fa-arrow-left mr-2 group-hover:-translate-x-2 transition-transform"></i>
-                    </div>
-                </div>
-            </a>
-
-            <!-- 2. بوابة الإدارة المالية (Finance) -->
-            <a href="finance/index.html" class="portal-card relative overflow-hidden rounded-3xl bg-white dark:bg-charcoal shadow-xl border border-gray-100 dark:border-gray-800 group">
-                <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 dark:bg-blue-500/20 rounded-full blur-3xl -mr-10 -mt-10 transition-all group-hover:bg-blue-500/30"></div>
-                <div class="p-8 relative z-10 flex flex-col h-full">
-                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-700 text-white flex items-center justify-center text-3xl mb-6 shadow-lg shadow-blue-500/40">
-                        <i class="fa-solid fa-building-columns"></i>
-                    </div>
-                    <h3 class="text-xl font-black text-gray-900 dark:text-white mb-2">الإدارة المالية (CFO)</h3>
-                    <p class="text-xs text-gray-500 dark:text-gray-400 mb-6 flex-1 line-clamp-2">إدارة الحسابات، التدفقات النقدية، الميزانيات، الرواتب، والمصاريف التشغيلية.</p>
-                    <div class="flex items-center text-blue-600 dark:text-blue-400 font-bold text-sm">
-                        <span>الدخول للبوابة</span>
-                        <i class="fa-solid fa-arrow-left mr-2 group-hover:-translate-x-2 transition-transform"></i>
-                    </div>
-                </div>
-            </a>
-
-            <!-- 3. بوابة الموارد البشرية (HR) -->
-            <a href="hr/index.html" class="portal-card relative overflow-hidden rounded-3xl bg-white dark:bg-charcoal shadow-xl border border-gray-100 dark:border-gray-800 group">
-                <div class="absolute top-0 right-0 w-32 h-32 bg-rose-500/10 dark:bg-rose-500/20 rounded-full blur-3xl -mr-10 -mt-10 transition-all group-hover:bg-rose-500/30"></div>
-                <div class="p-8 relative z-10 flex flex-col h-full">
-                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-rose-400 to-rose-600 text-white flex items-center justify-center text-3xl mb-6 shadow-lg shadow-rose-500/40">
-                        <i class="fa-solid fa-users-gear"></i>
-                    </div>
-                    <h3 class="text-xl font-black text-gray-900 dark:text-white mb-2">الموارد البشرية (HR)</h3>
-                    <p class="text-xs text-gray-500 dark:text-gray-400 mb-6 flex-1 line-clamp-2">إدارة شؤون الموظفين، الحضور والانصراف، التوظيف، وتقييم الأداء السنوي.</p>
-                    <div class="flex items-center text-rose-600 dark:text-rose-400 font-bold text-sm">
-                        <span>الدخول للبوابة</span>
-                        <i class="fa-solid fa-arrow-left mr-2 group-hover:-translate-x-2 transition-transform"></i>
-                    </div>
-                </div>
-            </a>
-
-            <!-- 4. بوابة المبيعات والتسويق (Sales) -->
-            <a href="sales/index.html" class="portal-card relative overflow-hidden rounded-3xl bg-white dark:bg-charcoal shadow-xl border border-gray-100 dark:border-gray-800 group">
-                <div class="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 dark:bg-amber-500/20 rounded-full blur-3xl -mr-10 -mt-10 transition-all group-hover:bg-amber-500/30"></div>
-                <div class="p-8 relative z-10 flex flex-col h-full">
-                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 text-white flex items-center justify-center text-3xl mb-6 shadow-lg shadow-amber-500/40">
-                        <i class="fa-solid fa-chart-line"></i>
-                    </div>
-                    <h3 class="text-xl font-black text-gray-900 dark:text-white mb-2">المبيعات والتسويق</h3>
-                    <p class="text-xs text-gray-500 dark:text-gray-400 mb-6 flex-1 line-clamp-2">إدارة علاقات العملاء (CRM)، الفرص البيعية (Pipeline)، عروض الأسعار والمستهدفات.</p>
-                    <div class="flex items-center text-amber-600 dark:text-amber-400 font-bold text-sm">
-                        <span>الدخول للبوابة</span>
-                        <i class="fa-solid fa-arrow-left mr-2 group-hover:-translate-x-2 transition-transform"></i>
-                    </div>
-                </div>
-            </a>
-
-            <!-- 5. بوابة تقنية المعلومات (CTO / IT) -->
-            <a href="cto/index.html" class="portal-card relative overflow-hidden rounded-3xl bg-white dark:bg-charcoal shadow-xl border border-gray-100 dark:border-gray-800 group">
-                <div class="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 dark:bg-purple-500/20 rounded-full blur-3xl -mr-10 -mt-10 transition-all group-hover:bg-purple-500/30"></div>
-                <div class="p-8 relative z-10 flex flex-col h-full">
-                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-indigo-600 text-white flex items-center justify-center text-3xl mb-6 shadow-lg shadow-purple-500/40">
-                        <i class="fa-solid fa-microchip"></i>
-                    </div>
-                    <h3 class="text-xl font-black text-gray-900 dark:text-white mb-2">تقنية المعلومات (IT)</h3>
-                    <p class="text-xs text-gray-500 dark:text-gray-400 mb-6 flex-1 line-clamp-2">إدارة البنية التحتية، الخوادم، الأمن السيبراني (SOC)، نظام السنترال والدعم الفني.</p>
-                    <div class="flex items-center text-purple-600 dark:text-purple-400 font-bold text-sm">
-                        <span>الدخول للبوابة</span>
-                        <i class="fa-solid fa-arrow-left mr-2 group-hover:-translate-x-2 transition-transform"></i>
-                    </div>
-                </div>
-            </a>
-
-            <!-- 6. بوابة المراجعة الداخلية (Audit) -->
-            <a href="audit/index.html" class="portal-card relative overflow-hidden rounded-3xl bg-white dark:bg-charcoal shadow-xl border border-gray-100 dark:border-gray-800 group">
-                <div class="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 dark:bg-cyan-500/20 rounded-full blur-3xl -mr-10 -mt-10 transition-all group-hover:bg-cyan-500/30"></div>
-                <div class="p-8 relative z-10 flex flex-col h-full">
-                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-400 to-cyan-600 text-white flex items-center justify-center text-3xl mb-6 shadow-lg shadow-cyan-500/40">
-                        <i class="fa-solid fa-shield-check"></i>
-                    </div>
-                    <h3 class="text-xl font-black text-gray-900 dark:text-white mb-2">المراجعة والتدقيق</h3>
-                    <p class="text-xs text-gray-500 dark:text-gray-400 mb-6 flex-1 line-clamp-2">مراقبة الامتثال، تدقيق العمليات المالية والإدارية، تقييم المخاطر والحوكمة المكتسبة.</p>
-                    <div class="flex items-center text-cyan-600 dark:text-cyan-400 font-bold text-sm">
-                        <span>الدخول للبوابة</span>
-                        <i class="fa-solid fa-arrow-left mr-2 group-hover:-translate-x-2 transition-transform"></i>
-                    </div>
-                </div>
-            </a>
-
-            <!-- 7. مساحة الموظف الذاتية (Employee Portal) -->
-            <a href="employee/index.html" class="portal-card relative overflow-hidden rounded-3xl bg-white dark:bg-charcoal shadow-xl border border-gray-100 dark:border-gray-800 group xl:col-span-2">
-                <div class="absolute top-0 left-0 w-64 h-64 bg-teal-500/5 dark:bg-teal-500/10 rounded-full blur-3xl -ml-20 -mt-20 transition-all group-hover:bg-teal-500/20"></div>
-                <div class="p-8 relative z-10 flex flex-col sm:flex-row items-center sm:items-start gap-6 h-full text-center sm:text-right">
-                    <div class="w-20 h-20 shrink-0 rounded-2xl bg-gradient-to-br from-teal-400 to-teal-600 text-white flex items-center justify-center text-4xl shadow-lg shadow-teal-500/40">
-                        <i class="fa-solid fa-user-tie"></i>
-                    </div>
-                    <div class="flex flex-col h-full justify-center">
-                        <h3 class="text-2xl font-black text-gray-900 dark:text-white mb-2">مساحة الموظف (الخدمة الذاتية)</h3>
-                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-4 flex-1 max-w-md">
-                            مساحتك الرقمية المتكاملة.. لتقديم الطلبات الإدارية، استعراض مسيرات الرواتب، رفع ملفاتك السحابية، وإنشاء طلبات الاعتماد والتوقيع بكل سهولة.
-                        </p>
-                        <div class="flex items-center justify-center sm:justify-start text-teal-600 dark:text-teal-400 font-bold text-sm bg-teal-50 dark:bg-teal-900/30 px-4 py-2 rounded-xl w-max mx-auto sm:mx-0">
-                            <span>الدخول لمساحة العمل</span>
-                            <i class="fa-solid fa-arrow-left mr-2 group-hover:-translate-x-2 transition-transform"></i>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
+    <section id="governance" class="bg-slate-900 text-white py-20 relative overflow-hidden">
+      <div class="absolute inset-0 hero-grid opacity-10"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div class="text-center max-w-3xl mx-auto mb-12"><div class="text-indigo-300 font-black text-sm mb-3" data-ar="حوكمة قابلة للتتبع" data-en="Traceable governance">حوكمة قابلة للتتبع</div><h2 class="text-3xl sm:text-4xl font-black" data-ar="من الطلب إلى القرار... كل خطوة موثقة" data-en="From request to decision — every step is traceable">من الطلب إلى القرار... كل خطوة موثقة</h2></div>
+        <div class="grid md:grid-cols-5 gap-4 text-center">
+          <div class="flow-line relative rounded-2xl bg-white/5 border border-white/10 p-5"><i class="fa-regular fa-file-lines text-2xl text-indigo-300"></i><div class="font-black mt-3" data-ar="طلب" data-en="Request">طلب</div></div>
+          <div class="flow-line relative rounded-2xl bg-white/5 border border-white/10 p-5"><i class="fa-solid fa-magnifying-glass text-2xl text-cyan-300"></i><div class="font-black mt-3" data-ar="مراجعة" data-en="Review">مراجعة</div></div>
+          <div class="flow-line relative rounded-2xl bg-white/5 border border-white/10 p-5"><i class="fa-solid fa-circle-check text-2xl text-emerald-300"></i><div class="font-black mt-3" data-ar="اعتماد" data-en="Approval">اعتماد</div></div>
+          <div class="flow-line relative rounded-2xl bg-white/5 border border-white/10 p-5"><i class="fa-solid fa-gears text-2xl text-amber-300"></i><div class="font-black mt-3" data-ar="تنفيذ" data-en="Execution">تنفيذ</div></div>
+          <div class="rounded-2xl bg-white/5 border border-white/10 p-5"><i class="fa-solid fa-clock-rotate-left text-2xl text-violet-300"></i><div class="font-black mt-3" data-ar="أثر تدقيقي" data-en="Audit Trail">أثر تدقيقي</div></div>
         </div>
+      </div>
+    </section>
 
-    </main>
+    <section id="features" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div class="text-center max-w-3xl mx-auto mb-12"><div class="text-indigo-600 font-black text-sm mb-3" data-ar="قدرات المنصة" data-en="Platform capabilities">قدرات المنصة</div><h2 class="text-3xl sm:text-4xl font-black" data-ar="أدوات تساعد المنشأة على العمل بوضوح أكبر" data-en="Tools that help the organization operate with clarity">أدوات تساعد المنشأة على العمل بوضوح أكبر</h2></div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="feature-card rounded-2xl border border-slate-200 dark:border-slate-800 p-5"><i class="fa-solid fa-gauge-high text-indigo-600"></i><div class="font-black mt-3" data-ar="لوحات موحدة" data-en="Unified dashboards">لوحات موحدة</div></div>
+        <div class="feature-card rounded-2xl border border-slate-200 dark:border-slate-800 p-5"><i class="fa-solid fa-list-check text-indigo-600"></i><div class="font-black mt-3" data-ar="المهام والموافقات" data-en="Tasks & approvals">المهام والموافقات</div></div>
+        <div class="feature-card rounded-2xl border border-slate-200 dark:border-slate-800 p-5"><i class="fa-solid fa-bell text-indigo-600"></i><div class="font-black mt-3" data-ar="الإشعارات والتنبيهات" data-en="Notifications & alerts">الإشعارات والتنبيهات</div></div>
+        <div class="feature-card rounded-2xl border border-slate-200 dark:border-slate-800 p-5"><i class="fa-solid fa-file-shield text-indigo-600"></i><div class="font-black mt-3" data-ar="السياسات والوثائق" data-en="Policies & documents">السياسات والوثائق</div></div>
+        <div class="feature-card rounded-2xl border border-slate-200 dark:border-slate-800 p-5"><i class="fa-solid fa-triangle-exclamation text-indigo-600"></i><div class="font-black mt-3" data-ar="سجل المخاطر" data-en="Risk register">سجل المخاطر</div></div>
+        <div class="feature-card rounded-2xl border border-slate-200 dark:border-slate-800 p-5"><i class="fa-solid fa-clipboard-check text-indigo-600"></i><div class="font-black mt-3" data-ar="الالتزام" data-en="Compliance">الالتزام</div></div>
+        <div class="feature-card rounded-2xl border border-slate-200 dark:border-slate-800 p-5"><i class="fa-solid fa-magnifying-glass-chart text-indigo-600"></i><div class="font-black mt-3" data-ar="المراجعة الداخلية" data-en="Internal audit">المراجعة الداخلية</div></div>
+        <div class="feature-card rounded-2xl border border-slate-200 dark:border-slate-800 p-5"><i class="fa-solid fa-user-lock text-indigo-600"></i><div class="font-black mt-3" data-ar="الصلاحيات حسب الدور" data-en="Role-based authority">الصلاحيات حسب الدور</div></div>
+      </div>
+    </section>
 
-    <!-- تذييل الصفحة المركزية -->
-    <footer class="glass-panel border-t border-gray-200 dark:border-gray-800 py-6 text-center relative z-20">
-        <p class="text-sm font-bold text-gray-600 dark:text-gray-300">
-            &copy; 2026 جميع الحقوق محفوظة لشركة بحر العرب لأنظمة المعلومات.
-        </p>
-        <p class="text-xs text-gray-500 mt-2">
-            تم التصميم والبرمجة بواسطة <span class="font-black text-indigo-600 dark:text-indigo-400">م. أيمن علي المغربي</span>
-        </p>
-    </footer>
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+      <div class="rounded-[2rem] bg-gradient-to-l from-indigo-600 to-violet-700 text-white p-8 sm:p-12 flex flex-col lg:flex-row items-center justify-between gap-8 shadow-2xl shadow-indigo-500/20">
+        <div><h2 class="text-3xl font-black" data-ar="ابدأ باستخدام منصة eGov" data-en="Start using eGov">ابدأ باستخدام منصة eGov</h2><p class="mt-3 text-indigo-100" data-ar="سجّل الدخول للوصول إلى مساحة العمل والصلاحيات المخصصة لك." data-en="Sign in to access your authorized workspace and role-specific tools.">سجّل الدخول للوصول إلى مساحة العمل والصلاحيات المخصصة لك.</p></div>
+        <a href="login.html" class="shrink-0 inline-flex items-center gap-3 px-7 py-4 rounded-2xl bg-white text-indigo-700 font-black hover:bg-indigo-50"><span data-ar="تسجيل الدخول" data-en="Login">تسجيل الدخول</span><i class="fa-solid fa-arrow-left rtl-arrow"></i></a>
+      </div>
+    </section>
+  </main>
 
-    <!-- سكريبت الوضع الداكن -->
-    <script>
-        const themeToggleBtn = document.getElementById('themeToggle');
-        const htmlElement = document.documentElement;
+  <footer class="border-t border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-950/60 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500">
+      <p data-ar="© 2026 جميع الحقوق محفوظة لشركة بحر العرب لأنظمة المعلومات." data-en="© 2026 Arab Sea Information Systems. All rights reserved.">© 2026 جميع الحقوق محفوظة لشركة بحر العرب لأنظمة المعلومات.</p>
+      <p><span data-ar="التصميم والبرمجة بواسطة" data-en="Designed and developed by">التصميم والبرمجة بواسطة</span> <strong class="text-indigo-600">م. أيمن علي المغربي</strong></p>
+    </div>
+  </footer>
 
-        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            htmlElement.classList.add('dark');
-        }
-
-        themeToggleBtn.addEventListener('click', function() {
-            htmlElement.classList.toggle('dark');
-            if (htmlElement.classList.contains('dark')) {
-                localStorage.setItem('color-theme', 'dark');
-            } else {
-                localStorage.setItem('color-theme', 'light');
-            }
-        });
-    </script>
-
-    <script src="assets/js/core/i18n.js" defer></script>
-    <script src="assets/js/core/actions.js" defer></script>
-    <script src="assets/js/core/app.js" defer></script>
-  </body>
+  <script>
+    (()=>{
+      const root=document.documentElement;
+      const themeBtn=document.getElementById('themeToggle');
+      const langBtn=document.getElementById('langToggle');
+      const menuBtn=document.getElementById('mobileMenuBtn');
+      const menu=document.getElementById('mobileMenu');
+      const preferredTheme=localStorage.getItem('color-theme');
+      if(preferredTheme==='dark'||(!preferredTheme&&matchMedia('(prefers-color-scheme: dark)').matches)) root.classList.add('dark');
+      themeBtn.addEventListener('click',()=>{root.classList.toggle('dark');localStorage.setItem('color-theme',root.classList.contains('dark')?'dark':'light')});
+      const applyLang=(lang)=>{
+        root.lang=lang; root.dir=lang==='ar'?'rtl':'ltr'; langBtn.textContent=lang==='ar'?'EN':'AR';
+        document.querySelectorAll('[data-ar][data-en]').forEach(el=>{el.textContent=el.dataset[lang]});
+        localStorage.setItem('egov-language',lang);
+      };
+      applyLang(localStorage.getItem('egov-language')||'ar');
+      langBtn.addEventListener('click',()=>applyLang(root.lang==='ar'?'en':'ar'));
+      menuBtn.addEventListener('click',()=>menu.classList.toggle('hidden'));
+      menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.add('hidden')));
+    })();
+  </script>
+</body>
 </html>
