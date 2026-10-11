@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eGov - مراقبة الشبكة | تقنية المعلومات - بحر العرب</title>
+    <!-- خطوط جوجل (Tajawal) -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- مكتبة الأيقونات FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- مكتبة Tailwind CSS للتصميم -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Tajawal', 'sans-serif'] },
+                    colors: {
+                        charcoal: {
+                            light: '#2D2E32',
+                            DEFAULT: '#1F2022',
+                            dark: '#151618',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #4F46E5; border-radius: 10px; } /* Indigo-600 */
+        body { font-family: 'Tajawal', sans-serif; transition: background-color 0.3s, color 0.3s; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(79, 70, 229, 0.2);
+        }
+        .dark .glass-panel {
+            background: rgba(45, 46, 50, 0.85);
+            border: 1px solid rgba(79, 70, 229, 0.3);
+        }
+        .pulse-dot {
+            animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+            100% { transform: scale(0.8); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+        .pulse-red {
+            animation: pulse-red-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+        @keyframes pulse-red-ring {
+            0% { transform: scale(0.8); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(239, 68, 68, 0); }
+            100% { transform: scale(0.8); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-charcoal dark:text-gray-100 overflow-hidden">
+
+    <div class="flex h-screen">
+        
+        <!-- القائمة الجانبية الخاصة ببوابة تقنية المعلومات -->
+        <aside class="w-64 glass-panel shadow-lg flex flex-col justify-between hidden md:flex transition-all duration-300 z-20 shrink-0">
+            <div>
+                <!-- الشعار -->
+                <div class="p-6 border-b border-gray-200 dark:border-gray-700 text-center">
+                    <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-indigo-700 text-white shadow-lg mb-3">
+                        <i class="fa-solid fa-microchip text-2xl"></i>
+                    </div>
+                    <h1 class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-indigo-700 dark:from-indigo-400 dark:to-indigo-500">
+                        تقنية المعلومات
+                    </h1>
+                    <p class="text-[10px] font-bold text-gray-500 dark:text-gray-400 mt-1">بحر العرب لأنظمة المعلومات (7201)</p>
+                </div>
+
+                <!-- الروابط -->
+                <nav class="p-4 space-y-1 h-[calc(100vh-220px)] overflow-y-auto">
+                    
+                    <div class="text-xs font-bold text-gray-400 mt-2 mb-2 px-4 uppercase">لوحة القيادة</div>
+                    <a href="index.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-chart-line w-5 text-gray-400"></i> <span>نظرة عامة</span>
+                    </a>
+
+                    <div class="text-xs font-bold text-gray-400 mt-4 mb-2 px-4 uppercase">البنية التحتية</div>
+                    <a href="cto_servers.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-server w-5 text-gray-400"></i> <span>الخوادم (Servers)</span>
+                    </a>
+                    <!-- الصفحة الحالية -->
+                    <a href="cto_monitoring.html" class="flex items-center gap-3 px-4 py-2 rounded-xl bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-300 font-bold transition-colors">
+                        <i class="fa-solid fa-network-wired w-5"></i> <span>مراقبة الشبكة</span>
+                    </a>
+
+                    <div class="text-xs font-bold text-gray-400 mt-4 mb-2 px-4 uppercase">الأمن السيبراني</div>
+                    <a href="cto_soc.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-shield-halved w-5 text-gray-400"></i> <span>مركز العمليات (SOC)</span>
+                    </a>
+                    <a href="cto_iam.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-id-card-clip w-5 text-gray-400"></i> <span>إدارة الهويات (IAM)</span>
+                    </a>
+
+                    <div class="text-xs font-bold text-gray-400 mt-4 mb-2 px-4 uppercase">الاتصالات (PBX)</div>
+                    <a href="cto_pbx.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-headset w-5 text-gray-400"></i> <span>نظام السنترال</span>
+                    </a>
+                    <a href="cto_extensions.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-phone w-5 text-gray-400"></i> <span>التحويلات الداخلية</span>
+                    </a>
+                    <a href="cto_call_logs.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-clipboard-list w-5 text-gray-400"></i> <span>سجل المكالمات (CDR)</span>
+                    </a>
+
+                    <div class="text-xs font-bold text-gray-400 mt-4 mb-2 px-4 uppercase">العمليات والمشاريع</div>
+                    <a href="cto_projects.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-project-diagram w-5 text-gray-400"></i> <span>المشاريع التقنية</span>
+                    </a>
+                    <a href="cto_assets.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-laptop-code w-5 text-gray-400"></i> <span>أصول تقنية المعلومات</span>
+                    </a>
+                    <a href="cto_support.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-ticket w-5 text-gray-400"></i> <span>الدعم الفني (Helpdesk)</span>
+                        <span class="mr-auto w-5 h-5 bg-indigo-500 text-white rounded-full flex items-center justify-center text-[10px]">12</span>
+                    </a>
+
+                    <div class="text-xs font-bold text-gray-400 mt-4 mb-2 px-4 uppercase">النظام</div>
+                    <a href="profile.html" class="flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-gray-600 dark:text-gray-300 font-bold">
+                        <i class="fa-solid fa-user-shield w-5 text-gray-400"></i> <span>الملف الشخصي</span>
+                    </a>
+                    
+                    <div class="pt-3 mt-3 border-t border-gray-200 dark:border-gray-700">
+                        <a href="../login.html" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-charcoal-light transition-colors text-red-500 text-xs font-bold">
+                            <i class="fa-solid fa-arrow-right-from-bracket w-5"></i> <span>تسجيل الخروج</span>
+                        </a>
+                    </div>
+                </nav>
+            </div>
+
+            <!-- معلومات المطور -->
+            <div class="p-4 border-t border-gray-200 dark:border-gray-700 text-center">
+                <p class="text-xs text-gray-500">تطوير م. أيمن علي المغربي</p>
+                <p class="text-[10px] text-gray-400">eGov System © 2026</p>
+            </div>
+        </aside>
+
+        <!-- المحتوى الرئيسي -->
+        <main class="flex-1 flex flex-col h-screen overflow-hidden bg-gray-50 dark:bg-charcoal-dark">
+            
+            <!-- الشريط العلوي -->
+            <header class="h-16 glass-panel border-b border-gray-200 dark:border-gray-700 flex items-center justify-between px-6 z-10 shrink-0">
+                <div class="flex items-center gap-4">
+                    <button class="md:hidden text-gray-500 hover:text-indigo-500"><i class="fa-solid fa-bars text-xl"></i></button>
+                    <h2 class="text-lg font-bold hidden sm:block">البنية التحتية - مراقبة الشبكة (NOC)</h2>
+                </div>
+                
+                <div class="flex items-center gap-4">
+                    <span title="تحديث تلقائي مفعل" class="hidden md:flex items-center gap-2 px-3 py-1 bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 text-xs font-bold rounded-lg border border-emerald-200 dark:border-emerald-800">
+                        <i class="fa-solid fa-satellite-dish pulse-dot"></i> Live Zabbix Sync
+                    </span>
+                    <button id="themeToggle" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-charcoal flex items-center justify-center text-gray-500 hover:text-indigo-500 transition-colors">
+                        <i class="fa-solid fa-moon dark:hidden"></i>
+                        <i class="fa-solid fa-sun hidden dark:block text-yellow-400"></i>
+                    </button>
+                    <button class="relative w-10 h-10 rounded-full bg-gray-100 dark:bg-charcoal flex items-center justify-center text-gray-500 hover:text-indigo-500 transition-colors">
+                        <i class="fa-regular fa-bell"></i>
+                    </button>
+                    <!-- بروفايل المدير التقني -->
+                    <a href="profile.html" class="flex items-center gap-3 p-1 pr-3 rounded-full bg-indigo-50 dark:bg-charcoal border border-indigo-200 dark:border-gray-700 hover:border-indigo-400 transition-all cursor-pointer">
+                        <div class="text-left hidden sm:block">
+                            <p class="text-sm font-bold text-gray-800 dark:text-gray-100 leading-none">إدارة التقنية</p>
+                            <p class="text-[10px] text-indigo-600 dark:text-indigo-400 mt-1 font-bold">Chief Tech Officer</p>
+                        </div>
+                        <img src="https://ui-avatars.com/api/?name=CTO&background=4F46E5&color=fff" alt="CTO" class="w-8 h-8 rounded-full border border-indigo-200">
+                    </a>
+                </div>
+            </header>
+
+            <!-- منطقة المحتوى القابلة للتمرير -->
+            <div class="flex-1 overflow-y-auto p-6">
+                
+                <!-- رأس الصفحة -->
+                <div class="glass-panel p-6 rounded-2xl mb-8 border-r-4 border-r-indigo-500 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <div>
+                        <h2 class="text-2xl font-bold mb-1">مراقبة أداء الشبكة (Network Monitoring)</h2>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">مراقبة حية لاستهلاك الباندويث، حالة الموجهات والجدران النارية، واكتشاف الأعطال مبكراً.</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button class="px-4 py-2.5 bg-gray-100 dark:bg-charcoal-light text-gray-700 dark:text-gray-300 rounded-xl text-sm font-bold hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors flex items-center gap-2">
+                            <i class="fa-solid fa-download"></i> تقرير الأداء (SLA)
+                        </button>
+                        <button class="px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-sm font-bold shadow-md transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-tower-broadcast"></i> إضافة نقطة مراقبة
+                        </button>
+                    </div>
+                </div>
+
+                <!-- الإحصائيات الحية -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                    <div class="glass-panel p-5 rounded-2xl border border-gray-200 dark:border-gray-700">
+                        <p class="text-gray-500 text-xs mb-1">نقاط الشبكة المراقبة (Nodes)</p>
+                        <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">142</h3>
+                    </div>
+                    <div class="glass-panel p-5 rounded-2xl border border-indigo-200 dark:border-indigo-900/50 bg-indigo-50/30 dark:bg-indigo-900/10">
+                        <p class="text-indigo-600 dark:text-indigo-400 text-xs font-bold mb-1">معدل نقل البيانات الحالي (Traffic)</p>
+                        <div class="flex items-end gap-2 mt-1">
+                            <h3 class="text-2xl font-bold text-indigo-600 dark:text-indigo-400 font-mono">1.8</h3>
+                            <span class="text-xs text-indigo-500 mb-1 font-bold">Gbps</span>
+                        </div>
+                    </div>
+                    <div class="glass-panel p-5 rounded-2xl border-b-4 border-b-emerald-500">
+                        <p class="text-gray-500 text-xs font-bold mb-1">الرابط الرئيسي للإنترنت (ISP 1)</p>
+                        <h3 class="text-2xl font-bold text-emerald-600 dark:text-emerald-400">متصل <i class="fa-solid fa-check-circle text-sm ml-1"></i></h3>
+                    </div>
+                    <div class="glass-panel p-5 rounded-2xl border-b-4 border-b-red-500 bg-red-50/10 dark:bg-red-900/5">
+                        <p class="text-gray-500 text-xs font-bold mb-1">إنذارات نشطة (Active Alerts)</p>
+                        <div class="flex items-center gap-2 mt-1">
+                            <h3 class="text-2xl font-bold text-red-600 dark:text-red-400">2</h3>
+                            <span class="pulse-red w-3 h-3 bg-red-500 rounded-full"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+                    
+                    <!-- أجهزة الشبكة الرئيسية (Core Devices) -->
+                    <div class="lg:col-span-2 glass-panel rounded-2xl overflow-hidden flex flex-col">
+                        <div class="p-4 border-b border-gray-200 dark:border-gray-700 bg-gray-50/50 dark:bg-charcoal/50 flex justify-between items-center">
+                            <h3 class="font-bold flex items-center gap-2">
+                                <i class="fa-solid fa-network-wired text-indigo-600"></i> أجهزة الشبكة المركزية (Core Network)
+                            </h3>
+                            <button class="text-xs text-gray-500 hover:text-indigo-600 transition-colors"><i class="fa-solid fa-rotate-right"></i> تحديث</button>
+                        </div>
+                        <div class="p-0 overflow-x-auto flex-1">
+                            <table class="w-full text-right text-sm">
+                                <thead class="bg-gray-50 dark:bg-charcoal-light border-b border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400">
+                                    <tr>
+                                        <th class="p-4 font-normal text-xs">الجهاز (Device)</th>
+                                        <th class="p-4 font-normal text-xs">عنوان IP</th>
+                                        <th class="p-4 font-normal text-xs text-center">الاستجابة (Ping)</th>
+                                        <th class="p-4 font-normal text-xs text-center">CPU / RAM</th>
+                                        <th class="p-4 font-normal text-xs text-center">الحالة</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+                                    
+                                    <!-- FortiGate -->
+                                    <tr class="hover:bg-gray-50 dark:hover:bg-charcoal-light/50 transition-colors">
+                                        <td class="p-4">
+                                            <div class="font-bold text-gray-800 dark:text-gray-100">HQ-FW-FortiGate-01</div>
+                                            <div class="text-[10px] text-gray-500 mt-0.5">Main Firewall</div>
+                                        </td>
+                                        <td class="p-4 text-xs font-mono text-gray-600 dark:text-gray-400">10.0.0.1</td>
+                                        <td class="p-4 text-center text-xs font-mono text-emerald-600 dark:text-emerald-400">2 ms</td>
+                                        <td class="p-4 text-center">
+                                            <div class="text-[10px] text-gray-500">25% / 45%</div>
+                                            <div class="w-16 bg-gray-200 dark:bg-gray-700 rounded-full h-1 mx-auto mt-1"><div class="bg-emerald-500 h-1 rounded-full" style="width: 25%"></div></div>
+                                        </td>
+                                        <td class="p-4 text-center">
+                                            <span class="px-2 py-0.5 bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 rounded text-[10px] font-bold"><i class="fa-solid fa-circle text-[8px] ml-1"></i> Up</span>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Cisco Core Switch -->
+                                    <tr class="hover:bg-gray-50 dark:hover:bg-charcoal-light/50 transition-colors">
+                                        <td class="p-4">
+                                            <div class="font-bold text-gray-800 dark:text-gray-100">HQ-SW-Core-Nexus</div>
+                                            <div class="text-[10px] text-gray-500 mt-0.5">Cisco Nexus 9000</div>
+                                        </td>
+                                        <td class="p-4 text-xs font-mono text-gray-600 dark:text-gray-400">10.0.0.2</td>
+                                        <td class="p-4 text-center text-xs font-mono text-emerald-600 dark:text-emerald-400">1 ms</td>
+                                        <td class="p-4 text-center">
+                                            <div class="text-[10px] text-gray-500">15% / 30%</div>
+                                            <div class="w-16 bg-gray-200 dark:bg-gray-700 rounded-full h-1 mx-auto mt-1"><div class="bg-emerald-500 h-1 rounded-full" style="width: 15%"></div></div>
+                                        </td>
+                                        <td class="p-4 text-center">
+                                            <span class="px-2 py-0.5 bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 rounded text-[10px] font-bold"><i class="fa-solid fa-circle text-[8px] ml-1"></i> Up</span>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Edge Router - Warning -->
+                                    <tr class="hover:bg-gray-50 dark:hover:bg-charcoal-light/50 transition-colors bg-orange-50/10 dark:bg-orange-900/5">
+                                        <td class="p-4">
+                                            <div class="font-bold text-gray-800 dark:text-gray-100">WAN-RT-Edge-01</div>
+                                            <div class="text-[10px] text-gray-500 mt-0.5">Internet Edge Router</div>
+                                        </td>
+                                        <td class="p-4 text-xs font-mono text-gray-600 dark:text-gray-400">10.0.0.254</td>
+                                        <td class="p-4 text-center text-xs font-mono text-orange-600 dark:text-orange-400">45 ms</td>
+                                        <td class="p-4 text-center">
+                                            <div class="text-[10px] text-gray-500">85% / 60%</div>
+                                            <div class="w-16 bg-gray-200 dark:bg-gray-700 rounded-full h-1 mx-auto mt-1"><div class="bg-orange-500 h-1 rounded-full" style="width: 85%"></div></div>
+                                        </td>
+                                        <td class="p-4 text-center">
+                                            <span class="px-2 py-0.5 bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400 rounded text-[10px] font-bold"><i class="fa-solid fa-triangle-exclamation text-[8px] ml-1"></i> High CPU</span>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Branch VPN -->
+                                    <tr class="hover:bg-gray-50 dark:hover:bg-charcoal-light/50 transition-colors bg-red-50/10 dark:bg-red-900/5">
+                                        <td class="p-4">
+                                            <div class="font-bold text-gray-800 dark:text-gray-100">JED-VPN-Concentrator</div>
+                                            <div class="text-[10px] text-gray-500 mt-0.5">Jeddah Branch Link</div>
+                                        </td>
+                                        <td class="p-4 text-xs font-mono text-gray-600 dark:text-gray-400">10.20.0.1</td>
+                                        <td class="p-4 text-center text-xs font-mono text-red-500">Timeout</td>
+                                        <td class="p-4 text-center">
+                                            <div class="text-[10px] text-gray-500">- / -</div>
+                                        </td>
+                                        <td class="p-4 text-center">
+                                            <span class="px-2 py-0.5 bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400 rounded text-[10px] font-bold"><i class="fa-solid fa-xmark text-[8px] ml-1"></i> Down</span>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- سجل الإنذارات (Alerts Log) -->
+                    <div class="glass-panel rounded-2xl overflow-hidden flex flex-col">
+                        <div class="p-4 border-b border-gray-200 dark:border-gray-700 bg-gray-50/50 dark:bg-charcoal/50 flex justify-between items-center">
+                            <h3 class="font-bold text-sm flex items-center gap-2">
+                                <i class="fa-solid fa-bell text-red-500"></i> الإنذارات النشطة (Alerts)
+                            </h3>
+                            <button class="text-xs text-gray-500 hover:text-indigo-600 transition-colors"><i class="fa-solid fa-check-double"></i> إخفاء الكل</button>
+                        </div>
+                        <div class="p-4 flex-1 space-y-3">
+                            
+                            <div class="flex items-start gap-3 p-3 bg-red-50 dark:bg-red-900/10 border border-red-100 dark:border-red-900/30 rounded-xl">
+                                <div class="w-8 h-8 rounded bg-red-100 text-red-600 flex items-center justify-center shrink-0"><i class="fa-solid fa-link-slash"></i></div>
+                                <div>
+                                    <p class="font-bold text-sm text-gray-800 dark:text-gray-100">انقطاع اتصال فرع جدة</p>
+                                    <p class="text-xs text-gray-600 dark:text-gray-400 mt-1">توقف استجابة الـ VPN لفرع جدة (JED-VPN-Concentrator).</p>
+                                    <span class="text-[10px] text-red-600 font-bold mt-1 inline-block">منذ 15 دقيقة</span>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3 p-3 bg-orange-50 dark:bg-orange-900/10 border border-orange-100 dark:border-orange-900/30 rounded-xl">
+                                <div class="w-8 h-8 rounded bg-orange-100 text-orange-600 flex items-center justify-center shrink-0"><i class="fa-solid fa-microchip"></i></div>
+                                <div>
+                                    <p class="font-bold text-sm text-gray-800 dark:text-gray-100">استهلاك وحدة المعالجة (CPU)</p>
+                                    <p class="text-xs text-gray-600 dark:text-gray-400 mt-1">جهاز الموجه (WAN-RT-Edge-01) يتجاوز 85% من المعالج.</p>
+                                    <span class="text-[10px] text-orange-600 font-bold mt-1 inline-block">منذ 42 دقيقة</span>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3 p-3 bg-white dark:bg-charcoal-light border border-gray-200 dark:border-gray-700 rounded-xl opacity-60">
+                                <div class="w-8 h-8 rounded bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0"><i class="fa-solid fa-check"></i></div>
+                                <div>
+                                    <p class="font-bold text-sm text-gray-800 dark:text-gray-100 line-through">استهلاك عالي للذاكرة (DB)</p>
+                                    <p class="text-xs text-gray-600 dark:text-gray-400 mt-1">تم إغلاق التنبيه تلقائياً، عادت الموارد للوضع الطبيعي.</p>
+                                    <span class="text-[10px] text-gray-500 font-bold mt-1 inline-block">مُعالج - منذ ساعتين</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- تذييل الصفحة -->
+                <footer class="mt-8 pt-4 border-t border-gray-200 dark:border-gray-700 text-center text-sm text-gray-500 flex flex-col md:flex-row justify-between items-center gap-2">
+                    <p>بوابة تقنية المعلومات - نسخة تجريبية (Demo) صممت خصيصاً لشركة بحر العرب.</p>
+                    <p>برمجة وتطوير <span class="font-bold text-indigo-600 dark:text-indigo-400">م. أيمن علي المغربي</span> &copy; 2026</p>
+                </footer>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- سكريبت الوضع الداكن -->
+    <script>
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            htmlElement.classList.add('dark');
+        }
+
+        themeToggleBtn.addEventListener('click', function() {
+            htmlElement.classList.toggle('dark');
+            if (htmlElement.classList.contains('dark')) {
+                localStorage.setItem('color-theme', 'dark');
+            } else {
+                localStorage.setItem('color-theme', 'light');
+            }
+        });
+    </script>
+</body>
+</html>
