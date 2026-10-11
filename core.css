@@ -1,0 +1,43 @@
+:root { --as-ink:#18344a; --as-brand:#147d83; --as-focus:#147d83; }
+html { scroll-behavior:smooth; }
+body { min-width:320px; }
+button,a,[role="button"],input,select,textarea { touch-action:manipulation; }
+:focus-visible { outline:3px solid #2ba8ad !important; outline-offset:2px; }
+.arabsea-lang-toggle { border:1px solid #d5dde2; border-radius:999px; min-width:48px; min-height:40px; padding:.35rem .75rem; font:700 .8rem/1 system-ui,sans-serif; color:var(--as-ink); background:rgba(255,255,255,.88); cursor:pointer; }
+.dark .arabsea-lang-toggle { color:#f3f4f6; background:#252a31; border-color:#4b5563; }
+.arabsea-toast { position:fixed; z-index:99999; inset-inline-start:50%; bottom:1.25rem; transform:translate(-50%,1rem); opacity:0; pointer-events:none; background:#18344a; color:white; padding:.8rem 1.15rem; border-radius:.75rem; box-shadow:0 8px 28px #10253455; max-width:min(90vw,34rem); transition:opacity .18s,transform .18s; }
+.arabsea-toast.is-visible { opacity:1; transform:translate(-50%,0); }
+.arabsea-global-search { display:flex; align-items:center; gap:.5rem; border:1px solid #d5dde2; border-radius:999px; min-height:40px; padding:.35rem .8rem; color:#526575; background:rgba(255,255,255,.8); cursor:pointer; }
+.arabsea-audit-toggle { border:1px solid #d5dde2; border-radius:999px; min-height:40px; padding:.35rem .75rem; font-size:.75rem; font-weight:700; color:#526575; background:rgba(255,255,255,.8); cursor:pointer; }
+.arabsea-unread-count { position:absolute; inset-block-start:-.15rem; inset-inline-end:-.15rem; min-width:1.15rem; height:1.15rem; display:grid; place-items:center; border-radius:999px; background:#c13535; color:#fff; font-size:.65rem; font-weight:800; }
+.dark .arabsea-global-search,.dark .arabsea-audit-toggle { color:#e5e7eb; background:#252a31; border-color:#4b5563; }
+.arabsea-floating-tools { position:fixed; inset-block-start:.75rem; inset-inline-end:.75rem; z-index:500; display:flex; align-items:center; gap:.5rem; }
+.arabsea-search-layer[hidden] { display:none; }
+.arabsea-search-layer { position:fixed; inset:0; z-index:100000; background:#10253499; display:grid; align-items:start; justify-items:center; padding:12vh 1rem 1rem; }
+.arabsea-search-panel { position:relative; width:min(42rem,100%); max-height:75vh; overflow:auto; border-radius:1rem; padding:1.25rem; background:#fff; color:#18344a; box-shadow:0 24px 70px #071a2a55; }
+.dark .arabsea-search-panel { background:#20262e; color:#f3f4f6; }
+.arabsea-search-label { display:block; font-weight:700; margin:0 2.5rem .65rem 0; }
+.arabsea-search-input { width:100%; border:1px solid #cbd5e1; border-radius:.7rem; padding:.8rem 1rem; background:transparent; color:inherit; }
+.arabsea-search-close { position:absolute; inset-block-start:.7rem; inset-inline-end:.8rem; font-size:1.6rem; line-height:1; width:2.5rem; height:2.5rem; border:0; border-radius:.5rem; background:#f1f5f9; cursor:pointer; }
+.arabsea-search-results { display:grid; gap:.35rem; margin-top:.8rem; }
+.arabsea-search-result { display:flex; align-items:center; justify-content:space-between; gap:1rem; text-align:start; padding:.75rem; border:0; border-radius:.6rem; color:inherit; text-decoration:none; background:transparent; cursor:pointer; }
+.arabsea-search-result:hover,.arabsea-search-result:focus-visible { background:#eaf4f4; }
+.dark .arabsea-search-result:hover,.dark .arabsea-search-result:focus-visible { background:#303b46; }
+.arabsea-search-result small { color:#758494; white-space:nowrap; }
+.arabsea-empty-search { padding:1.25rem; color:#64748b; text-align:center; border:1px dashed #cbd5e1; border-radius:.75rem; }
+.arabsea-archived { opacity:.55; }
+tr[hidden], [data-searchable][hidden], .grid > *[hidden] { display:none !important; }
+table { max-width:100%; }
+@media (max-width:767px) {
+  table { display:block; max-width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  aside.arabsea-mobile-open { display:flex !important; position:fixed; inset-block:0; inset-inline-start:0; width:min(20rem,88vw); max-width:90vw; z-index:10000; overflow-y:auto; box-shadow:0 0 0 100vmax #0b172366; }
+  header { gap:.5rem; }
+  header > div { gap:.5rem !important; }
+  .arabsea-lang-toggle { min-width:42px; min-height:42px; }
+  .arabsea-global-search span { display:none; }
+  .arabsea-audit-toggle { font-size:.65rem; padding:.35rem .5rem; }
+}
+.arabsea-ltr { text-align:initial; }
+.arabsea-ltr body { direction:ltr; }
+.arabsea-ltr table { text-align:left; }
+.arabsea-ltr .text-right { text-align:left; }

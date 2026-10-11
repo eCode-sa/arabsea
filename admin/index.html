@@ -129,12 +129,7 @@
                 </div>
                 
                 <div class="flex items-center gap-4">
-                    <!-- زر تغيير اللغة -->
-                    <button id="languageToggle" type="button" class="h-10 px-3 rounded-full bg-gray-100 dark:bg-charcoal flex items-center gap-2 justify-center text-gray-500 hover:text-lavender-500 transition-colors font-bold text-xs" aria-label="تغيير اللغة">
-                        <i class="fa-solid fa-language"></i><span id="languageToggleText">EN</span>
-                    </button>
-
-                    <!-- زر تغيير السمة -->
+<!-- زر تغيير السمة -->
                     <button id="themeToggle" type="button" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-charcoal flex items-center justify-center text-gray-500 hover:text-lavender-500 transition-colors">
                         <i class="fa-solid fa-moon dark:hidden"></i>
                         <i class="fa-solid fa-sun hidden dark:block text-yellow-400"></i>
@@ -332,139 +327,37 @@
         </main>
     </div>
 
-    <!-- Dashboard interactions + complete bilingual translation -->
+    <!-- Dashboard interactions. Language is owned by the shared core. -->
     <script>
         const htmlElement = document.documentElement;
         const themeToggleBtn = document.getElementById('themeToggle');
-        const languageToggle = document.getElementById('languageToggle');
-        const languageToggleText = document.getElementById('languageToggleText');
         const sidebar = document.getElementById('sidebar');
         const sidebarOverlay = document.getElementById('sidebarOverlay');
         const mobileMenuToggle = document.getElementById('mobileMenuToggle');
         const notificationToggle = document.getElementById('notificationToggle');
         const notificationPanel = document.getElementById('notificationPanel');
         const markNotificationsRead = document.getElementById('markNotificationsRead');
-
-        // Theme
         const savedTheme = localStorage.getItem('color-theme') || localStorage.getItem('theme');
-        if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            htmlElement.classList.add('dark');
-        }
+        if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) htmlElement.classList.add('dark');
         themeToggleBtn.addEventListener('click', () => {
             htmlElement.classList.toggle('dark');
             const value = htmlElement.classList.contains('dark') ? 'dark' : 'light';
-            localStorage.setItem('color-theme', value);
-            localStorage.setItem('theme', value);
+            localStorage.setItem('color-theme', value); localStorage.setItem('theme', value);
         });
-
-        // Mobile sidebar
-        function closeSidebar() {
-            sidebar.classList.add('translate-x-full');
-            sidebarOverlay.classList.add('hidden');
-        }
-        mobileMenuToggle.addEventListener('click', () => {
-            sidebar.classList.toggle('translate-x-full');
-            sidebarOverlay.classList.toggle('hidden');
+        function closeSidebar(){ sidebar.classList.add('translate-x-full'); sidebarOverlay.classList.add('hidden'); }
+        mobileMenuToggle.addEventListener('click',()=>{ sidebar.classList.toggle('translate-x-full'); sidebarOverlay.classList.toggle('hidden'); });
+        sidebarOverlay.addEventListener('click',closeSidebar);
+        sidebar.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{if(window.innerWidth<768)closeSidebar();}));
+        notificationToggle.addEventListener('click',e=>{e.stopPropagation();notificationPanel.classList.toggle('hidden');});
+        notificationPanel.addEventListener('click',e=>e.stopPropagation());
+        document.addEventListener('click',()=>notificationPanel.classList.add('hidden'));
+        markNotificationsRead.addEventListener('click',()=>{
+            const dot=notificationToggle.querySelector('.bg-red-500'); if(dot)dot.remove();
+            markNotificationsRead.textContent=document.documentElement.lang==='en'?'All read':'تمت القراءة';
         });
-        sidebarOverlay.addEventListener('click', closeSidebar);
-        sidebar.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-            if (window.innerWidth < 768) closeSidebar();
-        }));
-
-        // Notifications
-        notificationToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            notificationPanel.classList.toggle('hidden');
+        document.addEventListener('arabsea:languagechange',()=>{
+            if(!notificationToggle.querySelector('.bg-red-500')) markNotificationsRead.textContent=document.documentElement.lang==='en'?'All read':'تمت القراءة';
         });
-        notificationPanel.addEventListener('click', e => e.stopPropagation());
-        document.addEventListener('click', () => notificationPanel.classList.add('hidden'));
-        markNotificationsRead.addEventListener('click', () => {
-            const dot = notificationToggle.querySelector('.bg-red-500');
-            if (dot) dot.remove();
-            markNotificationsRead.textContent = htmlElement.lang === 'en' ? 'All read' : 'تمت القراءة';
-        });
-
-        // Page-local complete UI translations
-        const translations = new Map([
-            ['نسخة تجريبية (Demo)','Demo Version'],
-            ['مقدمة لشركة بحر العرب لأنظمة المعلومات','Presented to Arab Sea Information Systems'],
-            ['نظرة عامة','Overview'], ['حوكمة الشركات','Corporate Governance'],
-            ['مجلس الإدارة','Board of Directors'], ['اللجان المنبثقة','Board Committees'],
-            ['الجمعية العامة','General Assembly'], ['المساهمين','Shareholders'],
-            ['الإدارة والتشغيل','Management & Operations'], ['المالية','Finance'],
-            ['الموارد البشرية','Human Resources'], ['تقنية المعلومات','Information Technology'],
-            ['المشتريات','Procurement'], ['الرقابة والامتثال','Oversight & Compliance'],
-            ['المراجعة الداخلية','Internal Audit'], ['الامتثال والمخاطر','Compliance & Risk'],
-            ['السياسات واللوائح','Policies & Regulations'], ['جدول الصلاحيات (DOA)','Delegation of Authority (DOA)'],
-            ['مساحة العمل','Workspace'], ['المهام','Tasks'], ['التعاميم','Circulars'],
-            ['المحادثات','Messages'], ['النظام','System'], ['المستخدمين','Users'], ['الإعدادات','Settings'],
-            ['تطوير م. أيمن علي المغربي','Developed by Eng. Ayman Ali Almaghrabi'],
-            ['نظرة عامة - لوحة القيادة','Overview - Dashboard'], ['الإدارة العليا','Executive Management'],
-            ['بحر العرب','Arab Sea'], ['مرحباً بك في نظام eGov (النسخة التجريبية)','Welcome to eGov (Demo Version)'],
-            ['تم إعداد هذه النسخة خصيصاً كنموذج استرشادي لشركة بحر العرب لأنظمة المعلومات، لاستعراض قدرات النظام في أتمتة حوكمة الشركات وإدارة اللجان.','This demo was prepared for Arab Sea Information Systems to showcase the platform’s corporate governance and committee-management capabilities.'],
-            ['رمز السهم','Ticker'], ['أعضاء مجلس الإدارة','Board Members'], ['النصاب مكتمل','Quorum achieved'],
-            ['اللجان النشطة','Active Committees'], ['المراجعة، الترشيحات، الاستثمار، التقنية','Audit, Nomination, Investment, Technology'],
-            ['المهام المعلقة','Pending Tasks'], ['3 مهام متأخرة تحتاج اعتماد','3 overdue tasks require approval'],
-            ['اجتماعات قادمة','Upcoming Meetings'], ['أقرب اجتماع بعد 5 أيام','Next meeting in 5 days'],
-            ['الاجتماعات المجدولة (بحر العرب)','Scheduled Meetings (Arab Sea)'], ['عرض الكل','View All'],
-            ['أكتوبر','October'], ['اجتماع مجلس الإدارة للربع الثالث 2026','Board Meeting — Q3 2026'],
-            ['10:00 صباحاً - عبر الاتصال المرئي','10:00 AM — Video Conference'], ['مؤكد','Confirmed'],
-            ['اجتماع لجنة المراجعة الداخلية','Internal Audit Committee Meeting'],
-            ['01:00 ظهراً - مقر الشركة (الرياض)','1:00 PM — Company HQ (Riyadh)'], ['بانتظار التأكيد','Pending Confirmation'],
-            ['أحدث النشاطات','Latest Activity'], ['اعتماد سياسة أمن المعلومات','Information Security Policy approved'],
-            ['بواسطة: لجنة التقنية والمخاطر','By: Technology & Risk Committee'], ['منذ ساعتين','2 hours ago'],
-            ['تحديث ملف شركة بحر العرب','Arab Sea company profile updated'], ['تم إرفاق القوائم المالية الربعية.','Quarterly financial statements were attached.'],
-            ['منذ 5 ساعات','5 hours ago'], ['تعميم إداري جديد','New administrative circular'],
-            ['بخصوص ترقية نظام SMACC الداخلي.','Regarding the internal SMACC system upgrade.'], ['أمس','Yesterday'],
-            ['هذا النظام عبارة عن نسخة تجريبية (Demo) صممت خصيصاً لشركة بحر العرب.','This is a demo system designed specifically for Arab Sea Information Systems.'],
-            ['برمجة وتطوير','Designed & developed by'], ['م. أيمن علي المغربي','Eng. Ayman Ali Almaghrabi'],
-            ['التنبيهات','Notifications'], ['تحديد الكل كمقروء','Mark all as read'],
-            ['3 مهام تحتاج اعتماد','3 tasks require approval'], ['راجع المهام المعلقة والمتأخرة.','Review pending and overdue tasks.'],
-            ['اجتماع مجلس الإدارة القادم','Upcoming Board Meeting'], ['15 أكتوبر 2026، الساعة 10:00 صباحاً.','15 October 2026, 10:00 AM.']
-        ]);
-        const reverseTranslations = new Map([...translations].map(([a,e]) => [e,a]));
-
-        function translateTextNodes(map) {
-            const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
-            const nodes = [];
-            while (walker.nextNode()) nodes.push(walker.currentNode);
-            nodes.forEach(node => {
-                const raw = node.nodeValue, t = raw.trim();
-                if (!t) return;
-                if (map.has(t)) {
-                    node.nodeValue = raw.match(/^\s*/)[0] + map.get(t) + raw.match(/\s*$/)[0];
-                } else {
-                    for (const [from,to] of map) if (node.nodeValue.includes(from)) node.nodeValue = node.nodeValue.replace(from,to);
-                }
-            });
-        }
-
-        function setLanguage(lang) {
-            const old = htmlElement.lang || 'ar';
-            if (old !== lang) translateTextNodes(lang === 'en' ? translations : reverseTranslations);
-            htmlElement.lang = lang;
-            htmlElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-            document.body.dir = htmlElement.dir;
-            languageToggleText.textContent = lang === 'ar' ? 'EN' : 'عربي';
-            document.title = lang === 'ar'
-                ? 'eGov - ديمو لوحة التحكم | مقدم لشركة بحر العرب'
-                : 'eGov - Dashboard Demo | Arab Sea Information Systems';
-            themeToggleBtn.setAttribute('aria-label', lang === 'ar' ? 'تبديل المظهر' : 'Toggle theme');
-            languageToggle.setAttribute('aria-label', lang === 'ar' ? 'تغيير اللغة' : 'Change language');
-            mobileMenuToggle.setAttribute('aria-label', lang === 'ar' ? 'فتح القائمة' : 'Open menu');
-            notificationToggle.setAttribute('aria-label', lang === 'ar' ? 'التنبيهات' : 'Notifications');
-            const logout = document.querySelector('a[href="../login.html"]');
-            if (logout) {
-                logout.title = lang === 'ar' ? 'تسجيل الخروج' : 'Sign out';
-                logout.setAttribute('aria-label', logout.title);
-            }
-            localStorage.setItem('egov-language', lang);
-            localStorage.setItem('language', lang);
-        }
-
-        languageToggle.addEventListener('click', () => setLanguage(htmlElement.lang === 'ar' ? 'en' : 'ar'));
-        const savedLanguage = localStorage.getItem('egov-language') || localStorage.getItem('language') || 'ar';
-        setLanguage(savedLanguage === 'en' ? 'en' : 'ar');
     </script>
 
     <script src="../assets/js/core/i18n.js" defer></script>
